@@ -538,7 +538,9 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 	Diagrama del Sistema de Nombres de Dominio (DNS):
 
-		En la parte superior del árbol se encuentran las raíces de los dominios. Algunos de los dominios más antiguos y comunes se ven cerca de la parte superior. 
+		En la parte superior del árbol se encuentran las raíces de los dominios. 
+
+		Algunos de los dominios más antiguos y comunes se ven cerca de la parte superior. 
 
 		Lo que no se muestra es la multitud de servidores DNS de todo el mundo que forman el resto de la jerarquía.
 
@@ -801,6 +803,121 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 || HTTP/1 y HTTP/2
 
 	
+	HTTP: 
+
+		El Protocolo de Transferencia de Hipertexto, o HTTP, es un protocolo de aplicación que ha sido el estándar de facto para la comunicación en la World Wide Web desde su invención en 1989. 
+
+		Desde el lanzamiento de HTTP/1.1 en 1997 hasta hace poco, ha habido pocas revisiones del protocolo.
+
+		Pero en 2015, entró en uso una versión reimaginada llamada HTTP/2, que ofrecía varios métodos para disminuir la latencia, especialmente cuando se trataba de plataformas móviles y gráficos y vídeos de uso intensivo del servidor. 
+
+
+		Comienzo: 	
+
+			HTTP/1.1 fue desarrollado por Timothy Berners-Lee en 1989 como estándar de comunicación para la World Wide Web, HTTP es un protocolo de aplicación de alto nivel que intercambia información entre un ordenador cliente y un servidor web local o remoto. 
+
+			En este proceso, un cliente envía una petición basada en texto a un servidor llamando a un método como GET o POST.
+
+			Como respuesta, el servidor envía un recurso, como una página HTML, al cliente.
+
+			Por ejemplo, supongamos que visita un sitio web en el dominio www.example.com.
+
+			Cuando navegas a esta URL, el navegador de tu ordenador envía una petición HTTP en forma de mensaje de texto, similar al que se muestra aquí:
+
+				```
+					GET /index.html HTTP/1.1
+					Host: www.example.com
+				
+				```
+
+			Esta petición utiliza el método GET, que solicita datos del servidor host que aparece después de Host:. 
+
+			En respuesta a esta petición, el servidor web de ejemplo.com devuelve una página HTML al cliente solicitante, además de las imágenes, hojas de estilo u otros recursos solicitados en el HTML. 
+
+			Tenga en cuenta que no todos los recursos se devuelven al cliente en la primera petición de datos. 
+
+			Las peticiones y respuestas irán y vendrán entre el servidor y el cliente hasta que el navegador web haya recibido todos los recursos necesarios para representar el contenido de la página HTML en su pantalla.
+
+			Este intercambio de peticiones y respuestas puede considerarse como una capa de aplicación única de la pila de protocolos de Internet, que se asienta sobre la capa de transferencia (que suele utilizar el Protocolo de Control de Transmisión, o TCP) y las capas de red (que utilizan el Protocolo de Internet, o IP):
+
+				Diagrama de pila de protocolos: 
+
+					Host (Navegador/Browser)
+
+						App Layer (HTTP)
+
+						Transport Layer (TCP)
+
+						Network Layer (IP)
+
+						Data Link Layer
+
+					
+					Internet (Conecta Host a Target)
+
+
+					Target (Webserver): 
+
+						App Layer (HTTP)
+
+						Transport Layer (TCP)
+
+						Network Layer (IP)
+
+						Data Link Layer
+
+
+	HTTP/2: 
+
+ 		Cambios técnicos que HTTP/2 ha adoptado para lograr un protocolo Web más eficiente.	
+
+ 		HTTP/2 comenzó como el protocolo SPDY, desarrollado principalmente en Google con la intención de reducir la latencia de carga de las páginas web mediante técnicas como la compresión, la multiplexación y la priorización.
+
+ 		Este protocolo sirvió de plantilla para HTTP/2 cuando el grupo de trabajo httpbis del protocolo de transferencia de hipertexto del IETF (Internet Engineering Task Force) elaboró el estándar, que culminó con la publicación de HTTP/2 en mayo de 2015. 
+
+ 		Desde el principio, muchos navegadores apoyaron este esfuerzo de estandarización, incluidos Chrome, Opera, Internet Explorer y Safari. 
+
+ 		Debido en parte a este apoyo de los navegadores, ha habido una tasa de adopción significativa del protocolo desde 2015, con tasas especialmente altas entre los nuevos sitios.
+
+		Desde un punto de vista técnico, una de las características más significativas que distingue HTTP/1.1 y HTTP/2 es la capa de framing binario, que puede considerarse parte de la capa de aplicación en la pila de protocolos de Internet. 
+
+		A diferencia de HTTP/1.1, que mantiene todas las peticiones y respuestas en formato de texto plano, HTTP/2 utiliza la capa de enmarcado binario para encapsular todos los mensajes en formato binario, manteniendo la semántica HTTP, como verbos, métodos y cabeceras. 
+
+		Una API a nivel de aplicación seguiría creando mensajes en los formatos HTTP convencionales, pero la capa subyacente los convertiría en binarios. 
+
+		Esto garantiza que las aplicaciones web creadas antes de HTTP/2 puedan seguir funcionando con normalidad al interactuar con el nuevo protocolo.
+
+		La conversión de mensajes a binario permite a HTTP/2 probar nuevos enfoques de entrega de datos no disponibles en HTTP/1.1, un contraste que está en la raíz de las diferencias prácticas entre los dos protocolos. 
+
+
+		Modelos de entrega/Delivery Models:
+
+			Como se mencionó en la sección anterior, HTTP/1.1 y HTTP/2 comparten semántica, asegurando que las peticiones y respuestas que viajan entre el servidor y el cliente en ambos protocolos lleguen a sus destinos como mensajes formateados tradicionalmente con cabeceras y cuerpos, utilizando métodos familiares como GET y POST. 
+
+			Pero mientras HTTP/1.1 los transfiere en mensajes de texto plano, HTTP/2 los codifica en binario, permitiendo posibilidades de modelos de entrega significativamente diferentes.
+
+			En esta sección, primero examinaremos brevemente cómo HTTP/1.1 intenta optimizar la eficiencia con su modelo de entrega y los problemas que se derivan de ello, seguido de las ventajas de la capa de enmarcado binario de HTTP/2 y una descripción de cómo prioriza las peticiones.
+
+
+		HTTP/1.1 - Pipelining y bloqueo de cabecera de línea (Head-of-Line Blocking):
+
+			La primera respuesta que recibe un cliente en una petición HTTP GET no suele ser la página completa. 
+			
+			En su lugar, contiene enlaces a recursos adicionales necesarios para la página solicitada. 
+
+			El cliente descubre que la representación completa de la página requiere estos recursos adicionales del servidor sólo después de descargar la página. 
+
+			Por ello, el cliente tendrá que realizar peticiones adicionales para recuperar estos recursos. 
+
+			En HTTP/1.0, el cliente tenía que romper y rehacer la conexión TCP con cada nueva petición, un asunto costoso tanto en tiempo como en recursos.
+
+			HTTP/1.1 resuelve este problema introduciendo conexiones persistentes (persistent connections) y pipelining. 
+
+			Con las conexiones persistentes, HTTP/1.1 asume que una conexión TCP debe mantenerse abierta a menos que se le indique directamente que la cierre. 
+
+			Esto permite al cliente enviar múltiples peticiones a lo largo de la misma conexión sin esperar una respuesta a cada una, mejorando enormemente el rendimiento de HTTP/1.1 sobre HTTP/1.0.	
+
+
 
 
 
