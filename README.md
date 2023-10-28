@@ -840,31 +840,32 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 			Este intercambio de peticiones y respuestas puede considerarse como una capa de aplicación única de la pila de protocolos de Internet, que se asienta sobre la capa de transferencia (que suele utilizar el Protocolo de Control de Transmisión, o TCP) y las capas de red (que utilizan el Protocolo de Internet, o IP):
 
-				Diagrama de pila de protocolos: 
 
-					Host (Navegador/Browser)
+			Diagrama de pila de protocolos: 
 
-						App Layer (HTTP)
+				Host (Navegador/Browser)
 
-						Transport Layer (TCP)
+					App Layer (HTTP)
 
-						Network Layer (IP)
+					Transport Layer (TCP)
 
-						Data Link Layer
+					Network Layer (IP)
 
-					
-					Internet (Conecta Host a Target)
+					Data Link Layer
+
+				
+				Internet (Conecta Host a Target)
 
 
-					Target (Webserver): 
+				Target (Webserver): 
 
-						App Layer (HTTP)
+					App Layer (HTTP)
 
-						Transport Layer (TCP)
+					Transport Layer (TCP)
 
-						Network Layer (IP)
+					Network Layer (IP)
 
-						Data Link Layer
+					Data Link Layer
 
 
 	HTTP/2: 
@@ -890,35 +891,373 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 		La conversión de mensajes a binario permite a HTTP/2 probar nuevos enfoques de entrega de datos no disponibles en HTTP/1.1, un contraste que está en la raíz de las diferencias prácticas entre los dos protocolos. 
 
 
-		Modelos de entrega/Delivery Models:
+	Modelos de entrega/Delivery Models:
 
-			Como se mencionó en la sección anterior, HTTP/1.1 y HTTP/2 comparten semántica, asegurando que las peticiones y respuestas que viajan entre el servidor y el cliente en ambos protocolos lleguen a sus destinos como mensajes formateados tradicionalmente con cabeceras y cuerpos, utilizando métodos familiares como GET y POST. 
+		Como se mencionó en la sección anterior, HTTP/1.1 y HTTP/2 comparten semántica, asegurando que las peticiones y respuestas que viajan entre el servidor y el cliente en ambos protocolos lleguen a sus destinos como mensajes formateados tradicionalmente con cabeceras y cuerpos, utilizando métodos familiares como GET y POST. 
 
-			Pero mientras HTTP/1.1 los transfiere en mensajes de texto plano, HTTP/2 los codifica en binario, permitiendo posibilidades de modelos de entrega significativamente diferentes.
+		Pero mientras HTTP/1.1 los transfiere en mensajes de texto plano, HTTP/2 los codifica en binario, permitiendo posibilidades de modelos de entrega significativamente diferentes.
 
-			En esta sección, primero examinaremos brevemente cómo HTTP/1.1 intenta optimizar la eficiencia con su modelo de entrega y los problemas que se derivan de ello, seguido de las ventajas de la capa de enmarcado binario de HTTP/2 y una descripción de cómo prioriza las peticiones.
+		En esta sección, primero examinaremos brevemente cómo HTTP/1.1 intenta optimizar la eficiencia con su modelo de entrega y los problemas que se derivan de ello, seguido de las ventajas de la capa de enmarcado binario de HTTP/2 y una descripción de cómo prioriza las peticiones.
 
 
-		HTTP/1.1 - Pipelining y bloqueo de cabecera de línea (Head-of-Line Blocking):
+	HTTP/1.1 - Pipelining y bloqueo de cabecera de línea (Head-of-Line Blocking):
 
-			La primera respuesta que recibe un cliente en una petición HTTP GET no suele ser la página completa. 
+		La primera respuesta que recibe un cliente en una petición HTTP GET no suele ser la página completa. 
+		
+		En su lugar, contiene enlaces a recursos adicionales necesarios para la página solicitada. 
+
+		El cliente descubre que la representación completa de la página requiere estos recursos adicionales del servidor sólo después de descargar la página. 
+
+		Por ello, el cliente tendrá que realizar peticiones adicionales para recuperar estos recursos. 
+
+		En HTTP/1.0, el cliente tenía que romper y rehacer la conexión TCP con cada nueva petición, un asunto costoso tanto en tiempo como en recursos.
+
+		HTTP/1.1 resuelve este problema introduciendo conexiones persistentes (persistent connections) y pipelining. 
+
+		Con las conexiones persistentes, HTTP/1.1 asume que una conexión TCP debe mantenerse abierta a menos que se le indique directamente que la cierre. 
+
+		Esto permite al cliente enviar múltiples peticiones a lo largo de la misma conexión sin esperar una respuesta a cada una, mejorando enormemente el rendimiento de HTTP/1.1 sobre HTTP/1.0.	
+
+		Desgraciadamente, esta estrategia de optimización tiene un cuello de botella natural. 
+
+		Dado que varios paquetes de datos no pueden cruzarse entre sí cuando viajan al mismo destino, hay situaciones en las que una solicitud en la cabeza de la cola que no puede recuperar su recurso requerido bloqueará todas las solicitudes detrás de ella.
+
+		Esto se conoce como bloqueo de la cabecera de la cola (HOL, head-of-line blocking), y es un problema importante a la hora de optimizar la eficiencia de la conexión en HTTP/1.1. 
+
+		Añadir conexiones TCP separadas y paralelas podría aliviar este problema, pero hay límites al número de conexiones TCP simultáneas posibles entre un cliente y un servidor, y cada nueva conexión requiere recursos significativos.
+
+		Estos problemas estaban en el punto de mira de los desarrolladores de HTTP/2, que propusieron utilizar la mencionada capa de entramado binario para solucionar estos problemas, un tema sobre el que aprenderás más en la siguiente sección.
+
+
+	HTTP/2 - Ventajas de la capa de marco binario (Advantages of the Binary Framing Layer):
+
+		En HTTP/2, la capa de marco binario codifica las solicitudes/respuestas y las divide en paquetes de información más pequeños, lo que aumenta enormemente la flexibilidad de la transferencia de datos.
+
+		Veamos cómo funciona: A diferencia de HTTP/1.1, que debe hacer uso de múltiples conexiones TCP para disminuir el efecto del bloqueo HOL, HTTP/2 establece un único objeto de conexión entre las dos máquinas. 
+
+		Dentro de esta conexión hay múltiples flujos de datos.
+
+		Cada flujo se compone de varios mensajes en el conocido formato solicitud/respuesta. 
+
+		Finalmente, cada uno de estos mensajes se divide en unidades más pequeñas llamadas tramas (frames).
+
+
+		Diagrama de funcionamiento de HTTP/2: 
+
+			En la conexión cliente/servidor vemos dos flujos con multiples mensajes. 
+
+			Cada uno dividido por multiples frames. 
+
+
+		En el nivel más granular, el canal de comunicación consiste en un montón de tramas codificadas en binario (binary-encoded frames), cada una etiquetada (tagged) a un flujo (stream) concreto. 
+
+		Las etiquetas de identificación (identifying tags) permiten a la conexión intercalar estas tramas durante la transferencia y volver a ensamblarlas en el otro extremo.
+
+		Las peticiones y respuestas intercaladas pueden ejecutarse en paralelo sin bloquear los mensajes que vienen detrás, un proceso llamado multiplexación (multiplexing). 
+
+		La multiplexación resuelve el problema del bloqueo de cabecera en HTTP/1.1 al garantizar que ningún mensaje tenga que esperar a que otro termine. 
+
+		Esto también significa que servidores y clientes pueden enviar peticiones y respuestas simultáneas, lo que permite un mayor control y una gestión más eficiente de la conexión.
+
+		Dado que la multiplexación permite al cliente construir múltiples flujos en paralelo, estos flujos sólo necesitan hacer uso de una única conexión TCP. 
+
+		Disponer de una única conexión persistente por origen mejora HTTP/1.1 al reducir la huella de memoria y procesamiento en toda la red. 
+
+		Esto se traduce en una mejor utilización de la red y del ancho de banda y, por tanto, reduce el coste operativo global.
+
+		Una única conexión TCP también mejora el rendimiento del protocolo HTTPS, ya que el cliente y el servidor pueden reutilizar la misma sesión segura para múltiples peticiones/respuestas. 
+
+		En HTTPS, durante el handshake TLS o SSL, ambas partes acuerdan el uso de una única clave durante toda la sesión. 
+
+		Si la conexión se interrumpe, se inicia una nueva sesión, que requiere una nueva clave generada para continuar la comunicación.
+
+		Así, mantener una única conexión puede reducir en gran medida los recursos necesarios para el rendimiento de HTTPS. 
+
+		Tenga en cuenta que, aunque las especificaciones HTTP/2 no obligan a utilizar la capa TLS, muchos de los principales navegadores sólo admiten HTTP/2 con HTTPS.
+
+		Aunque la multiplexación inherente a la capa de entramado binario resuelve ciertos problemas de HTTP/1.1, los flujos múltiples que esperan el mismo recurso pueden seguir causando problemas de rendimiento. 
+
+		El diseño de HTTP/2 tiene esto en cuenta, sin embargo, mediante el uso de la priorización de flujos, un tema que discutiremos en la siguiente sección.
+
+
+	HTTP/2 - Priorización de flujos (Stream priorization):
+
+		La priorización de flujos no sólo resuelve el posible problema de las solicitudes que compiten por el mismo recurso, sino que también permite a los desarrolladores personalizar el peso relativo de las solicitudes para optimizar mejor el rendimiento de la aplicación. 
+
+		Como ya sabe, la capa de estructura binaria organiza los mensajes en flujos paralelos de datos. 
+
+		Cuando un cliente envía peticiones concurrentes a un servidor, puede priorizar las respuestas que solicita asignando un peso entre 1 y 256 a cada flujo. 
+
+		Cuanto mayor sea el número, mayor será la prioridad. 
+
+		Además, el cliente también indica la dependencia de cada flujo respecto a otro especificando el identificador del flujo del que depende. 
+
+		Si se omite el identificador del padre, se considera que el flujo depende del flujo raíz. 
+
+
+		Diagrama de prioridad de flujo: 
+
+			Vemos que el canal contiene seis flujos (stream), cada uno con un ID único y asociado a un peso específico. 
+
+			El flujo 1 no tiene un ID padre asociado y está por defecto asociado al nodo raíz. 
+
+			Todos los demás flujos tienen marcado algún ID padre. 
+
+			La asignación de recursos para cada flujo se basará en el peso (weight/wt) que tengan y las dependencias que requieran.
+
+			Los flujos 5 y 6, por ejemplo, que en la figura tienen asignado el mismo peso y el mismo flujo padre, tendrán la misma priorización para la asignación de recursos.
+
+
+		El servidor utiliza esta información para crear un árbol de dependencias, que le permite determinar el orden en que las peticiones recuperarán sus datos.
+
+		Basándose en los flujos de la figura anterior, diagrama del árbol (Binary Tree/Heap) de dependencia será el siguiente:
+
+			En este árbol de dependencia, el flujo 1 depende del flujo raíz y no hay ningún otro flujo derivado del raíz, por lo que todos los recursos disponibles se asignarán al flujo 1 antes que a los demás flujos. 
+
+			Dado que el árbol indica que el flujo 2 depende de la finalización del flujo 1, el flujo 2 no procederá hasta que la tarea del flujo 1 se haya completado. 
+
+			Ahora, echemos un vistazo a los flujos 3 y 4. 
+
+			Ambos dependen del flujo 2.
+
+			Como en el caso del flujo 1, el flujo 2 obtendrá todos los recursos disponibles antes que los flujos 3 y 4. 
+
+			Después de que el flujo 2 complete su tarea, el flujo 2 no procederá hasta que el flujo 1 haya completado su tarea. 
+
+			Después de que el flujo 2 complete su tarea, los flujos 3 y 4 obtendrán los recursos; estos se dividen en la proporción de 2:4 como indican sus pesos, lo que resulta en una mayor parte de los recursos para el flujo 4.
+
+			Por último, cuando el flujo 3 termine, los flujos 5 y 6 obtendrán los recursos disponibles a partes iguales.
+
+			Esto puede ocurrir antes de que el flujo 4 haya terminado su tarea, incluso aunque el flujo 4 reciba una porción mayor de recursos; a los flujos de un nivel inferior se les permite comenzar tan pronto como los flujos dependientes de un nivel superior hayan terminado.
+
+		
+		Como desarrollador de aplicaciones, puedes establecer los pesos en tus peticiones en función de tus necesidades. 
+
+		Por ejemplo, puede asignar una prioridad más baja para cargar una imagen con alta resolución después de proporcionar una imagen en miniatura en la página web. 
+
+		Al proporcionar esta facilidad de asignación de pesos, HTTP/2 permite a los desarrolladores obtener un mejor control sobre el renderizado de las páginas web.
+
+		El protocolo también permite al cliente cambiar dependencias y reasignar pesos en tiempo de ejecución en respuesta a la interacción del usuario. 
+
+		No obstante, es importante señalar que un servidor puede cambiar por sí mismo las prioridades asignadas si se bloquea el acceso de un determinado flujo a un recurso específico.
+
+
+	Desbordamiento del búfer/Buffer Overflow:
+
+		En cualquier conexión TCP entre dos máquinas, tanto el cliente como el servidor disponen de una cierta cantidad de espacio en búfer para albergar las peticiones entrantes que aún no han sido procesadas. 
+
+		Estos búferes ofrecen flexibilidad para tener en cuenta peticiones numerosas o particularmente grandes, además de las velocidades desiguales de las conexiones descendentes y ascendentes.
+
+		Sin embargo, hay situaciones en las que un búfer no es suficiente. 
+
+		Por ejemplo, el servidor puede estar enviando una gran cantidad de datos a un ritmo que la aplicación cliente no es capaz de soportar debido a un tamaño limitado del búfer o a un ancho de banda menor. 
+
+		Del mismo modo, cuando un cliente sube una imagen o un vídeo enorme a un servidor, el búfer del servidor puede desbordarse, provocando la pérdida de algunos paquetes adicionales.
+
+		Para evitar el desbordamiento del búfer, un mecanismo de control de flujo debe impedir que el emisor sature de datos al receptor. 
+
+		Esta sección proporcionará una visión general de cómo HTTP/1.1 y HTTP/2 utilizan diferentes versiones de este mecanismo para tratar el control de flujo de acuerdo con sus diferentes modelos de entrega.
+
+
+	HTTP/1.1 - Flow control:
+
+		En HTTP/1.1, el control de flujo (flow control) depende de la conexión TCP subyacente. 
+
+		Cuando se inicia esta conexión, tanto el cliente como el servidor establecen el tamaño de sus búferes utilizando la configuración predeterminada del sistema. 
+
+		Si el búfer del receptor está parcialmente lleno de datos, indicará al emisor su ventana de recepción, es decir, la cantidad de espacio disponible que queda en su búfer. 
+
+		Esta ventana de recepción se anuncia en una señal conocida como paquete ACK, que es el paquete de datos que envía el receptor para confirmar que ha recibido la señal de apertura. 
+
+		Si este tamaño de ventana de recepción anunciado es cero, el emisor no enviará más datos hasta que el cliente vacíe su búfer interno y solicite reanudar la transmisión de datos. 
+
+		Es importante señalar aquí que el uso de ventanas de recepción basadas en la conexión TCP subyacente sólo puede implementar el control de flujo en cualquiera de los extremos de la conexión.
+
+		Dado que HTTP/1.1 se basa en la capa de transporte para evitar el desbordamiento del búfer, cada nueva conexión TCP requiere un mecanismo de control de flujo independiente. 
+
+		HTTP/2, sin embargo, multiplexa flujos dentro de una única conexión TCP, y tendrá que implementar el control de flujo de una manera diferente.
+
+
+	HTTP/2 - Flow control: 
+
+		HTTP/2 multiplexa flujos de datos dentro de una única conexión TCP.
+
+		Como resultado, las ventanas de recepción a nivel de la conexión TCP no son suficientes para regular la entrega de flujos individuales. 
+
+		HTTP/2 resuelve este problema permitiendo al cliente y al servidor implementar sus propios controles de flujo, en lugar de depender de la capa de transporte. 
+
+		La capa de aplicación comunica el espacio de búfer disponible, lo que permite al cliente y al servidor establecer la ventana de recepción a nivel de los flujos multiplexados. 
+
+		Este control de flujo a escala fina puede modificarse o mantenerse después de la conexión inicial mediante una trama (frame) WINDOW_UPDATE.
+
+		Dado que este método controla el flujo de datos a nivel de la capa de aplicación, el mecanismo de control de flujo no tiene que esperar a que una señal llegue a su destino final antes de ajustar la ventana de recepción. 
+
+		Los nodos intermediarios pueden utilizar la información de los ajustes de control de flujo para determinar sus propias asignaciones de recursos y modificarlas en consecuencia. 
+
+		De este modo, cada servidor intermediario puede aplicar su propia estrategia de recursos personalizada, lo que permite una mayor eficiencia de la conexión.		
+		Esta flexibilidad en el control de flujo puede ser ventajosa a la hora de crear estrategias de recursos adecuadas. 
+
+		Por ejemplo, el cliente puede recuperar la primera parte de una imagen, mostrársela al usuario y permitirle previsualizarla mientras obtiene recursos más importantes. 
+
+		Una vez que el cliente obtiene estos recursos críticos, el navegador reanuda la recuperación de la parte restante de la imagen. 
+
+		Aplazar la implementación del control de flujo al cliente y al servidor puede mejorar el rendimiento percibido de las aplicaciones web.
+
+		En cuanto al control de flujo y la priorización de flujos mencionada en una sección anterior, HTTP/2 proporciona un nivel de control más detallado que abre la posibilidad de una mayor optimización. 
+
+		La siguiente sección explicará otro método exclusivo del protocolo que puede mejorar una conexión de forma similar: la predicción de solicitudes de recursos con push del servidor
+
+
+	Predicción de solicitudes de recursos/Predicting Resource Requests:
+
+		En una aplicación web típica, el cliente envía una petición GET y recibe una página en HTML, normalmente la página índice del sitio. 
+
+		Mientras examina el contenido de la página índice, el cliente puede descubrir que necesita obtener recursos adicionales, como archivos CSS y JavaScript, para renderizar completamente la página. 
+
+		El cliente determina que necesita estos recursos adicionales sólo después de recibir la respuesta de su petición GET inicial y, por tanto, debe realizar peticiones adicionales para obtener estos recursos y completar la composición de la página. 
+
+		En última instancia, estas peticiones adicionales aumentan el tiempo de carga de la conexión.
+
+		Sin embargo, este problema tiene solución: como el servidor sabe de antemano que el cliente necesitará archivos adicionales, puede ahorrarle tiempo enviándole estos recursos antes de que los solicite. 
+
+		HTTP/1.1 y HTTP/2 tienen diferentes estrategias para lograr esto, cada una de las cuales se describirá en la siguiente sección.
+
+
+	HTTP/1.1 - Inclusión de recursos (Resource Inlining):
+
+		En HTTP/1.1, si el desarrollador sabe de antemano qué recursos adicionales necesitará la máquina cliente para renderizar la página, puede utilizar una técnica llamada inlining de recursos para incluir el recurso necesario directamente dentro del documento HTML que el servidor envía en respuesta a la petición GET inicial. 
+
+		Por ejemplo, si un cliente necesita un archivo CSS específico para renderizar una página, la inclusión de ese archivo CSS proporcionará al cliente el recurso necesario antes de que lo solicite, reduciendo el número total de peticiones que el cliente debe enviar.
+
+		Sin embargo, la incrustación de recursos plantea algunos problemas. 
+
+		Incluir el recurso en el documento HTML es una solución viable para los recursos más pequeños, basados en texto, pero los archivos más grandes en formatos no textuales pueden aumentar enormemente el tamaño del documento HTML, lo que en última instancia puede disminuir la velocidad de conexión y anular la ventaja original obtenida con el uso de esta técnica.
+
+		Además, como los recursos en línea ya no están separados del documento HTML, no existe ningún mecanismo para que el cliente rechace recursos que ya tiene, o para colocar un recurso en su caché. 
+
+		Si varias páginas necesitan el recurso, cada nuevo documento HTML tendrá el mismo recurso incrustado en su código, lo que provocará documentos HTML más grandes y tiempos de carga más largos que si el recurso se hubiera guardado en caché al principio.
+
+		Uno de los principales inconvenientes de la inserción de recursos es que el cliente no puede separar el recurso del documento. 
+
+		Se necesita un nivel de control más fino para optimizar la conexión, una necesidad que HTTP/2 trata de satisfacer con server push.
+
+
+	HTTP/2 - Server Push
+
+		Dado que HTTP/2 permite múltiples respuestas concurrentes a la petición GET inicial de un cliente, un servidor puede enviar un recurso a un cliente junto con la página HTML solicitada, proporcionando el recurso antes de que el cliente lo pida. 
+
+		Este proceso se denomina server push. 
+
+		De este modo, una conexión HTTP/2 puede lograr el mismo objetivo de inlining de recursos manteniendo la separación entre el recurso empujado y el documento. 
+
+		Esto significa que el cliente puede decidir almacenar en caché o rechazar el recurso empujado separado del documento HTML principal, solucionando el principal inconveniente del inlining de recursos.
+
+		En HTTP/2, este proceso comienza cuando el servidor envía una trama (frame) PUSH_PROMISE para informar al cliente de que va a enviar un recurso. 
+
+		Este frame sólo incluye la cabecera del mensaje y permite al cliente saber de antemano qué recurso va a enviar el servidor.
+
+		Si ya tiene el recurso en caché, el cliente puede rechazar el envío enviando una trama RST_STREAM como respuesta. 
+
+		La trama PUSH_PROMISE también evita que el cliente envíe una solicitud duplicada al servidor, ya que sabe qué recursos va a enviar el servidor.
+
+		Es importante señalar aquí que el énfasis de server push es el control del cliente. 
+
+		Si un cliente necesitara ajustar la prioridad de server push, o incluso desactivarla, podría en cualquier momento enviar una trama SETTINGS para modificar esta característica de HTTP/2.
+
+		Aunque esta característica tiene mucho potencial, server push no es siempre la respuesta para optimizar tu aplicación web. 
+
+		Por ejemplo, algunos navegadores web no siempre pueden cancelar las peticiones push, incluso si el cliente ya tiene el recurso en caché. 
+
+		Si el cliente permite por error que el servidor envíe un recurso duplicado, el push de servidor puede consumir la conexión innecesariamente. 
+
+		En definitiva, el push de servidor debe utilizarse a discreción del desarrollador.
+
+		Para más información sobre cómo utilizar estratégicamente el push de servidor y optimizar las aplicaciones web, consulta el patrón PRPL desarrollado por Google. 
+
+		Para obtener más información sobre los posibles problemas del push de servidor, consulte la entrada del blog de Jake Archibald HTTP/2 push es más difícil de lo que pensaba.		
+
+
+	Compresión/Compression
+
+		Un método habitual para optimizar las aplicaciones web es utilizar algoritmos de compresión para reducir el tamaño de los mensajes HTTP que viajan entre el cliente y el servidor. 
+
+		Tanto HTTP/1.1 como HTTP/2 utilizan esta estrategia, pero existen problemas de implementación en el primero que impiden comprimir todo el mensaje.
+
+
+		HTTP/1.1:
+
+			Hace tiempo que se utilizan programas como gzip para comprimir los datos enviados en mensajes HTTP, especialmente para reducir el tamaño de los archivos CSS y JavaScript. 
+
+			Sin embargo, el componente de cabecera de un mensaje siempre se envía como texto sin formato.
+
+			Aunque cada cabecera es bastante pequeña, la carga de estos datos sin comprimir pesa cada vez más en la conexión a medida que se realizan más peticiones, lo que penaliza especialmente a las aplicaciones web complicadas y con muchas API que requieren muchos recursos diferentes y, por tanto, muchas peticiones de recursos diferentes. 
+
+			Además, el uso de cookies a veces puede hacer que las cabeceras sean mucho más grandes, lo que aumenta la necesidad de algún tipo de compresión.
+
+			Para resolver este cuello de botella, HTTP/2 utiliza la compresión HPACK para reducir el tamaño de las cabeceras, un tema que se trata con más detalle en la siguiente sección.
+
+
+		HTTP/2:
+
+			Uno de los temas que ha surgido una y otra vez en HTTP/2 es su capacidad de utilizar la capa de marco binario para exhibir un mayor control sobre los detalles más finos. 
+
+			Lo mismo ocurre con la compresión de cabeceras.
+
+			HTTP/2 puede separar las cabeceras de sus datos, dando lugar a un marco de cabecera y un marco de datos. 
+
+			El programa de compresión HPACK, específico de HTTP/2, puede comprimir este marco de encabezado. 
+
+			Este algoritmo puede codificar los metadatos de la cabecera utilizando la codificación Huffman, lo que reduce enormemente su tamaño.
+
+			Además, HPACK puede realizar un seguimiento de los campos de metadatos transmitidos previamente y comprimirlos aún más según un índice modificado dinámicamente y compartido entre el cliente y el servidor. 
+
+			Por ejemplo, tomemos las dos peticiones siguientes:		
+
+			Request #1: 
+
+				method:		GET
+				scheme:		https
+				host:		example.com
+				path:		/academy
+				accept:		/image/jpeg
+				user-agent:	Mozilla/5.0 ...
+
+
+			Request #2: 
+
+				method:		GET
+				scheme:		https
+				host:		example.com
+				path:		/academy/images
+				accept:		/image/jpeg
+				user-agent:	Mozilla/5.0 ...
+
+
+			Los distintos campos de estas peticiones, como method, scheme, host, accept y user-agent, tienen los mismos valores; sólo el campo path utiliza un valor diferente.
+
+			Como resultado, al enviar la petición #2, el cliente puede usar HPACK para enviar sólo los valores indexados necesarios para reconstruir estos campos comunes y codificar de nuevo el campo path. 
+
+			Las tramas de cabecera resultantes serán las siguientes:
+
+			Header Frame for Request #1: 
+
+				method:		GET
+				scheme:		https
+				host:		example.com
+				path:		/academy
+				accept:		/image/jpeg
+				user-agent:	Mozilla/5.0 ...
+
+
+			Header Frame for Request #1:
+
+				path:		/academy/images
+
+
+			Mediante HPACK y otros métodos de compresión, HTTP/2 ofrece una función más que puede reducir la latencia cliente-servidor.
+
+
 			
-			En su lugar, contiene enlaces a recursos adicionales necesarios para la página solicitada. 
-
-			El cliente descubre que la representación completa de la página requiere estos recursos adicionales del servidor sólo después de descargar la página. 
-
-			Por ello, el cliente tendrá que realizar peticiones adicionales para recuperar estos recursos. 
-
-			En HTTP/1.0, el cliente tenía que romper y rehacer la conexión TCP con cada nueva petición, un asunto costoso tanto en tiempo como en recursos.
-
-			HTTP/1.1 resuelve este problema introduciendo conexiones persistentes (persistent connections) y pipelining. 
-
-			Con las conexiones persistentes, HTTP/1.1 asume que una conexión TCP debe mantenerse abierta a menos que se le indique directamente que la cierre. 
-
-			Esto permite al cliente enviar múltiples peticiones a lo largo de la misma conexión sin esperar una respuesta a cada una, mejorando enormemente el rendimiento de HTTP/1.1 sobre HTTP/1.0.	
-
-
-
 
 
 || HTTP/3
