@@ -1257,11 +1257,302 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 			Mediante HPACK y otros métodos de compresión, HTTP/2 ofrece una función más que puede reducir la latencia cliente-servidor.
 
 
-			
 
 
 || HTTP/3
+	
+	Como HTTP/2, HTTP/3 tiene algunos conceptos nuevos y prometedores, lamentablemente su impacto será relativamente limitado para la mayoría de páginas web y usuarios (aunque potencialmente crucial para un pequeño subconjunto). 
 
-		
+	El impacto de HTTP/2 no fue como lo esperaban, el server push no funciona realmente en la práctica, los flujos y la priorización suelen estar mal implementados y, en consecuencia, la agrupación (reducida) de recursos e incluso la fragmentación siguen siendo buenas prácticas en algunas situaciones.
+
+	HTTP/3 también es bastante difícil de configurar y utilizar (correctamente), por lo que hay que tener cuidado al configurar el nuevo protocolo.
+
+
+	La necesidad de HTTP/3: 
+
+		En realidad no necesitábamos una nueva versión de HTTP en primer lugar, sino más bien una actualización del Protocolo de Control de Transmisión (TCP) subyacente.
+
+		TCP es el protocolo principal que proporciona servicios cruciales como la fiabilidad y la entrega en orden a otros protocolos como HTTP. 
+
+		También es una de las razones por las que podemos seguir utilizando Internet con muchos usuarios simultáneos, porque limita inteligentemente el uso del ancho de banda de cada usuario a su parte justa.
+
+
+		Protocolos: 
+
+			Cuando utilizas HTTP(S), en realidad estás utilizando varios protocolos además de HTTP al mismo tiempo. 
+
+			Cada uno de los protocolos de esta "pila" tiene sus propias características y responsabilidades.
+
+			Por ejemplo, mientras que HTTP se ocupa de las URL y de la interpretación de los datos.
+
+			Transport Layer Security (TLS) garantiza la seguridad mediante el cifrado.
+
+			TCP permite un transporte fiable de los datos mediante la retransmisión de los paquetes perdidos.
+
+			El Protocolo de Internet (IP) encamina los paquetes de un extremo a otro a través de diferentes dispositivos intermedios (middleboxes).
+
+
+		Esta "superposición" de protocolos se hace para facilitar la reutilización de sus funciones. 
+
+		Los protocolos de capa superior (como HTTP) no tienen que volver a implementar funciones complejas (como el cifrado) porque los protocolos de capa inferior (como TLS) ya lo hacen por ellos. 
+
+		Otro ejemplo: la mayoría de las aplicaciones de Internet utilizan TCP internamente para garantizar que todos sus datos se transmiten íntegramente. 
+
+		Por este motivo, TCP es uno de los protocolos más utilizados y desplegados en Internet.
+
+
+		Diagrama de pila de protocolos: 
+
+			HTTP/2 y HTTP/3 comparten la semántica de HTTP y el protocolo IPv4/IPv6. 
+
+			Se diferencian en las características que ofrece HTTP/3 con respecto a HTTP/2 y ofrece características adicionales en TLS/TCP.
+
+
+		TCP ha sido la piedra angular de la Web durante décadas, pero empezó a mostrar su vejez a finales de la década de 2000. 
+
+		Su sustituto previsto, un nuevo protocolo de transporte llamado QUIC, difiere lo suficiente de TCP en algunos aspectos clave como para que ejecutar HTTP/2 directamente sobre él sea muy difícil. 
+
+		Por ello, HTTP/3 es una adaptación relativamente pequeña de HTTP/2 para hacerlo compatible con el nuevo protocolo QUIC, que incluye la mayoría de las nuevas características que entusiasman a la gente.
+
+		QUIC es necesario porque TCP, que ha existido desde los primeros días de Internet, no se construyó realmente pensando en la máxima eficiencia. 
+
+		Por ejemplo, TCP requiere un "apretón de manos" (Handshake) para establecer una nueva conexión.
+
+		Esto se hace para garantizar que tanto el cliente como el servidor existen y que están dispuestos y son capaces de intercambiar datos. 
+
+		Sin embargo, también requiere que se complete un viaje de ida y vuelta por toda la red antes de que se pueda hacer nada más en una conexión. 
+
+		Si el cliente y el servidor están geográficamente distantes, cada tiempo de ida y vuelta (RTT) puede tardar más de 100 milisegundos, lo que provoca retrasos notables.
+
+		Como segundo ejemplo, TCP ve todos los datos que transporta como un único "archivo" o flujo de bytes, aunque en realidad lo estemos utilizando para transferir varios archivos al mismo tiempo (por ejemplo, al descargar una página web compuesta por muchos recursos).
+
+		En la práctica, esto significa que si se pierden paquetes TCP que contienen datos de un único archivo, todos los demás archivos también se retrasarán hasta que se recuperen esos paquetes.
+
+		Es lo que se denomina bloqueo de cabecera de línea (HoL). 
+
+		Aunque estas ineficiencias son bastante manejables en la práctica (de lo contrario, no habríamos estado utilizando TCP durante más de 30 años), afectan de forma notable a protocolos de nivel superior como HTTP.
+
+		Con el tiempo, hemos intentado evolucionar y actualizar TCP para mejorar algunos de estos problemas e incluso introducir nuevas funciones de rendimiento.
+
+		Por ejemplo, TCP Fast Open elimina la sobrecarga del "handshake" permitiendo a los protocolos de capa superior enviar datos desde el principio.
+
+		Otra iniciativa se llama MultiPath TCP. 
+
+		En este caso, la idea es que el teléfono móvil suele tener conexión Wi-Fi y móvil (4G), así que ¿por qué no utilizar ambas a la vez para aumentar el rendimiento y la robustez?
+
+		No es terriblemente difícil implementar estas extensiones TCP. 
+
+		Sin embargo, desplegarlas a escala de Internet es todo un reto. 
+
+		Como TCP es tan popular, casi todos los dispositivos conectados tienen su propia implementación del protocolo a bordo. 
+
+		Si estas implementaciones son demasiado antiguas, carecen de actualizaciones o presentan fallos, las extensiones no podrán utilizarse en la práctica. 
+
+		Dicho de otro modo, todas las implementaciones deben conocer la extensión para que sea útil.
+
+		Esto no supondría un gran problema si sólo habláramos de dispositivos de usuario final (como el ordenador o el servidor web), ya que pueden actualizarse manualmente con relativa facilidad. 
+
+		Sin embargo, hay muchos otros dispositivos entre el cliente y el servidor que también tienen su propio código TCP (por ejemplo, cortafuegos (firewalls), balanceadores de carga (load balancers), enrutadores, servidores de caché, proxies, etc.).
+
+		Estos middleboxes suelen ser más difíciles de actualizar y a veces más estrictos en lo que aceptan.
+
+		Por ejemplo, si el dispositivo es un cortafuegos, puede estar configurado para bloquear todo el tráfico que contenga extensiones (desconocidas). 
+
+		En la práctica, resulta que un enorme número de middleboxes activos hacen ciertas suposiciones sobre TCP que ya no se sostienen para las nuevas extensiones.
+
+		En consecuencia, pueden pasar años o incluso más de una década antes de que se actualicen suficientes implementaciones (middlebox) de TCP para utilizar realmente las extensiones a gran escala. 
+
+		Se podría decir que se ha vuelto prácticamente imposible evolucionar TCP.
+
+		Como resultado, estaba claro que necesitaríamos un protocolo de sustitución de TCP, en lugar de una actualización directa, para resolver estos problemas. 
+
+		Sin embargo, debido a la enorme complejidad de las características de TCP y sus diversas implementaciones, crear algo nuevo pero mejor desde cero sería una empresa monumental. 
+
+		Por ello, a principios de 2010 se decidió posponer este trabajo.
+
+		Al fin y al cabo, no sólo había problemas con TCP, sino también con HTTP/1.1. 
+
+		Optamos por dividir el trabajo y "arreglar" primero HTTP/1.1, dando lugar a lo que ahora es HTTP/2. 
+
+		Una vez hecho esto, el trabajo podría continuar. 
+
+		Una vez hecho esto, se pudo empezar a trabajar en el sustituto de TCP, que ahora es QUIC. 
+
+		Originalmente, esperábamos poder ejecutar HTTP/2 sobre QUIC directamente, pero en la práctica esto haría que las implementaciones fueran demasiado ineficientes (principalmente debido a la duplicación de funciones).
+
+		En su lugar, HTTP/2 se ajustó en algunas áreas clave para hacerlo compatible con QUIC. 
+
+		Esta versión modificada recibió finalmente el nombre de HTTP/3 (en lugar de HTTP/2-sobre-QUIC), principalmente por razones de marketing y claridad. 
+
+		Por ello, las diferencias entre HTTP/1.1 y HTTP/2 son mucho más sustanciales que las que existen entre HTTP/2 y HTTP/3.
+
+
+	Las claves: 
+
+		La clave es que lo que necesitábamos no era HTTP/3, sino "TCP/2", y que hemos conseguido HTTP/3 "gratis" en el proceso.
+
+		Las principales características que nos entusiasman de HTTP/3 (establecimiento más rápido de la conexión, menos bloqueo HoL, migración de la conexión, etc.) proceden en realidad de QUIC.
+
+
+	¿Qué es QUIC?:
+
+		Puede que te estés preguntando por qué importa esto. 
+
+		¿A quién le importa si estas características están en HTTP/3 o en QUIC? Creo que esto es importante, porque QUIC es un protocolo de transporte genérico que, al igual que TCP, puede y será utilizado para muchos casos de uso además de HTTP y la carga de páginas web. 
+
+		Por ejemplo, DNS, SSH, SMB, RTP, etc. pueden ejecutarse sobre QUIC. 
+
+		Como tal, vamos a ver QUIC un poco más en profundidad, porque es aquí donde la mayoría de los conceptos erróneos acerca de HTTP/3 que he leído vienen.
+
+		Una cosa que puede que hayas oído es que QUIC se ejecuta sobre otro protocolo, llamado Protocolo de Datagramas de Usuario (UDP). 
+
+		Esto es cierto, pero no por las razones (de rendimiento) que muchos afirman. 
+
+		Lo ideal habría sido que QUIC fuera un nuevo protocolo de transporte totalmente independiente, que se ejecutara directamente sobre IP en la pila de protocolos que se muestra en la imagen que he compartido más arriba.
+
+		Sin embargo, esto habría provocado el mismo problema que nos encontramos al intentar evolucionar TCP: primero habría que actualizar todos los dispositivos de Internet para que reconocieran y permitieran QUIC.
+
+		Por suerte, podemos construir QUIC sobre el otro protocolo de capa de transporte ampliamente soportado en Internet: UDP.
+
+
+		UDP: 
+
+			UDP es el protocolo de transporte más básico posible.
+
+			En realidad, no ofrece ninguna característica, aparte de los llamados números de puerto (por ejemplo, HTTP utiliza el puerto 80, HTTPS está en el 443 y DNS emplea el puerto 53). 
+
+			No establece una conexión con un apretón de manos, ni es fiable: Si se pierde un paquete UDP, no se retransmite automáticamente. 
+
+			El enfoque de "mejor esfuerzo" de UDP significa que es lo más eficaz que se puede conseguir: No hay necesidad de esperar al apretón de manos y no hay bloqueo HoL. 
+
+			En la práctica, UDP se utiliza sobre todo para tráfico en directo que se actualiza a gran velocidad y, por tanto, sufre poco la pérdida de paquetes, ya que los datos que faltan quedan rápidamente obsoletos (por ejemplo, videoconferencias y juegos en directo).
+
+			También es útil para casos en los que se necesita un retardo inicial bajo; por ejemplo, las búsquedas de nombres de dominio DNS sólo deberían tardar un viaje de ida y vuelta en completarse.
+
+
+		Muchas fuentes afirman que HTTP/3 se construye sobre UDP por motivos de rendimiento. 
+
+		Dicen que HTTP/3 es más rápido porque, al igual que UDP, no establece una conexión y no espera retransmisiones de paquetes. 
+
+		Estas afirmaciones son erróneas.
+
+		Como hemos dicho antes, UDP es utilizado por QUIC y, por tanto, HTTP/3 principalmente porque se espera que facilite su despliegue, porque ya es conocido e implementado por (casi) todos los dispositivos de Internet.
+
+		Además de UDP, QUIC esencialmente reimplementa casi todas las características que hacen de TCP un protocolo tan potente y popular (aunque algo más lento).
+
+		QUIC es absolutamente fiable, utilizando acuses de recibo para los paquetes recibidos y retransmisiones para asegurarse de que los perdidos siguen llegando. 
+
+		QUIC también sigue estableciendo una conexión y tiene un handshake muy complejo.
+
+		Por último, QUIC también utiliza los llamados mecanismos de control de flujo y de congestión que evitan que un emisor sobrecargue la red o el receptor, pero que también hacen que TCP sea más lento que lo que se podría hacer con UDP sin procesar. 
+
+		La clave está en que QUIC implementa estas funciones de una forma más inteligente y eficaz que TCP. 
+
+		Combina décadas de experiencia en el despliegue y las mejores prácticas de TCP con algunas nuevas características fundamentales. 
+
+		Discutiremos estas características en mayor profundidad más adelante en este artículo.
+
+
+	Claves: 	
+
+		La clave es que no hay nada gratis. 
+
+		HTTP/3 no es mágicamente más rápido que HTTP/2 sólo porque hayamos cambiado TCP por UDP. 
+
+		En su lugar, hemos reimaginado e implementado una versión mucho más avanzada de TCP y la hemos llamado QUIC. 
+
+		Y como queremos que QUIC sea más fácil de desplegar, lo ejecutamos sobre UDP.
+
+
+	Grandes cambios: 
+
+		Entonces, ¿en qué mejora exactamente QUIC a TCP? 
+
+		¿Qué es tan diferente? 
+
+		Hay varias características y oportunidades nuevas y concretas en QUIC (datos 0-RTT, migración de conexiones, más resistencia a la pérdida de paquetes y a las redes lentas) que trataremos en detalle en la siguiente parte de la serie.
+
+		Sin embargo, todas estas novedades se reducen básicamente a cuatro cambios principales:
+
+		    QUIC se integra profundamente con TLS.
+
+		    QUIC soporta múltiples flujos de bytes independientes.
+
+		    QUIC utiliza IDs de conexión.
+
+		    QUIC utiliza tramas.
+
+		Echemos un vistazo más de cerca a cada uno de estos puntos.
+
+
+	No Hay QUIC Sin TLS:
+
+		Como ya hemos mencionado, TLS (el protocolo Transport Layer Security) se encarga de asegurar y encriptar los datos enviados a través de Internet. 
+
+		Cuando usas HTTPS, tus datos HTTP en texto plano son primero encriptados por TLS, antes de ser transportados por TCP.
+
+
+		TLS: 
+
+			Los detalles técnicos de TLS, por suerte, no son realmente necesarios aquí; sólo necesitas saber que el cifrado se realiza utilizando algunas matemáticas bastante avanzadas y números (primos) muy grandes. 
+
+			Estos parámetros matemáticos se negocian entre el cliente y el servidor durante un protocolo criptográfico específico de TLS. 
+
+			Al igual que el protocolo TCP, esta negociación puede llevar algún tiempo. 
+
+			En las versiones más antiguas de TLS (por ejemplo, la versión 1.2 e inferiores), esto suele llevar dos viajes de ida y vuelta por la red.
+
+			Por suerte, las versiones más recientes de TLS (la 1.3 es la última) reducen este tiempo a un solo viaje de ida y vuelta. 
+
+			Esto se debe principalmente a que TLS 1.3 limita severamente los diferentes algoritmos matemáticos que se pueden negociar a sólo un puñado (los más seguros).
+
+			Esto significa que el cliente puede adivinar inmediatamente cuáles soportará el servidor, en lugar de tener que esperar a una lista explícita, lo que ahorra un viaje de ida y vuelta.
+
+
+		Diagrama de duración TLS ,TCP y QUIC handshake: 	
+
+			La interacción o intercambio de información entre el cliente/servidor se reducen significativamente en QUIC, TLS 1.3 y HTTP/3. 
+
+			TCP, TLS 1.2 y HTTP/2 son los que más tardan. 
+
+			En el medio se encuentra, TCP, TLS 1.3 y HTTP/2
+
+
+		En los primeros tiempos de Internet, cifrar el tráfico era bastante costoso en términos de procesamiento.
+
+		Además, no se consideraba necesario para todos los casos de uso.
+
+		Históricamente, TLS ha sido un protocolo independiente que puede utilizarse opcionalmente sobre TCP.
+
+		Por eso distinguimos entre HTTP (sin TLS) y HTTPS (con TLS).
+
+		Con el tiempo, nuestra actitud hacia la seguridad en Internet ha cambiado, por supuesto, a "seguro por defecto".
+
+		Por ello, aunque HTTP/2 puede, en teoría, ejecutarse directamente sobre TCP sin TLS (e incluso se define en la especificación RFC como HTTP/2 en texto claro (cleartext mode)), ningún navegador web (popular) soporta realmente este modo.
+
+		En cierto modo, los fabricantes de navegadores han optado conscientemente por una mayor seguridad a costa del rendimiento.
+
+		Dada esta clara evolución hacia TLS siempre activo (especialmente para el tráfico web), no es de extrañar que los diseñadores de QUIC decidieran llevar esta tendencia al siguiente nivel. 
+
+		En lugar de simplemente no definir un modo de texto claro (cleartext mode) para HTTP/3, optaron por integrar el cifrado profundamente en el propio QUIC.
+
+		Mientras que las primeras versiones específicas de Google de QUIC utilizaban una configuración personalizada para esto, QUIC estandarizado utiliza directamente el TLS 1.3 existente.
+
+		Para ello, rompe en cierto modo la típica separación limpia entre protocolos en la pila de protocolos, como podemos ver en la imagen anterior. 
+
+		Mientras que TLS 1.3 puede ejecutarse independientemente sobre TCP, QUIC encapsula TLS 1.3. 
+
+		Dicho de otro modo, no hay forma de utilizar QUIC sin TLS. 
+
+		Dicho de otro modo, no hay forma de utilizar QUIC sin TLS; QUIC (y, por extensión, HTTP/3) siempre está totalmente cifrado. 
+
+		Además, QUIC encripta casi todos los campos de la cabecera del paquete también; la información de la capa de transporte (como los números de paquete, que nunca están encriptados para TCP) ya no es legible por intermediarios en QUIC (incluso algunas de las banderas de la cabecera del paquete están encriptadas).
+
+
+		Diagrama interno de TCP: 
+
+			A diferencia de TCP + TLS, QUIC también cifra los metadatos de la capa de transporte en la cabecera y la carga útil del paquete.	
+
+
 
 
