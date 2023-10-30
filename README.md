@@ -1554,5 +1554,421 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 			A diferencia de TCP + TLS, QUIC también cifra los metadatos de la capa de transporte en la cabecera y la carga útil del paquete.	
 
 
+		Para ello, QUIC utiliza primero el protocolo TLS 1.3 más o menos como lo haría con TCP para establecer los parámetros matemáticos de cifrado. 
+
+		Después, sin embargo, QUIC toma el relevo y cifra los paquetes por sí mismo, mientras que con TLS-sobre-TCP, TLS realiza su propia encriptación. 
+
+		Esta diferencia aparentemente pequeña representa un cambio conceptual fundamental hacia el cifrado permanente que se aplica en capas de protocolo cada vez más bajas.
+
+
+		Este enfoque proporciona a QUIC varias ventajas:
+
+		    QUIC es más seguro para sus usuarios.
+
+		    No hay forma de ejecutar QUIC en texto claro, por lo que también hay menos opciones de escucha para atacantes y fisgones (attackers and eavesdroppers). 
+
+		    (Investigaciones recientes han demostrado lo peligrosa que puede ser la opción de texto en claro de HTTP/2).
+
+		    La conexión QUIC es más rápida.
+
+		    Mientras que para TLS-sobre-TCP, ambos protocolos necesitan sus propios handshakes separados, QUIC combina el transporte y el handshake criptográfico en uno, ahorrando un viaje de ida y vuelta (ver imagen superior). 
+
+		    Hablaremos de esto con más detalle en la segunda parte.
+
+		    QUIC puede evolucionar más fácilmente.
+
+		    Al estar totalmente encriptado, los intermediarios de la red ya no pueden observar e interpretar su funcionamiento interno, como ocurre con TCP.
+
+		    Consecuentemente, ellos tampoco pueden romper (accidentalmente) en nuevas versiones de QUIC porque fallaron en la actualización.
+
+		    Si queremos añadir nuevas características a QUIC en el futuro, "sólo" tenemos que actualizar los dispositivos finales, en lugar de todos los middleboxes también.
+
+
+		Junto a estas ventajas, sin embargo, también hay algunas desventajas potenciales del cifrado extensivo:
+
+		    Muchas redes dudarán en permitir QUIC.
+
+		    Es posible que las empresas quieran bloquearlo en sus cortafuegos, porque se hace más difícil detectar el tráfico no deseado. 
+
+		    Los ISP y las redes intermedias podrían bloquearlo porque métricas como los retrasos medios y los porcentajes de pérdida de paquetes ya no están fácilmente disponibles, lo que dificulta la detección y el diagnóstico de problemas.
+
+		    Todo esto significa que QUIC probablemente nunca estará disponible de forma universal, algo de lo que hablaremos en la parte 3.
+
+		    QUIC tiene una mayor sobrecarga de encriptación.
+
+		    QUIC encripta cada paquete individual con TLS, mientras que TLS-sobre-TCP puede encriptar varios paquetes al mismo tiempo. 
+
+		    Esto potencialmente hace QUIC más lento para escenarios de alto rendimiento (como veremos en la parte 2).
+
+		    QUIC hace la web más centralizada.
+
+		    Una queja que he encontrado a menudo es algo así como, "QUIC está siendo impulsado por Google, ya que les da acceso completo a los datos, mientras que no comparten nada de eso con los demás".
+
+		    No estoy de acuerdo. En primer lugar, QUIC no oculta más (¡o menos!) información a nivel de usuario (por ejemplo, qué URLs estás visitando) a observadores externos que TLS-sobre-TCP (QUIC mantiene el status quo).
+
+
+		En segundo lugar, aunque Google inició el proyecto QUIC, los protocolos finales de los que hablamos hoy fueron diseñados por un equipo mucho más amplio en el Grupo de Trabajo de Ingeniería de Internet (IETF). 
+
+		El QUIC del IETF es técnicamente muy diferente del QUIC de Google.
+
+		Aun así, es cierto que la gente del IETF procede en su mayoría de grandes empresas como Google y Facebook y de CDN como Cloudflare y Fastly. 
+
+		Debido a la complejidad de QUIC, serán principalmente esas empresas las que tengan los conocimientos necesarios para desplegar correctamente y con rendimiento, por ejemplo, HTTP/3 en la práctica. 
+
+		Esto conducirá probablemente a una mayor centralización en esas empresas, lo cual es realmente preocupante.
+
+
+	Claves: 
+
+		QUIC está profundamente encriptado por defecto. 
+
+		Esto no sólo mejora sus características de seguridad y privacidad, sino que también ayuda a su capacidad de despliegue y evolución. 
+
+		Hace que el protocolo sea un poco más pesado de ejecutar pero, a cambio, permite otras optimizaciones, como un establecimiento de conexión más rápido.
+
+
+	QUIC entiende de múltiples flujos de bytes/QUIC Knows About Multiple Byte Streams: 
+
+		La segunda gran diferencia entre TCP y QUIC es un poco más técnica, y exploraremos sus repercusiones con más detalle en la segunda parte. 
+
+		Por ahora, sin embargo, podemos entender los aspectos principales a alto nivel.
+
+
+    	Transmision de datos en la red: 
+
+    		Considera en primer lugar que incluso una simple página web se compone de una serie de archivos y recursos independientes. 
+
+    		Hay HTML, CSS, JavaScript, imágenes, etc. 
+
+    		Cada uno de estos archivos puede verse como un simple "blob binario" (almacen de datos), una colección de ceros y unos que el navegador interpreta de una determinada manera. 
+
+    		Al enviar estos archivos por la red, no los transferimos todos a la vez. 
+
+    		En lugar de eso, se subdividen en trozos más pequeños (normalmente, de unos 1.400 bytes cada uno) y se envían en paquetes individuales. 
+
+    		De este modo, podemos considerar cada recurso como un "flujo de bytes" independiente, ya que los datos se descargan o "transmiten" poco a poco a lo largo del tiempo.
+
+		
+		Para HTTP/1.1, el proceso de carga de recursos es bastante sencillo, ya que cada archivo recibe su propia conexión TCP y se descarga en su totalidad. 
+
+		Por ejemplo, si tenemos los archivos A, B y C, tendríamos tres conexiones TCP. 
+
+		La primera vería un flujo de bytes de AAAA, la segunda de BBBB, la tercera de CCCC (siendo cada repetición de letra un paquete TCP). 
+
+		Esto funciona, pero también es muy ineficiente porque cada nueva conexión tiene cierta sobrecarga.
+
+		En la práctica, los navegadores imponen límites al número de conexiones simultáneas que pueden utilizarse (y, por tanto, al número de archivos que pueden descargarse en paralelo): normalmente, entre 6 y 30 por carga de página. 
+
+		Las conexiones se reutilizan para descargar un nuevo archivo una vez que el anterior se ha transferido por completo. 
+
+		Estos límites empezaron a dificultar el rendimiento de las páginas modernas, que a menudo cargan muchos más de 30 recursos.
+
+		Mejorar esta situación era uno de los principales objetivos de HTTP/2. 
+
+		Para ello, el protocolo ya no abre una nueva conexión TCP para cada archivo, sino que descarga los distintos recursos a través de una única conexión TCP. 
+
+		Esto se consigue "multiplexando" los distintos flujos de bytes. 
+
+		Es una forma elegante de decir que mezclamos los datos de los distintos archivos al transportarlos. 
+
+		Para nuestros tres archivos de ejemplo, tendríamos una única conexión TCP, y los datos entrantes podrían tener el aspecto AABBCCAABBCC (aunque son posibles muchos otros esquemas de ordenación). 
+
+		Esto parece bastante sencillo y, de hecho, funciona bastante bien, haciendo que HTTP/2 sea normalmente tan rápido o un poco más que HTTP/1.1, pero con mucha menos sobrecarga.
+
+
+		Diagrama de transferencia de archivos: 
+
+			HTTP/1.1 no permite la multiplexación, a diferencia de HTTP/2 y HTTP/3.
+
+
+		Sin embargo, hay un problema en el lado de TCP. 
+
+		Verás, como TCP es un protocolo mucho más antiguo y no está hecho sólo para cargar páginas web, no sabe nada de A, B o C. 
+
+		Internamente, TCP piensa que está transportando un único archivo, X, y no le importa que lo que ve como XXXXXXXXXXXXXX sea en realidad AABBCCAABBCC a nivel HTTP. 
+
+		En la mayoría de las situaciones, esto no importa (¡y de hecho hace que TCP sea bastante flexible!), pero eso cambia cuando hay, por ejemplo, pérdida de paquetes en la red.
+
+		Supongamos que se pierde el tercer paquete TCP (el que contiene los primeros datos del fichero B), pero se entregan todos los demás datos. 
+
+		TCP soluciona esta pérdida retransmitiendo una nueva copia de los datos perdidos en un nuevo paquete. 
+
+		Sin embargo, esta retransmisión puede tardar en llegar (al menos un RTT (un milisegundo en tiempo de ida y vuelta de respuesta en solicitud)).
+
+		Podríamos pensar que no es un gran problema, ya que vemos que no hay pérdida para los recursos A y C. 
+
+		Por tanto, podemos empezar a procesarlos mientras esperamos los datos perdidos de B, ¿verdad?.
+
+		Desgraciadamente, no es así, porque la lógica de retransmisión ocurre en la capa TCP, ¡y TCP no sabe nada de A, B y C!. 
+
+		En su lugar, TCP piensa que se ha perdido una parte del único archivo X, y por lo tanto siente que tiene que evitar que el resto de los datos de X se procesen hasta que se llene el agujero.
+
+		Dicho de otro modo, mientras que a nivel de HTTP/2 sabemos que ya podríamos procesar A y C, TCP no lo sabe, lo que provoca que las cosas sean más lentas de lo que potencialmente podrían ser. 
+
+		Esta ineficiencia es un ejemplo del problema de "bloqueo de cabecera de línea (HoL)" 
+
+		Uno de los principales objetivos de QUIC era resolver el bloqueo HoL en la capa de transporte. 
+
+		A diferencia de TCP, QUIC es plenamente consciente de que está multiplexando múltiples flujos de bytes independientes. 
+
+		Por supuesto, no sabe que está transportando CSS, JavaScript e imágenes; sólo sabe que los flujos están separados. 
+
+		Como tal, QUIC puede realizar la detección de pérdida de paquetes y la lógica de recuperación en una base por flujo.
+
+		En el escenario anterior, sólo retendría los datos del flujo B y, a diferencia de TCP, entregaría cualquier dato de A y C a la capa HTTP/3 lo antes posible. 
+
+		En teoría, esto podría mejorar el rendimiento. 
+
+		En la práctica, sin embargo, la historia tiene muchos más matices, como veremos en la parte 2.
+
+
+		Diagrama de perdida de paquetes: 	
+
+			Cuando ocurre una perdida de un paquete en HTTP/1.1 y HTTP/2 con TCP, los demás tienen que esperar a que se complete para poder ser transmitidos (Problema HOL). 
+
+			En HTTP/3 o QUIC solo el paquete perdido que está perdido espera a trasmitirse. 
+
+			QUIC permite a HTTP/3 eludir (bypass) el problema del bloqueo de cabecera de línea
+
+
+		Podemos ver que ahora tenemos una diferencia fundamental entre TCP y QUIC. 
+
+		Esta es, por cierto, también una de las principales razones por las que no podemos ejecutar HTTP/2 tal cual sobre QUIC. 
+
+		Como hemos dicho, HTTP/2 también incluye el concepto de ejecutar múltiples flujos sobre una única conexión (TCP). 
+
+		Como tal, HTTP/2 sobre QUIC tendría dos abstracciones de flujo diferentes y competidoras una encima de la otra.
+
+		Hacer que funcionen bien juntos sería muy complejo y propenso a errores; por lo tanto, una de las diferencias clave entre HTTP/2 y HTTP/3 es que este último elimina la lógica de flujo HTTP y reutiliza los flujos QUIC en su lugar. 
+
+		Sin embargo, como veremos en la parte 2, esto tiene otras repercusiones en cómo se implementan características como el push del servidor, la compresión de cabeceras y la priorización.
+
+
+	Claves: 
+
+
+		La clave es que TCP nunca se diseñó para transportar varios archivos independientes a través de una única conexión. 
+
+		Dado que eso es exactamente lo que requiere la navegación web, esto ha dado lugar a muchas ineficiencias a lo largo de los años. 
+
+		QUIC lo soluciona haciendo de los flujos múltiples de bytes un concepto central en la capa de transporte y gestionando la pérdida de paquetes por flujo.
+
+
+
+	QUIC admite la migración de conexiones:
+
+		La tercera gran mejora de QUIC es el hecho de que las conexiones pueden permanecer vivas durante más tiempo.
+
+		Conexión: 
+
+		    A menudo utilizamos el concepto de "conexión" cuando hablamos de protocolos web. 
+
+		    Sin embargo, ¿qué es exactamente una conexión? Normalmente, se habla de una conexión TCP una vez que se ha producido un apretón de manos entre dos puntos finales (por ejemplo, el navegador o el cliente y el servidor). 
+
+		    Por eso a menudo se dice (erróneamente) que UDP es "sin conexión", porque no hace ese "apretón de manos". 
+
+		    Sin embargo, el apretón de manos no tiene nada de especial: son sólo unos paquetes con una forma específica que se envían y reciben. 
+
+		    Tiene unos cuantos objetivos, el principal de los cuales es asegurarse de que hay algo al otro lado y de que está dispuesto y es capaz de hablar con nosotros. 
+
+		    Vale la pena repetir aquí que QUIC también realiza un apretón de manos, a pesar de que se ejecuta sobre UDP, que por sí mismo no lo hace.
+
+
+		Entonces, la pregunta es: ¿cómo llegan esos paquetes al destino correcto?. 
+
+		En Internet, las direcciones IP se utilizan para enrutar paquetes entre dos máquinas únicas. 
+
+		Sin embargo, no basta con tener las IP del teléfono y del servidor, porque ambos quieren poder ejecutar simultáneamente varios programas en red en cada extremo.
+
+		Por eso, a cada conexión individual se le asigna también un número de puerto en ambos extremos para diferenciar las conexiones y las aplicaciones a las que pertenecen. 
+
+		Las aplicaciones servidoras suelen tener un número de puerto fijo según su función (por ejemplo, los puertos 80 y 443 para HTTP(S), y el puerto 53 para DNS), mientras que los clientes suelen elegir sus números de puerto (semi)aleatoriamente para cada conexión.
+
+		Así, para definir una conexión única entre máquinas y aplicaciones, necesitamos estas cuatro cosas, la llamada 4-tupla: dirección IP del cliente + puerto del cliente + dirección IP del servidor + puerto del servidor.
+
+		En TCP, las conexiones se identifican sólo por la 4-tupla.
+
+		Por tanto, si uno solo de esos cuatro parámetros cambia, la conexión deja de ser válida y debe restablecerse (incluyendo un nuevo apretón de manos). 
+
+		Para entenderlo, imagina el problema del aparcamiento: estás utilizando tu smartphone dentro de un edificio con Wi-Fi. Como tal, tiene una dirección IP en esta red Wi-Fi.
+
+		Si ahora sale al exterior, es posible que su teléfono cambie a la red celular 4G. 
+
+		Como se trata de una nueva red, obtendrá una dirección IP completamente nueva, ya que éstas son específicas de la red. 
+
+		Ahora, el servidor verá paquetes TCP procedentes de una IP de cliente que no ha visto antes (aunque los dos puertos y la IP del servidor podrían, por supuesto, seguir siendo los mismos). 
+
+		Esto se ilustra a continuación.
+
+
+		Diagrama de cambio de conexión cliente-servidor: 	
+
+			El problema de cambio de conexión de red con TCP: una vez que el cliente obtiene una nueva IP, el servidor ya no puede vincularla a la conexión.
+
+
+		Pero, ¿cómo puede saber el servidor que estos paquetes de una nueva IP pertenecen a la "conexión"?. 
+
+		¿Cómo sabe que estos paquetes no pertenecen a una nueva conexión de otro cliente en la red celular que eligió el mismo puerto de cliente (aleatorio) (lo que puede ocurrir fácilmente)?.
+
+		Lamentablemente, no puede saberlo.
+
+		Dado que TCP se inventó antes de que soñáramos siquiera con redes celulares y smartphones, no existe, por ejemplo, ningún mecanismo que permita al cliente informar al servidor de que ha cambiado de IP. 
+
+		Ni siquiera hay forma de "cerrar" la conexión, porque un comando TCP reset o fin enviado a la antigua 4-tupla ya no llegaría al cliente. 
+
+		Por lo tanto, en la práctica, cada cambio en la red significa que las conexiones TCP existentes ya no se pueden utilizar.
+
+		Hay que ejecutar un nuevo protocolo TCP (y posiblemente TLS) para establecer una nueva conexión y, dependiendo del protocolo de la aplicación, habrá que reiniciar las acciones del proceso. 
+
+		Por ejemplo, si se estuviera descargando un archivo de gran tamaño a través de HTTP, podría ser necesario volver a solicitar ese archivo desde el principio (por ejemplo, si el servidor no admite solicitudes de rango).
+
+		Otro ejemplo son las videoconferencias en directo, en las que puede producirse un breve apagón al cambiar de red.
+
+		Ten en cuenta que hay otras razones por las que la 4-tupla puede cambiar (por ejemplo, NAT rebinding), que discutiremos más en la parte 2.
+
+		Reiniciar las conexiones TCP puede tener un impacto severo (esperando nuevos handshakes, reiniciando descargas, restableciendo el contexto). 
+
+		Para resolver este problema, QUIC introduce un nuevo concepto llamado identificador de conexión (CID). 
+
+		A cada conexión se le asigna otro número además de la 4-tupla que la identifica de forma única entre dos puntos finales.
+
+		Crucialmente, porque este CID está definido en la capa de transporte en QUIC, ¡no cambia cuando se mueve entre redes! Esto se muestra en el diagrama de abajo.
+
+		Para hacer esto posible, el CID se incluye en la parte delantera de todos y cada uno de los paquetes QUIC (al igual que las direcciones IP y los puertos también están presentes en cada paquete). 
+
+		(De hecho, es una de las pocas cosas en la cabecera del paquete QUIC que no están encriptadas).
+
+
+		Diagrama de conexión HTTP/3 a cliente-servidor: 
+
+			QUIC utiliza identificadores de conexión (CID) para permitir que las conexiones sobrevivan a un cambio de red.
+
+
+		Con esta configuración, incluso cuando una de las cosas en la 4-tupla cambia, el servidor QUIC y el cliente sólo tienen que mirar el CID para saber que es la misma vieja conexión, y entonces pueden seguir utilizándola. 
+
+		No hay necesidad de un nuevo handshake, y el estado de descarga puede mantenerse intacto. 
+
+		Esta función suele denominarse migración de conexión. 
+
+		Esto es, en teoría, mejor para el rendimiento, pero como discutiremos en la parte 2, es, por supuesto, una historia matizada de nuevo.
+
+		Hay otros retos que superar con el CID. 
+
+		Por ejemplo, si utilizáramos un único CID, a los hackers y fisgones les resultaría extremadamente fácil seguir a un usuario a través de las redes y, por extensión, deducir su ubicación física (aproximada).
+
+		Para evitar esta pesadilla, QUIC cambia el CID cada vez que se utiliza una nueva red.
+
+		Pero esto puede confundirte: ¿No acabo de decir que el CID debe ser el mismo en todas las redes?.
+
+		Bueno, eso fue una simplificación excesiva. 
+
+		Lo que realmente ocurre internamente es que el cliente y el servidor acuerdan una lista común de CID (generados aleatoriamente) que corresponden a la misma "conexión" conceptual.
+
+		Por ejemplo, ambos saben que los CID K, C y D corresponden en realidad a la conexión X. 
+
+		Así, mientras que el cliente puede etiquetar paquetes con K en Wi-Fi, puede pasar a utilizar C en 4G. 
+
+		Estas listas comunes se negocian totalmente cifradas en QUIC, por lo que los posibles atacantes no sabrán que K y C son en realidad X, pero el cliente y el servidor sí lo sabrán y podrán mantener viva la conexión.
+
+
+		Diagrama de multiples identificadores CIDs ( Connections Identifiers): 
+
+			QUIC utiliza múltiples identificadores de conexión negociados (CID) para evitar el seguimiento de usuarios
+
+
+		Se vuelve aún más complejo, porque los clientes y los servidores tendrán diferentes listas de CIDs que ellos mismos eligen (igual que tienen diferentes números de puerto).
+
+		Esto es principalmente para ayudar con el enrutamiento y el equilibrio de carga en configuraciones de servidores a gran escala, como veremos con más detalle en la parte 3.
+
+
+	Claves: 
+
+		La clave es que, en TCP, las conexiones están definidas por cuatro parámetros que pueden cambiar cuando los extremos cambian de red. 
+
+		Como tal, estas conexiones a veces necesitan ser reiniciadas, lo que lleva a un cierto tiempo de inactividad. 
+
+		QUIC añade otro parámetro a la mezcla, llamado ID de conexión.
+
+		Tanto el cliente como el servidor QUIC saben qué ID de conexión corresponden a qué conexiones y, por tanto, son más robustos frente a los cambios de red.
+
+
+	QUIC es flexible y evolutivo:
+
+		Un último aspecto de QUIC es que está hecho específicamente para ser fácil de evolucionar. 
+
+		Esto se logra de varias maneras diferentes. 
+
+		En primer lugar, como se ha discutido, el hecho de que QUIC esté casi totalmente encriptado significa que sólo tenemos que actualizar los puntos finales (clientes y servidores), y no todos los middleboxes, si queremos desplegar una nueva versión de QUIC. 
+
+		Eso sigue llevando tiempo, pero normalmente del orden de meses, no años.
+
+		En segundo lugar, a diferencia de TCP, QUIC no utiliza una única cabecera de paquete fija para enviar todos los metadatos del protocolo. 
+
+		En su lugar, QUIC tiene cabeceras de paquete cortas y utiliza una variedad de "tramas" (algo así como paquetes especializados en miniatura) dentro de la carga útil del paquete para comunicar información adicional. 
+
+		Hay, por ejemplo, una trama (frame) ACK (para acuses de recibo), una trama NEW_CONNECTION_ID (para ayudar a establecer la migración de la conexión), y una trama STREAM (para transportar datos), como se muestra en la imagen de abajo.
+
+		Esto se hace principalmente como una optimización, porque no todos los paquetes llevan todos los metadatos posibles (y así la cabecera del paquete TCP suele desperdiciar bastantes bytes - ver también la imagen de arriba).
+
+		Un efecto secundario muy útil de usar tramas, sin embargo, es que definir nuevos tipos de tramas como extensiones de QUIC será muy fácil en el futuro. 
+
+		Una muy importante, por ejemplo, es la trama DATAGRAM, que permite enviar datos no fiables sobre una conexión QUIC encriptada.
+
+		Esto se hace principalmente como una optimización, porque no todos los paquetes llevan todos los metadatos posibles (y así la cabecera del paquete TCP normalmente desperdicia bastantes bytes -como en el diagrama de arriba-). 
+
+		Un efecto secundario muy útil de usar tramas, sin embargo, es que definir nuevos tipos de tramas como extensiones de QUIC será muy fácil en el futuro. 
+
+		Una muy importante, por ejemplo, es la trama DATAGRAM, que permite enviar datos no fiables a través de una conexión QUIC encriptada.
+
+
+		Diagrama de los componentes de transmisión en QUIC: 	
+
+			QUIC utiliza tramas individuales para enviar metadatos, en lugar de una gran cabecera de paquete fija
+
+
+		En tercer lugar, QUIC utiliza una extensión TLS personalizada para transportar lo que se denominan parámetros de transporte (transport parameters). 
+
+		Estos permiten al cliente y al servidor elegir una configuración para una conexión QUIC. 
+
+		Esto significa que pueden negociar qué características están habilitadas (por ejemplo, si se permite la migración de conexión, qué extensiones están soportadas, etc.) y comunicar valores por defecto sensibles para algunos mecanismos (por ejemplo, tamaño máximo de paquete soportado, límites de control de flujo). 
+
+		Aunque el estándar QUIC define una larga lista de estos, también permite extensiones para definir otros nuevos, haciendo de nuevo el protocolo más flexible.
+
+		Por último, aunque no es un requisito real de QUIC en sí mismo, la mayoría de las implementaciones se realizan actualmente en el "espacio de usuario" (a diferencia de TCP, que normalmente se realiza en el "espacio del núcleo"). 
+
+		Los detalles se discuten en la parte 2, pero esto significa principalmente que es mucho más fácil experimentar y desplegar variaciones y extensiones de implementación de QUIC que de TCP.
+
+
+	Claves: 	
+
+		Aunque QUIC ya se ha estandarizado, en realidad debería considerarse como la versión 1 de QUIC (lo que también se indica claramente en la Request For Comments (RFC)), y hay una clara intención de crear la versión 2 y más con bastante rapidez.
+
+		Además, QUIC permite definir extensiones con facilidad, por lo que se pueden implementar aún más casos de uso.
+
+
+	Conclusiones: 
+
+		Hemos hablado principalmente del omnipresente protocolo TCP y de cómo se diseñó en una época en la que se desconocían muchos de los retos actuales. 
+
+		Al intentar evolucionar TCP para mantener el ritmo, quedó claro que esto sería difícil en la práctica, porque casi todos los dispositivos llevan a bordo su propia implementación de TCP que habría que actualizar.
+
+		Para evitar este problema sin dejar de mejorar TCP, creamos el nuevo protocolo QUIC (que en realidad es TCP 2.0). 
+
+		Para facilitar su despliegue, QUIC se ejecuta sobre el protocolo UDP (compatible con la mayoría de dispositivos de red) y, para garantizar su evolución futura, está casi totalmente encriptado por defecto y utiliza un mecanismo de encuadre flexible.
+
+		Aparte de esto, QUIC refleja en su mayor parte las características conocidas de TCP, como el handshake, la fiabilidad y el control de congestión. 
+
+		Los dos cambios principales, además del cifrado y la estructuración, son el reconocimiento de múltiples flujos de bytes y la introducción del identificador de conexión.
+
+		Sin embargo, estos cambios fueron suficientes para impedirnos ejecutar HTTP/2 sobre QUIC directamente, por lo que fue necesario crear HTTP/3 (que en realidad es HTTP/2 sobre QUIC).
+
+		El nuevo enfoque de QUIC da lugar a una serie de mejoras en el rendimiento, pero sus beneficios potenciales tienen más matices de los que se suelen comunicar en los artículos sobre QUIC y HTTP/3. 
+
+
+
+|| Seguridad en la Web
+	
+	
+
 
 
