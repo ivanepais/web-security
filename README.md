@@ -800,6 +800,308 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
+|| Introduccion HTTP/2 y HTTP/2
+
+	HTTP es un protocolo de comunicación de capa de aplicación basado en TCP/IP que estandariza la forma en que clientes y servidores se comunican entre sí. 
+
+	Define cómo se solicita y transmite el contenido a través de Internet.
+
+	Por protocolo de capa de aplicación, es decir, que es simplemente una capa de abstracción (que oculta los detalles específicos para facilitar su uso y se comunica con otras capas) que estandariza cómo se comunican los hosts (clientes y servidores). 
+
+	El propio HTTP depende de TCP/IP para transmitir peticiones y respuestas entre el cliente y el servidor. 
+
+	Por defecto, se utiliza el puerto TCP 80, pero también se pueden utilizar otros puertos. 
+
+	HTTPS, sin embargo, utiliza el puerto 443.
+
+
+	HTTP/0.9 - La primera línea (1991):
+
+		La primera versión documentada de HTTP fue HTTP/0.9, presentada en 1991. 
+
+		Era el protocolo más simple que existía, con un único método llamado GET. 
+
+		Si un cliente tenía que acceder a alguna página web en el servidor, habría hecho una simple petición como la siguiente: 
+
+		```
+			GET /index.html
+
+		```
+
+		Y la respuesta del servidor habría sido la siguiente:
+
+
+		```
+			(response body)
+			(connection closed)
+
+		```
+
+		Es decir, el servidor recibiría la petición, respondería con el HTML en respuesta y tan pronto como el contenido haya sido transferido, la conexión se cerrará. 
+
+		Composición:
+
+			No había cabeceras
+
+    		GET era el único método permitido
+
+    		La respuesta tenía que ser HTML
+
+		Como se puede ver, el protocolo realmente no tenía nada más que ser un peldaño para lo que estaba por venir.
+
+
+	HTTP/1.0 - 1996:
+
+		En 1996 se desarrolló la siguiente versión de HTTP, HTTP/1.0, que mejoró considerablemente la versión original.
+
+		A diferencia de la versión HTTP/0.9, diseñada únicamente para respuestas HTML, la versión HTTP/1.0 permitía manejar otros formatos de respuesta, como imágenes, archivos de vídeo, texto sin formato o cualquier otro tipo de contenido. 
+
+		Se añadieron más métodos (POST y HEAD), se cambiaron los formatos de solicitud y respuesta, se añadieron cabeceras HTTP tanto a la solicitud como a la respuesta, se añadieron códigos de estado para identificar la respuesta, se introdujo soporte para juegos de caracteres, tipos multiparte, autorización, almacenamiento en caché, codificación de contenidos y mucho más.
+
+		A continuación se muestra un ejemplo de solicitud y respuesta HTTP/1.0:
+
+		```	
+			GET / HTTP/1.0
+			Host: cs.fyi
+			User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)
+			Accept: */*
+
+		```
+
+		Como puede ver, junto con la solicitud, el cliente también ha enviado su información personal, el tipo de respuesta requerido, etc. 
+
+		Mientras que en HTTP/0.9 el cliente nunca podía enviar esa información porque no había cabeceras.
+
+		Un ejemplo de respuesta a la petición anterior podría tener el siguiente aspecto:
+
+		```
+			HTTP/1.0 200 OK 
+			Content-Type: text/plain
+			Content-Length: 137582
+			Expires: Thu, 05 Dec 1997 16:00:00 GMT
+			Last-Modified: Wed, 5 August 1996 15:55:28 GMT
+			Server: Apache 0.84
+
+			(response body)
+			(connection closed)
+
+		```
+
+		Al principio de la respuesta aparece HTTP/1.0 (HTTP seguido del número de versión), luego aparece el código de estado 200 seguido de la frase de motivo (o descripción del código de estado, si se quiere).
+
+		En esta nueva versión, las cabeceras de la petición y la respuesta seguían estando codificadas en ASCII, pero el cuerpo de la respuesta podía ser de cualquier tipo: imagen, vídeo, HTML, texto sin formato o cualquier otro tipo de contenido.
+
+		Así pues, ahora el servidor podía enviar cualquier tipo de contenido al cliente; no mucho después de su introducción, el término "Hipertexto" en HTTP se convirtió en un término inapropiado. 
+
+		HMTP o Hypermedia Transfer Protocol (protocolo de transferencia hipermedia) podría haber tenido más sentido, pero supongo que nos quedamos con ese nombre de por vida.
+
+		Uno de los principales inconvenientes de HTTP/1.0 era que no se podían realizar varias peticiones por conexión. 
+
+		Es decir, cada vez que un cliente necesitara algo del servidor, tendría que abrir una nueva conexión TCP y, una vez satisfecha esa única petición, la conexión se cerraría. 
+
+		Y para cualquier siguiente requerimiento, tendrá que ser en una nueva conexión. 
+
+		¿Por qué es malo? Bueno, supongamos que usted visita una página web que tiene 10 imágenes, 5 hojas de estilo y 5 archivos javascript, por un total de 20 elementos que necesita obtener cuando se solicita a esa página web. 
+
+		Dado que el servidor cierra la conexión en cuanto se completa la petición, habrá una serie de 20 conexiones separadas en las que cada uno de los elementos se servirá uno a uno en sus conexiones separadas. 
+
+		Este gran número de conexiones se traduce en un grave problema de rendimiento, ya que la necesidad de una nueva conexión TCP impone una importante penalización de rendimiento debido al handshake de tres vías (three-way handshake) seguido de un inicio lento.
+
+
+	Acuerdo de tres vías:
+
+		En su forma más simple, todas las conexiones TCP comienzan con un protocolo de tres vías en el que el cliente y el servidor comparten una serie de paquetes antes de empezar a compartir los datos de la aplicación.
+
+	    SYN: 
+
+	    	El cliente toma un número aleatorio, digamos x, y lo envía al servidor.
+
+
+	    SYN ACK: 
+
+	    	El servidor acusa recibo de la solicitud enviando un paquete ACK de vuelta al cliente que está formado por un número aleatorio, digamos y, recogido por el servidor y el número x+1, donde x es el número que envió el cliente.
+
+
+	    ACK:
+
+	    	El cliente incrementa el número y recibido del servidor y envía un paquete ACK de vuelta con el número y+1.
+
+
+		Una vez completado el protocolo de tres vías, puede comenzar el intercambio de datos entre el cliente y el servidor. 
+
+		Hay que tener en cuenta que el cliente puede empezar a enviar los datos de la aplicación en cuanto envíe el último paquete ACK, pero el servidor tendrá que esperar a recibir el paquete ACK para satisfacer la petición.
+
+		Sin embargo, algunas implementaciones de HTTP/1.0 intentaron superar este problema introduciendo una nueva cabecera llamada Connection: keep-alive que pretendía decirle al servidor "Eh servidor, no cierres esta conexión, la necesito de nuevo".
+
+		Pero aún así, no estaba muy extendido y el problema persistía.
+
+		Además de no tener conexión, HTTP también es un protocolo sin estado, es decir, el servidor no mantiene la información sobre el cliente, por lo que cada una de las peticiones tiene que tener la información necesaria para que el servidor pueda satisfacer la petición por sí mismo, sin ninguna asociación con peticiones anteriores. 
+
+		Además del gran número de conexiones que el cliente tiene que abrir, también tiene que enviar datos redundantes, lo que aumenta el uso del ancho de banda.
+
+
+	HTTP/1.1 - 1997
+
+		Tras sólo 3 años de HTTP/1.0, en 1999 se publicó la siguiente versión, HTTP/1.1, que introdujo numerosas mejoras con respecto a su predecesora. 
+
+		Las principales mejoras con respecto a HTTP/1.0 fueron las siguientes
+
+		    Se añadieron nuevos métodos HTTP: PUT, PATCH, OPTIONS y DELETE.
+
+		    Identificación del nombre de host En HTTP/1.0 la cabecera Host no era obligatoria, pero HTTP/1.1 la hizo obligatoria.
+
+		    Conexiones persistentes Como se ha comentado anteriormente, en HTTP/1.0 sólo había una petición por conexión y la conexión se cerraba tan pronto como se cumplía la petición, lo que provocaba un gran impacto en el rendimiento y problemas de latencia. 
+
+		    HTTP/1.1 introdujo las conexiones persistentes, es decir, las conexiones no se cerraban por defecto y se mantenían abiertas, lo que permitía múltiples peticiones secuenciales. 
+
+		    Para cerrar las conexiones, la cabecera Connection: close tenía que estar disponible en la petición. 
+
+		    Los clientes suelen enviar esta cabecera en la última petición para cerrar la conexión de forma segura.
+
+		    Pipelining También introdujo el soporte para pipelining, donde el cliente podía enviar múltiples peticiones al servidor sin esperar la respuesta del servidor en la misma conexión y el servidor tenía que enviar la respuesta en la misma secuencia en la que se recibían las peticiones. 
+
+		    Pero, ¿cómo sabe el cliente que éste es el punto en el que finaliza la descarga de la primera respuesta y comienza el contenido de la siguiente?. 
+
+		    Bien, para resolver esto, debe haber una cabecera Content-Length presente que los clientes puedan usar para identificar dónde termina la respuesta y puede empezar a esperar la siguiente respuesta.
+
+
+		Debe tenerse en cuenta que para beneficiarse de las conexiones persistentes o del pipelining, la cabecera Content-Length debe estar disponible en la respuesta, porque esto permitiría al cliente saber cuándo se completa la transmisión y puede enviar la siguiente petición (en la forma secuencial normal de enviar peticiones) o empezar a esperar la siguiente respuesta (cuando el pipelining está activado).
+
+    	Pero este enfoque seguía planteando un problema. 
+
+    	Y es, ¿qué pasa si los datos son dinámicos y el servidor no puede encontrar la longitud del contenido de antemano?. 
+
+    	Bueno, en ese caso, realmente no puedes beneficiarte de las conexiones persistentes, ¿verdad?. 
+
+    	Para solucionarlo, HTTP/1.1 introdujo la codificación por trozos (chunked encoding). 
+
+    	En tales casos, el servidor puede omitir content-Length en favor de la codificación en trozos (más sobre esto en un momento). 
+
+    	Sin embargo, si ninguno de ellos está disponible, entonces la conexión debe cerrarse al final de la petición.
+
+
+	    	Transferencias por trozos en el caso de contenidos dinámicos, cuando el servidor no puede averiguar realmente la longitud del contenido al iniciar la transmisión, puede empezar a enviar el contenido por trozos (trozo a trozo) y añadir la longitud del contenido de cada trozo al enviarlo. 
+
+	    	Y cuando se envían todos los trozos, es decir, cuando se ha completado toda la transmisión, envía un trozo vacío, es decir, con la longitud del contenido a cero, para indicar al cliente que la transmisión se ha completado. 
+
+	    	Para notificar al cliente la transferencia en trozos, el servidor incluye la cabecera Transfer-Encoding: chunked.
+
+		    A diferencia de HTTP/1.0, que sólo tenía autenticación básica, HTTP/1.1 incluye autenticación digest y proxy.
+
+		    Almacenamiento en caché
+
+		    Rangos de bytes
+
+		    Juegos de caracteres
+
+		    Negociación de idioma
+
+		    Cookies de cliente
+
+		    Compresión mejorada
+
+		    Nuevos códigos de estado
+
+	    	y más.
+
+
+	    En el documento "Key differences between HTTP/1.0 and HTTP/1.1" (Diferencias clave entre HTTP/1.0 y HTTP/1.1) que RFC original muestra más características para los más avanzados.
+
+		HTTP/1.1 se introdujo en 1999 y ha sido un estándar durante muchos años. 
+
+		Aunque mejoró mucho respecto a su predecesor, con la web cambiando cada día, empezó a mostrar su edad. 
+
+		Hoy en día, cargar una página web consume más recursos que antes.
+
+		Una simple página web hoy en día tiene que abrir más de 30 conexiones. 
+
+		Bueno, HTTP/1.1 tiene conexiones persistentes, entonces ¿por qué tantas conexiones? dirás. 
+
+		La razón es que en HTTP/1.1 sólo puede haber una conexión pendiente en cualquier momento.
+
+		HTTP/1.1 intentó arreglar esto introduciendo el pipelining, pero no solucionó completamente el problema debido al bloqueo de cabecera de línea (HOL), donde una petición lenta o pesada puede bloquear las peticiones que vienen detrás y una vez que una petición se queda atascada en un pipeline, tendrá que esperar a que se cumplan las siguientes peticiones. 
+
+		Para superar estas deficiencias de HTTP/1.1, los desarrolladores empezaron a aplicar soluciones alternativas, como el uso de hojas de sprites, imágenes codificadas en CSS, archivos CSS/Javascript únicos y enormes, fragmentación de dominios, etc.
+
+
+	SPDY - 2009:
+
+		Google siguió adelante y empezó a experimentar con protocolos alternativos para hacer la web más rápida y mejorar la seguridad web, reduciendo al mismo tiempo la latencia de las páginas web.
+
+		 En 2009, anunciaron SPDY.
+
+		    SPDY es una marca registrada de Google y no es un acrónimo.
+
+		Se vio que si seguimos aumentando el ancho de banda, el rendimiento de la red aumenta al principio pero llega un punto en el que no hay mucha ganancia de rendimiento. 
+
+		Pero si hacemos lo mismo con la latencia, es decir, si seguimos reduciendo la latencia, hay un aumento constante del rendimiento. 
+
+		Esta era la idea central de la ganancia de rendimiento detrás de SPDY, disminuir la latencia para aumentar el rendimiento de la red.
+
+		    Para quienes no conozcan la diferencia, la latencia es el retardo, es decir, el tiempo que tardan los datos en viajar entre el origen y el destino (medido en milisegundos) y el ancho de banda es la cantidad de datos transferidos por segundo (bits por segundo).
+
+		Las características de SPDY incluyen multiplexación, compresión, priorización, seguridad, etc. 
+		
+		HTTP/2 en la siguiente sección, como he dicho HTTP/2 se inspira principalmente en SPDY.
+
+		SPDY no trataba realmente de sustituir a HTTP; era una capa de traducción sobre HTTP que existía en la capa de aplicación y modificaba la petición antes de enviarla a la red. 
+
+		Empezó a convertirse en un estándar de facto y la mayoría de los navegadores empezaron a implementarlo.
+
+		En 2015, en Google no querían tener dos estándares en competencia y decidieron fusionarlo con HTTP, dando lugar a HTTP/2 y eliminando SPDY.
+
+
+	HTTP/2 - 2015:
+
+		HTTP/2 se diseñó para el transporte de contenidos de baja latencia. 
+
+		Las principales características o diferencias con respecto a la antigua versión HTTP/1.1 incluyen
+
+		    Binario en lugar de Textual.
+
+		    Multiplexación: 
+
+		    	Múltiples peticiones HTTP asíncronas a través de una única conexión.
+
+		    Compresión de cabeceras mediante HPACK.
+
+		    Empuje del servidor:
+
+		     	Múltiples respuestas para una única solicitud.
+
+		    Priorización de peticiones.
+
+		    Seguridad.
+
+
+			Diagrama de HTTP en App Layer: 
+
+				Divide la solicitud en Headers Frame y Data Frame. 
+
+		
+
+
+
+
+
+|| DNS
+
+
+
+
+|| Nombres de dominio
+
+
+
+
+
+|| Hosting
+
+
+
+
+
+
 || HTTP/1 y HTTP/2
 
 	
@@ -1966,9 +2268,31 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
+
+|| Cómo funcionana los navegadores
+
+
+
+
+|| APIs
+
+
+
+
 || Seguridad en la Web
 	
-	
 
+
+
+
+
+|| Diseño de Software y Arquitectura 
+
+
+
+
+
+
+|| Conteinerización y Virtualización
 
 
