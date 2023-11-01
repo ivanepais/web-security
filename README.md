@@ -800,7 +800,164 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
-|| Introduccion HTTP/2 y HTTP/2
+|| Introducción a HTTP
+
+	HTTP: 	
+
+		El Protocolo de Transferencia de Hipertexto (HTTP) es la base de la World Wide Web y se utiliza para cargar páginas web mediante enlaces de hipertexto. 
+
+		HTTP es un protocolo de capa de aplicación diseñado para transferir información entre dispositivos en red y se ejecuta sobre otras capas de la pila de protocolos de red. 
+
+		Un flujo típico sobre HTTP implica que una máquina cliente haga una petición (request) a un servidor, que a su vez envía un mensaje de respuesta (response).
+
+
+	HTTP Request: 
+
+		Una petición HTTP es la forma en que las plataformas de comunicación de Internet, como los navegadores web, solicitan la información que necesitan para cargar un sitio web.
+
+		Cada petición HTTP realizada a través de Internet lleva consigo una serie de datos codificados que contienen distintos tipos de información. 
+
+		Una petición HTTP típica contiene:
+
+		    un tipo de versión HTTP.
+
+		    una URL.
+
+		    un método HTTP.
+
+		    headers de petición HTTP.
+
+		    cuerpo HTTP opcional.
+
+
+	HTTP Method: 
+
+		Un método HTTP, a veces denominado verbo HTTP, indica la acción que la petición HTTP espera del servidor consultado.
+
+		Por ejemplo, dos de los métodos HTTP más comunes son 'GET' y 'POST'.
+
+		Una petición 'GET' espera información a cambio (normalmente en forma de sitio web). 
+
+		Una petición 'POST' indica normalmente que el cliente está enviando información al servidor web (como información de un formulario, por ejemplo, un nombre de usuario y una contraseña enviados).
+
+
+	HTTP Request Headers: 
+
+		Las cabeceras HTTP contienen información de texto almacenada en pares clave-valor, y se incluyen en todas las peticiones HTTP (y respuestas, más adelante). 
+
+		Estas cabeceras comunican información básica, como qué navegador está utilizando el cliente y qué datos se están solicitando.
+
+		Ejemplo de cabeceras de solicitud HTTP en información red del navegador: 
+
+			:authority: www.google.com
+
+			:method: GET
+
+			:path: /
+
+			:scheme: https
+
+			accept: text/html
+
+			accept-encoding: gzip, deflate, br 
+
+			accept-lenguage: en-US,en;q=0.9
+
+			upgrade-insecure-request: 1
+
+			user-agent: Mozilla/5.0
+
+
+	HTTP Request Body:
+
+		El cuerpo de una solicitud es la parte que contiene el "cuerpo" de la información que la solicitud está transfiriendo. 
+
+		El cuerpo de una petición HTTP contiene toda la información que se envía al servidor web, como un nombre de usuario y una contraseña, o cualquier otro dato introducido en un formulario.
+
+	
+	HTTP Response: 
+
+		Una respuesta HTTP es lo que los clientes web (a menudo los navegadores) reciben de un servidor de Internet en respuesta a una solicitud HTTP. 
+
+		Estas respuestas comunican información valiosa basada en lo que se pidió en la solicitud HTTP.
+
+		Una respuesta HTTP típica contiene:
+
+	    	un código de estado HTTP ( status code).
+
+	    	cabeceras de respuesta HTTP (response headers).
+
+	    	cuerpo HTTP opcional (optional body).
+
+	    
+	HTTP Status Code: 
+
+		Los códigos de estado HTTP son códigos de 3 dígitos que se suelen utilizar para indicar si una solicitud HTTP se ha completado correctamente. 
+
+		Los códigos de estado se dividen en los 5 bloques siguientes:
+
+		    1xx Informativo
+		    2xx Éxito
+		    3xx Redirección
+		    4xx Error del cliente
+		    5xx Error del servidor
+
+	    Las "xx" se refieren a diferentes números entre 00 y 99.
+
+	    Los códigos de estado que empiezan por el número "2" indican éxito. 
+
+	    Por ejemplo, después de que un cliente solicite una página web, las respuestas más comunes tienen un código de estado '200 OK', lo que indica que la solicitud se ha completado correctamente.
+
+	    Si la respuesta comienza con un '4' o un '5' significa que hubo un error y la página web no se mostrará. 
+
+	    Un código de estado que empiece por '4' indica un error del lado del cliente (es muy común encontrarse con un código de estado '404 NOT FOUND' al cometer un error tipográfico en una URL). 
+
+	    Un código de estado que empieza por '5' significa que algo ha ido mal en el lado del servidor. 
+
+	    Los códigos de estado también pueden empezar por '1' o '3', que indican una respuesta informativa y una redirección, respectivamente.
+
+
+	HTTP Response Headers?
+
+		Al igual que una solicitud HTTP, una respuesta HTTP viene con cabeceras que transmiten información importante como el idioma y el formato de los datos que se envían en el cuerpo de la respuesta.
+
+		Ejemplo de cabecera de respuesta HTTP de la pestaña de información de red del navegador:
+
+			cache-control: private, max-age=0
+
+			content-encodign: br
+
+			content-type: text/html; charset=UTF-8 
+
+			date: thu, 21 dec 2017 18:25:08 GMT
+
+			status: 200
+
+			strict-transport-security: max-age-86400
+
+			x-frame-options: SAMEORIGIN
+
+
+	HTTP Response Body?
+
+		Las respuestas HTTP satisfactorias a peticiones 'GET' suelen tener un cuerpo que contiene la información solicitada. 
+
+		En la mayoría de las peticiones web, se trata de datos HTML que un navegador traducirá en una página web.
+
+
+	Ataques DDoS a través de HTTP:
+
+		Tenga en cuenta que HTTP es un protocolo "sin estado" (stateless), lo que significa que cada comando se ejecuta independientemente de cualquier otro comando. 
+
+		En la especificación original, cada petición HTTP creaba y cerraba una conexión TCP. 
+
+		En las versiones más recientes del protocolo HTTP (HTTP 1.1 y superiores), la conexión persistente permite que varias peticiones HTTP pasen por una conexión TCP persistente, lo que mejora el consumo de recursos. 
+
+		En el contexto de los ataques DoS o DDoS, las peticiones HTTP en grandes cantidades pueden utilizarse para montar un ataque contra un dispositivo objetivo, y se consideran parte de los ataques de capa de aplicación o ataques de capa 7.
+
+
+
+|| Caracteristicas HTTP/1 y HTTP/2
 
 	HTTP es un protocolo de comunicación de capa de aplicación basado en TCP/IP que estandariza la forma en que clientes y servidores se comunican entre sí. 
 
@@ -1074,17 +1231,355 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 		    Seguridad.
 
 
-			Diagrama de HTTP en App Layer: 
+			Diagrama de HTTP/2 en App Layer: 
 
-				Divide la solicitud en Headers Frame y Data Frame. 
+				Divide la solicitud en Headers Frame (solicitud) y Data Frame (cliente). 
 
 		
+		Protocolo binario:
+
+			HTTP/2 trata de resolver el problema del aumento de latencia que existía en HTTP/1.x convirtiéndolo en un protocolo binario. 
+
+			Al ser un protocolo binario, es más fácil de analizar, pero a diferencia de HTTP/1.x ya no es legible por el ojo humano. Los principales componentes de HTTP/2 son Frames y Streams
+			
+
+		Frames y Streams:
+
+			Los mensajes HTTP se componen ahora de una o más tramas.
+
+			Hay una trama HEADERS para los metadatos y una trama DATA para la carga útil, y existen otros tipos de tramas (HEADERS, DATA, RST_STREAM, SETTINGS, PRIORITY, etc.) que puedes consultar en las especificaciones de HTTP/2.
+
+			Cada solicitud y respuesta HTTP/2 recibe un ID de flujo único y se divide en tramas.
+
+			Las tramas (frames) no son más que piezas binarias de datos. 
+
+			Una colección de tramas se denomina flujo (stream). 
+
+			Cada frame tiene un stream id que identifica el stream al que pertenece y cada frame tiene una cabecera común.
+
+			Además, aparte de que el ID de flujo es único, cabe mencionar que cualquier solicitud iniciada por el cliente utiliza números impares y la respuesta del servidor tiene números pares de ID de flujo.
+
+			Aparte de los HEADERS y DATA, otro tipo de trama que creo que vale la pena mencionar aquí es RST_STREAM que es un tipo de trama especial que se utiliza para abortar algún flujo, es decir, el cliente puede enviar esta trama para hacer saber al servidor que ya no necesito este flujo. 
+
+			En HTTP/1.1 la única forma de hacer que el servidor dejara de enviar la respuesta al cliente era cerrando la conexión, lo que provocaba un aumento de la latencia porque había que abrir una nueva conexión para cualquier petición consecutiva.
+
+			Mientras que en HTTP/2, el cliente puede usar RST_STREAM y dejar de recibir un flujo específico mientras que la conexión seguirá abierta y los otros flujos seguirán en juego.
 
 
+		Multiplexing:
+
+			Dado que HTTP/2 es ahora un protocolo binario y como he dicho anteriormente que utiliza tramas (frames) y flujos (streams) para las peticiones y respuestas, una vez que se abre una conexión TCP, todos los flujos se envían de forma asíncrona a través de la misma conexión sin abrir ninguna conexión adicional. 
+
+			Y a su vez, el servidor responde de la misma forma asíncrona, es decir, la respuesta no tiene orden y el cliente utiliza el identificador de flujo asignado para identificar el flujo al que pertenece un paquete concreto. 
+
+			Esto también resuelve el problema de bloqueo de cabecera que existía en HTTP/1.x, es decir, el cliente no tendrá que esperar a la solicitud que está tardando y otras solicitudes seguirán siendo procesadas.			
+
+		Compresión de Headers:
+
+			Formaba parte de una RFC independiente cuyo objetivo específico era optimizar las cabeceras enviadas. 
+
+			La esencia de esto es que cuando estamos constantemente accediendo al servidor desde un mismo cliente hay muchos datos redundantes que estamos enviando en las cabeceras una y otra vez, y a veces puede haber cookies aumentando el tamaño de las cabeceras lo que resulta en un uso de ancho de banda y un aumento de la latencia. 
+
+			Para solucionar este problema, HTTP/2 introdujo la compresión de cabeceras.
+
+			A diferencia de la solicitud y la respuesta, las cabeceras no se comprimen en formatos gzip o compress, etc., sino que existe un mecanismo diferente para la compresión de cabeceras: 
+
+				los valores literales se codifican utilizando código Huffman y el cliente y el servidor mantienen una tabla de cabeceras, y tanto el cliente como el servidor omiten cualquier cabecera repetitiva (por ejemplo, agente de usuario, etc.) en las solicitudes posteriores y las referencian utilizando la tabla de cabeceras mantenida por ambos.
+
+			Ya que estamos hablando de cabeceras, permítanme añadir que las cabeceras siguen siendo las mismas que en HTTP/1.1, excepto por la adición de algunas pseudocabeceras: :method, :scheme, :host y :path.
+
+
+		Push de servidor
+
+			El push de servidor es otra de las grandes características de HTTP/2: 
+
+				el servidor, sabiendo que el cliente va a pedir un determinado recurso, puede enviárselo al cliente sin que éste se lo pida. 
+
+			Por ejemplo, digamos que un navegador carga una página web, analiza toda la página para averiguar el contenido remoto que tiene que cargar desde el servidor y luego envía las consiguientes peticiones al servidor para obtener ese contenido.
+
+			Server push permite al servidor reducir los viajes de ida y vuelta enviando los datos que sabe que el cliente va a solicitar. 
+
+			El servidor envía una trama especial llamada PUSH_PROMISE para notificar al cliente: "¡Oye, estoy a punto de enviarte este recurso! No me lo pidas". 
+
+			La trama PUSH_PROMISE está asociada al flujo que ha provocado el push y contiene el ID del flujo prometido, es decir, el flujo en el que el servidor enviará el recurso que se va a empujar.
+
+
+		Priorización de solicitudes (Request Priorization)
+
+			Un cliente puede asignar una prioridad a un flujo incluyendo la información de priorización en la trama HEADERS con la que se abre un flujo. 
+
+			En cualquier otro momento, el cliente puede enviar una trama PRIORITY para cambiar la prioridad de un flujo.
+
+			Sin ninguna información de prioridad, el servidor procesa las peticiones de forma asíncrona, es decir, sin ningún orden. 
+
+			Si hay una prioridad asignada a un flujo, entonces basado en esta información de prioridad, el servidor decide cuántos de los recursos necesitan ser dados para procesar qué petición.
+
+
+		Seguridad:
+
+			Hubo un amplio debate sobre si la seguridad (a través de TLS) debería ser obligatoria para HTTP/2 o no. 
+
+			Al final, se decidió no hacerla obligatoria. 
+
+			Sin embargo, la mayoría de los proveedores declararon que sólo soportarán HTTP/2 cuando se utilice sobre TLS.
+
+			Así que, aunque HTTP/2 no requiere cifrado por especificaciones, se ha convertido en obligatorio por defecto. 
+
+			Una vez aclarado esto, HTTP/2, cuando se implementa sobre TLS, impone algunos requisitos, por ejemplo, debe utilizarse TLS versión 1.2 o superior, debe haber un cierto nivel de claves mínimas, se requieren claves efímeras, etc.
 
 
 
 || DNS
+
+	El Sistema de Nombres de Dominio (DNS) es la guía telefónica de Internet. 
+
+	Los seres humanos acceden a la información en línea a través de nombres de dominio, como nytimes.com o espn.com. 
+
+	Los navegadores web interactúan a través de direcciones de Protocolo de Internet (IP). 
+
+	El DNS traduce los nombres de dominio a direcciones IP para que los navegadores puedan cargar los recursos de Internet.
+
+	Cada dispositivo conectado a Internet tiene una dirección IP única que otras máquinas utilizan para encontrarlo. 
+
+	Los servidores DNS eliminan la necesidad de que los humanos memoricen direcciones IP como 192.168.1.1 (en IPv4), o nuevas direcciones IP alfanuméricas más complejas como 2400:cb00:2048:1::c629:d7a2 (en IPv6).
+
+
+	Funcionamiento del Sistema de Nombres de Dominio: 
+
+		El proceso de resolución DNS consiste en convertir un nombre de host (como www.example.com) en una dirección IP fácil de usar (como 192.168.1.1). 
+
+		A cada dispositivo de Internet se le asigna una dirección IP, y esa dirección es necesaria para encontrar el dispositivo de Internet adecuado, al igual que se utiliza la dirección de una calle para encontrar una casa concreta. 
+
+		Cuando un usuario quiere cargar una página web, debe producirse una traducción entre lo que el usuario teclea en su navegador web (ejemplo.com) y la dirección amigable para la máquina necesaria para localizar la página web ejemplo.com.
+
+		Para entender el proceso que hay detrás de la resolución DNS, es importante conocer los diferentes componentes de hardware por los que debe pasar una consulta DNS.
+
+		Para el navegador web, la búsqueda DNS se produce "entre bastidores" y no requiere ninguna interacción.
+
+
+	Hay 4 servidores DNS implicados en la carga de una página web:
+
+	    Recursor DNS (DNS recursor):  
+
+	    	Se puede pensar en el recursor como en un bibliotecario al que se le pide que vaya a buscar un libro concreto a algún lugar de una biblioteca. 
+
+	    	El recursor DNS es un servidor diseñado para recibir consultas de máquinas cliente a través de aplicaciones como los navegadores web. 
+
+	    	Normalmente, el recursor se encarga de realizar peticiones adicionales para satisfacer la consulta DNS del cliente.
+
+
+	    Servidor de nombres raíz (Root nameserver):
+
+	    	El servidor raíz es el primer paso en la traducción (resolución) de nombres de host legibles por humanos en direcciones IP. 
+
+	    	Se puede considerar como un índice en una biblioteca que apunta a diferentes estantes de libros - normalmente sirve como referencia a otras ubicaciones más específicas.
+
+
+	    Servidor de nombres TLD (TLD nameserver):
+
+	    	El servidor de dominios de nivel superior (TLD) puede considerarse como un estante específico de libros en una biblioteca. 
+
+	    	Este servidor de nombres es el siguiente paso en la búsqueda de una dirección IP específica, y aloja la última parte de un nombre de host (en ejemplo.com, el servidor TLD es "com").
+
+
+	    Servidor de nombres autoritativo (Authoritative nameserver): 
+
+	    	Este servidor de nombres final puede considerarse como un diccionario en un estante de libros, en el que un nombre específico puede traducirse a su definición.
+
+	    	El servidor de nombres autoritativo es la última parada en la consulta del servidor de nombres. 
+
+	    	Si el servidor de nombres autoritativo tiene acceso al registro solicitado, devolverá la dirección IP del nombre de host solicitado al Recursor DNS (el bibliotecario) que realizó la solicitud inicial.
+
+
+	Diferencia entre un servidor DNS autoritativo y resolver un DNS recursivo:
+
+		Ambos conceptos se refieren a servidores (grupos de servidores) que forman parte integral de la infraestructura DNS, pero cada uno desempeña una función diferente y vive en lugares distintos dentro del proceso de una consulta DNS. 
+
+		Una forma de ver la diferencia es que el resolver recursivo está al principio de la consulta DNS y el servidor de nombres autoritativo está al final.
+
+
+		Resolución DNS recursiva:
+
+			El resolutor recursivo es el ordenador que responde a una petición recursiva de un cliente y se toma el tiempo necesario para localizar el registro DNS. 
+
+			Para ello, realiza una serie de peticiones hasta que llega al servidor de nombres DNS autoritativo para el registro solicitado (o agota el tiempo de espera o devuelve un error si no se encuentra ningún registro). 
+
+			Por suerte, los resolutores DNS recursivos no siempre tienen que hacer varias peticiones para localizar los registros necesarios para responder a un cliente; el almacenamiento en caché es un proceso de persistencia de datos que ayuda a reducir las peticiones necesarias sirviendo el registro de recurso solicitado antes en la búsqueda DNS.
+
+
+		Servidor DNS autorizado:
+
+			En pocas palabras, un servidor DNS autoritativo es un servidor que realmente mantiene y es responsable de los registros de recursos DNS. 
+
+			Se trata del servidor situado en la parte inferior de la cadena de búsqueda DNS que responderá con el registro de recursos consultado, permitiendo en última instancia que el navegador web que realiza la solicitud alcance la dirección IP necesaria para acceder a un sitio web u otros recursos web. 
+
+			Un servidor de nombres autoritativo puede satisfacer consultas a partir de sus propios datos sin necesidad de consultar a otra fuente, ya que es la fuente final de verdad para determinados registros DNS.
+
+
+
+		Diagrama DNS Recursivo y DNS Autoritativo: 
+
+			Cliente/Navegador -> DNS Recursive Resolver -> DNS Root Nameserver -> Authoritative Nameserver/Website.com
+
+
+		Vale la pena mencionar que en los casos en que la consulta es para un subdominio como foo.example.com o blog.cloudflare.com, se añadirá un servidor de nombres adicional a la secuencia después del servidor de nombres autoritativo, que es responsable de almacenar el registro CNAME del subdominio.
+
+			Cliente/Navegador -> DNS Recursive Resolver -> DNS Root Nameserver -> Authoritative Nameserver/blog.Website.com
+
+
+		Hay una diferencia clave entre muchos servicios DNS y el que proporciona Cloudflare. 
+
+		Diferentes resolutores recursivos DNS como Google DNS, OpenDNS, y proveedores como Comcast mantienen instalaciones de centros de datos de resolutores recursivos DNS. 
+
+		Estos resolvedores permiten consultas rápidas y fáciles a través de grupos optimizados de sistemas informáticos optimizados para DNS, pero son fundamentalmente diferentes de los servidores de nombres alojados por Cloudflare.
+
+		Cloudflare mantiene servidores de nombres a nivel de infraestructura que son parte integral del funcionamiento de Internet. 
+
+		Un ejemplo clave es la red de servidores f-root que Cloudflare es parcialmente responsable de alojar. 
+
+		El F-root es uno de los componentes de la infraestructura de servidores de nombres DNS de nivel raíz responsable de los miles de millones de solicitudes de Internet al día. 
+
+		Nuestra red Anycast nos sitúa en una posición única para gestionar grandes volúmenes de tráfico DNS sin interrumpir el servicio.
+
+
+	La búsqueda en DNS:
+
+		En la mayoría de las situaciones, el DNS se ocupa de traducir un nombre de dominio en la dirección IP adecuada. 
+
+		Para aprender cómo funciona este proceso, es útil seguir el camino de una búsqueda DNS a medida que viaja desde un navegador web, a través del proceso de búsqueda DNS, y de vuelta otra vez. Veamos los pasos.
+
+		Nota: A menudo, la información de la búsqueda DNS se almacena en caché localmente en el ordenador que realiza la consulta o remotamente en la infraestructura DNS. 
+
+		Normalmente hay 8 pasos en una búsqueda DNS. 
+
+		Cuando la información DNS se almacena en caché, se omiten pasos del proceso de búsqueda DNS, lo que lo hace más rápido.
+
+		El siguiente ejemplo muestra los 8 pasos cuando no se almacena nada en caché
+
+
+		Los 8 pasos de una búsqueda DNS:
+
+		    Un usuario teclea "ejemplo.com" en un navegador web, la consulta viaja por Internet y es recibida por un resolver DNS recursivo.
+
+		    A continuación, el resolver consulta un servidor de nombres DNS raíz (.).
+
+		    El servidor raíz responde entonces al resolvedor con la dirección de un servidor DNS de dominio de nivel superior (TLD) (como .com o .net), que almacena la información de sus dominios. 
+
+		    Al buscar ejemplo.com, nuestra petición se dirige al TLD .com.
+
+		    A continuación, el resolver realiza una solicitud al TLD .com.
+
+		    A continuación, el servidor del TLD responde con la dirección IP del servidor de nombres del dominio, ejemplo.com.
+
+		    Por último, el resolver recursivo envía una consulta al servidor de nombres del dominio.
+
+		    El servidor de nombres devuelve al resolver la dirección IP de ejemplo.com.
+
+		    A continuación, el resolver DNS responde al navegador web con la dirección IP del dominio solicitado inicialmente.
+
+		    Una vez que los 8 pasos de la búsqueda DNS han devuelto la dirección IP de ejemplo.com, el navegador puede solicitar la página web:
+		    	
+		    	El navegador realiza una petición HTTP a la dirección IP.
+
+		    El servidor en esa IP devuelve la página web para que se muestre en el navegador (paso 10).
+
+
+	DNS Resolver: 
+
+		El resolver DNS es la primera parada en la búsqueda DNS, y es responsable de tratar con el cliente que hizo la petición inicial. 
+
+		El resolver inicia la secuencia de consultas que, en última instancia, lleva a traducir una URL en la dirección IP necesaria.
+
+		Nota: Una búsqueda DNS sin caché típica implicará tanto consultas recursivas como iterativas.
+
+		Es importante diferenciar entre una consulta DNS recursiva y un resolver DNS recursivo. 
+
+		La consulta se refiere a la petición realizada a un resolver DNS que requiere la resolución de la consulta. 
+
+		Un resolver DNS recursivo es el ordenador que acepta una consulta recursiva y procesa la respuesta realizando las peticiones necesarias.
+
+
+		Diagrama de DNS Resolver: 
+
+			DNS Client -> DNS Recursive Query -> DNS Recursive Resolver
+
+
+	Tipos de DNS Queries: 
+
+		En una búsqueda DNS típica se producen tres tipos de consultas.
+
+		Mediante el uso de una combinación de estas consultas, un proceso optimizado para la resolución DNS puede resultar en una reducción de la distancia recorrida. 
+
+		En una situación ideal, los datos de registro almacenados en caché estarán disponibles, lo que permitirá a un servidor de nombres DNS devolver una consulta no recursiva.
+
+		3 tipos de consultas DNS:
+
+		    Consulta recursiva:
+
+		    	En una consulta recursiva, un cliente DNS requiere que un servidor DNS (normalmente un resolver recursivo DNS) responda al cliente con el registro de recurso solicitado o con un mensaje de error si el resolver no puede encontrar el registro.
+
+
+		    Consulta iterativa:
+
+		    	En esta situación el cliente DNS permitirá que un servidor DNS devuelva la mejor respuesta que pueda. 
+
+		    	Si el servidor DNS consultado no tiene una coincidencia para el nombre de la consulta, devolverá una remisión a un servidor DNS autoritativo para un nivel inferior del espacio de nombres del dominio. 
+
+		    	El cliente DNS realizará entonces una consulta a la dirección de referencia. 
+
+		    	Este proceso continúa con servidores DNS adicionales en la cadena de consulta hasta que se produce un error o se agota el tiempo de espera.
+
+
+		    Consulta no recursiva: 
+
+		    	Suele producirse cuando un cliente de resolución DNS consulta a un servidor DNS un registro al que tiene acceso, ya sea porque es autoritativo para el registro o porque el registro existe en su caché. 
+
+		    	Normalmente, un servidor DNS almacenará en caché los registros DNS para evitar el consumo adicional de ancho de banda y la carga en los servidores ascendentes.
+
+
+	Caché de DNS:
+
+		El objetivo del almacenamiento en caché es almacenar temporalmente los datos en una ubicación que permita mejorar el rendimiento y la fiabilidad de las solicitudes de datos. 
+
+		El almacenamiento en caché de DNS implica almacenar datos más cerca del cliente solicitante para que la consulta DNS se pueda resolver antes y se puedan evitar consultas adicionales más adelante en la cadena de búsqueda DNS, mejorando así los tiempos de carga y reduciendo el consumo de ancho de banda/CPU. 
+
+		Los datos DNS pueden almacenarse en caché en varias ubicaciones, cada una de las cuales almacenará registros DNS durante un periodo de tiempo determinado por un tiempo de vida (TTL).
+
+		
+		Caché DNS del navegador:
+
+			Los navegadores web modernos están diseñados por defecto para almacenar en caché los registros DNS durante un tiempo determinado. 
+
+			El objetivo es obvio: cuanto más cerca esté la caché DNS del navegador web, menos pasos de procesamiento habrá que dar para comprobar la caché y hacer las peticiones correctas a una dirección IP.
+
+			Cuando se realiza una solicitud para un registro DNS, la caché del navegador es la primera ubicación que se comprueba para el registro solicitado.
+
+		En Chrome, puedes ver el estado de tu caché DNS yendo a chrome://net-internals/#dns.
+
+
+	Caché DNS a nivel de sistema operativo (SO):
+
+		El resolver DNS a nivel de sistema operativo es la segunda y última parada local antes de que una consulta DNS salga de su máquina. 
+
+		El proceso dentro de su sistema operativo que está diseñado para gestionar esta consulta se denomina comúnmente "stub resolver" o cliente DNS. 
+
+		Cuando un stub resolver recibe una solicitud de una aplicación, primero comprueba su propia caché para ver si tiene el registro. 
+
+		Si no lo tiene, envía una consulta DNS (con una bandera recursiva activada), fuera de la red local a un resolver DNS recursivo dentro del proveedor de servicios de Internet (ISP).
+
+		Cuando el resolver recursivo dentro del ISP recibe una consulta DNS, como en todos los pasos anteriores, también comprobará si la traducción de host a dirección IP solicitada ya está almacenada dentro de su capa de persistencia local.
+
+		El resolver recursivo también tiene funcionalidades adicionales dependiendo de los tipos de registros que tenga en su caché:
+
+		    Si el resolver no tiene los registros A, pero tiene los registros NS para los servidores de nombres autoritativos, consultará directamente a esos servidores de nombres, saltándose varios pasos en la consulta DNS. 
+
+		    Este atajo evita las búsquedas desde los servidores de nombres raíz y .com (en nuestra búsqueda de ejemplo.com) y ayuda a que la resolución de la consulta DNS se produzca más rápidamente.
+
+		    Si el resolver no tiene los registros NS, enviará una consulta a los servidores TLD (.com en nuestro caso), saltándose el servidor raíz.
+    		
+    		En el improbable caso de que el resolver no tenga registros que apunten a los servidores TLD, entonces consultará a los servidores raíz. 
+
+    		Esto suele ocurrir después de que se haya purgado la caché DNS.
 
 
 
