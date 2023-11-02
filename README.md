@@ -917,7 +917,7 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 	    Los códigos de estado también pueden empezar por '1' o '3', que indican una respuesta informativa y una redirección, respectivamente.
 
 
-	HTTP Response Headers?
+	HTTP Response Headers:
 
 		Al igual que una solicitud HTTP, una respuesta HTTP viene con cabeceras que transmiten información importante como el idioma y el formato de los datos que se envían en el cuerpo de la respuesta.
 
@@ -938,7 +938,7 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 			x-frame-options: SAMEORIGIN
 
 
-	HTTP Response Body?
+	HTTP Response Body:
 
 		Las respuestas HTTP satisfactorias a peticiones 'GET' suelen tener un cuerpo que contiene la información solicitada. 
 
@@ -1583,14 +1583,633 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
+|| Hosting/Alojamiento: 
+	
+	Hay muchos terminos y tecnologías relacionadas con la web: 	
 
-|| Nombres de dominio
+		Página web/Web page: 
+
+			Documento que puede visualizarse en un navegador. 
+
+			Se escribe en lenguaje de marcado HTML y contiene distintos recursos escritos en otros lenguajes como hojas de estilo (se escribe en CSS), scripts (JS), media (img, vid, etc.)
+
+			Todas las páginas web disponibles en la red son accesibles a través de una dirección única a las que accedemos a través de links o escribiendo en el sitio del buscador o en la barra de busqueda del navegador.  
+
+
+		Sitio web/Website: 
+
+			Conjunto de páginas web agrupadas y conectadas entre si. 
+
+			Cada sitio web tiene un único nombre de dominio. 
+
+			Sus páginas web tienen enlaces explicitos en forma de texto (links).
+
+			La página principal de un sitio es su main page o homepage. 
+
+
+		Servidor web/Web server: 
+
+			Ordenador que aloja un sitio web. 
+
+			Todas las páginas web y  archivos de un sitio están disponibles en ese ordenador.
+
+			Si el servidor no responde, el sitio no estará disponible y los otros sitios que aloje. 
+
+			El servidor web enviará cualquier página web del sitio web que aloja al navegador de cualquier usuario, a petición de éste.
+
+
+		Motor de busqueda/Search engine: 
+
+			Servicio web que ayuda a encontrar otros sitios web. 
+
+			Puede haber motores de busqueda especializados en determinados temas. 
+
+			Un navegador es un programa informático que recupera y muestra páginas web y un motor de búsqueda es un servicio que ayuda a encontrar distintos sitios. 
+
+
+	Server: 
+
+		El término servidor web puede referirse al hardware o al software, o a ambos trabajando juntos.
+
+    	En cuanto al hardware, un servidor web es un ordenador que almacena software de servidor web y los archivos que componen un sitio web (por ejemplo, documentos HTML, imágenes, hojas de estilo CSS y archivos JavaScript). 
+
+    	Un servidor web se conecta a Internet y soporta el intercambio físico de datos con otros dispositivos conectados a la red.
+
+    	En cuanto al software, un servidor web incluye varias partes que controlan la forma en que los usuarios acceden a los archivos alojados. 
+
+    	Como mínimo, se trata de un servidor HTTP. 
+
+    	Un servidor HTTP es un software que entiende las URL (direcciones web) y HTTP (el protocolo que utiliza el navegador para ver las páginas web). 
+
+    	Se puede acceder a un servidor HTTP a través de los nombres de dominio de los sitios web que almacena, y entrega el contenido de estos sitios web alojados al dispositivo del usuario final.
+
+		En el nivel más básico, cuando un navegador necesita un archivo alojado en un servidor web, lo solicita a través de HTTP. 
+
+		Cuando la petición llega al servidor web (hardware) correcto, el servidor HTTP (software) acepta la petición, encuentra el documento solicitado y lo devuelve al navegador, también a través de HTTP. 
+
+		(Si el servidor no encuentra el documento solicitado, devuelve en su lugar una respuesta 404).
+	
+
+		Diagrama Cliente-Servidor: 
+
+			El navegador manda una solicitud o petición HTTP para obtener los recursos del servidor (hardware) que tiene los archivos solicitados y un servidor HTTP (software). 
+
+
+		Para publicar un sitio web se necesita un servidor web estático o dinámico.
+
+		Un servidor web estático, o stack, consiste en un ordenador (hardware) con un servidor HTTP (software). 
+
+		Lo llamamos "estático" porque el servidor envía los archivos alojados tal cual al navegador.
+
+		Un servidor web dinámico consiste en un servidor web estático más software adicional, normalmente un servidor de aplicaciones y una base de datos. 
+
+		Lo llamamos "dinámico" porque el servidor de aplicaciones actualiza los archivos alojados antes de enviar el contenido a su navegador a través del servidor HTTP.
+
+		Por ejemplo, para producir las páginas web finales que ves en el navegador, el servidor de aplicaciones puede rellenar una plantilla HTML con contenido de una base de datos. 
+
+		Sitios como MDN o Wikipedia tienen miles de páginas web.
+
+		Normalmente, este tipo de sitios se componen de unas pocas plantillas HTML y una gigantesca base de datos, en lugar de miles de documentos HTML estáticos.
+
+		Esta configuración facilita el mantenimiento y la distribución de los contenidos.
+
+
+	Obtención de una página web: 
+
+		Para obtener una página web, el navegador envía una petición al servidor web, que busca el archivo solicitado en su propio espacio de almacenamiento. 
+
+		Cuando encuentra el archivo, el servidor lo lee, lo procesa según sea necesario y lo envía al navegador.
+
+
+	Alojamiento de archivos:
+
+		En primer lugar, un servidor web tiene que almacenar los archivos del sitio web, es decir, todos los documentos HTML y sus activos relacionados, incluidas imágenes, hojas de estilo CSS, archivos JavaScript, fuentes y vídeo.
+
+		Técnicamente, podrías alojar todos esos archivos en tu propio ordenador, pero es mucho más cómodo almacenarlos todos en un servidor web dedicado porque:
+
+	   		Un servidor web dedicado suele estar más disponible (en funcionamiento).
+
+	   		Excluyendo el tiempo de inactividad y los problemas del sistema, un servidor web dedicado siempre está conectado a Internet.
+
+	    	Un servidor web dedicado puede tener la misma dirección IP todo el tiempo. 
+
+	    	Esto se conoce como dirección IP dedicada. (No todos los ISP proporcionan una dirección IP fija para las líneas domésticas).
+
+	    	Un servidor web dedicado suele ser mantenido por un tercero.
+
+		Por todas estas razones, encontrar un buen proveedor de alojamiento es una parte clave de la creación de su sitio web. 
+
+		Examine los distintos servicios que ofrecen las empresas. 
+
+		Elija uno que se ajuste a sus necesidades y presupuesto. (Los servicios van de gratuitos a miles de dólares al mes.) Puede encontrar más detalles en este artículo.
+
+		Una vez que disponga del servicio de alojamiento web, deberá cargar sus archivos en el servidor web.
+
+
+	Comunicación a través de HTTP
+
+		En segundo lugar, un servidor web proporciona soporte para HTTP (Protocolo de Transferencia de Hipertexto). 
+
+		Como su nombre indica, HTTP especifica cómo transferir hipertexto (documentos web enlazados) entre dos ordenadores.
+
+		Un protocolo es un conjunto de reglas para la comunicación entre dos ordenadores. 
+
+		HTTP es un protocolo textual y sin estado.
+
+
+		Textual
+
+		    Todos los comandos son de texto plano y legibles.
+
+
+		Sin estado (stateless)
+
+		    Ni el servidor ni el cliente recuerdan comunicaciones anteriores.
+
+		    Por ejemplo, basándose sólo en HTTP, un servidor no puede recordar una contraseña que usted escribió o recordar su progreso en una transacción incompleta. 
+
+		    Para este tipo de tareas se necesita un servidor de aplicaciones.
+
+
+		HTTP proporciona reglas claras sobre cómo se comunican un cliente y un servidor. 
+
+		Algunas características:
+
+	    	Normalmente sólo los clientes hacen peticiones HTTP, y sólo a los servidores. 
+
+	    	Los servidores responden a las peticiones HTTP de los clientes. 
+
+	    	Un servidor también puede introducir datos en la caché de un cliente, antes de que éste los solicite, a través de un mecanismo llamado server push.
+
+	    	Al solicitar un archivo a través de HTTP, los clientes deben proporcionar la URL del archivo.
+
+	    	El servidor web debe responder a cada solicitud HTTP, al menos con un mensaje de error.
+
+
+		En un servidor web, el servidor HTTP es responsable de procesar y responder a las peticiones entrantes.
+
+			Al recibir una solicitud, un servidor HTTP comprueba si la URL solicitada coincide con un archivo existente.
+
+			Si es así, el servidor web devuelve el contenido del archivo al navegador. 
+
+			En caso contrario, el servidor comprobará si debe generar un archivo dinámicamente para la solicitud (véase Contenido estático frente a contenido dinámico).
+
+			Si ninguna de estas opciones es posible, el servidor web devuelve un mensaje de error al navegador, normalmente 404 Not Found. 
+
+			El error 404 es tan común que algunos diseñadores web dedican mucho tiempo y esfuerzo a diseñar páginas de error 404.
+
+
+	Contenido estático frente a contenido dinámico
+
+		A grandes rasgos, un servidor puede servir contenidos estáticos o dinámicos. Recuerde que el término estático significa "servido tal cual". 
+
+		Los sitios estáticos son los más fáciles de configurar, por lo que le sugerimos que su primer sitio sea estático.
+
+		El término dinámico significa que el servidor procesa el contenido o incluso lo genera sobre la marcha a partir de una base de datos. 
+
+		Este enfoque proporciona más flexibilidad, pero la pila técnica es más compleja, por lo que es mucho más difícil construir un sitio web.
+
+		Es imposible sugerir un único servidor de aplicaciones listo para usar que sea la solución adecuada para todos los casos de uso posibles. 
+
+		Algunos servidores de aplicaciones están diseñados para alojar y gestionar blogs, wikis o soluciones de comercio electrónico, mientras que otros son más genéricos. 
+
+		Si va a crear un sitio web dinámico, tómese su tiempo para investigar sus requisitos y encontrar la tecnología que mejor se adapte a sus necesidades.
+
+		La mayoría de los desarrolladores de sitios web no necesitarán crear un servidor de aplicaciones desde cero, porque hay muchas soluciones listas para usar, muchas de las cuales son muy configurables. 
+
+		Pero si necesita crear su propio servidor, probablemente querrá utilizar un framework de servidor, aprovechando el código y las bibliotecas existentes, y ampliando sólo las partes que necesite para satisfacer su caso de uso. 
+
+		Sólo un número relativamente pequeño de desarrolladores necesitará desarrollar un servidor completamente desde cero: por ejemplo, para cumplir con las estrictas limitaciones de recursos de un sistema embebido. 
+
+		De esto se encarga la programación de sitios web del lado del servidor. 
+
+
+	Publicar Sitio Web/Cargar archivos/Upload files: 
+
+		Se necesita un servicio de alojamiento y un nombre de dominio. 
+
+		    El alojamiento web es un espacio de archivos alquilado en el servidor web de una empresa de alojamiento. 
+
+		    Usted coloca los archivos del sitio web en el servidor web.
+
+		    El servidor web proporciona el contenido del sitio web a los visitantes.
+
+		    Un nombre de dominio es la dirección única donde la gente encuentra su sitio web, como https://www.mozilla.org o https://www.bbc.co.uk. 
+
+		    Puede alquilar su nombre de dominio durante tantos años como desee a un registrador de dominios.
+
+		Muchos sitios web profesionales se ponen en línea de esta manera.
+
+		Además, necesitará un programa de Protocolo de Transferencia de Archivos (FTP) para transferir los archivos del sitio web al servidor. 
+
+		Los programas FTP son muy variados, pero en general hay que conectarse al servidor web con los datos facilitados por la empresa de alojamiento (nombre de usuario, contraseña y nombre de host). 
+
+		A continuación, el programa te muestra tus archivos locales y los del servidor web en dos ventanas, y te permite transferir archivos de un lado a otro.
+
+		Tambien, para poner un sitio online hay varios clientes disponibles como SFTP, RSync y GitHub. 
+
+
+		Clientes SFTP: 
+
+			Entre los disponibles está Filezilla que es gratuito y de código abierto. 
+
+			Loggearse: 
+
+				Necesitamos contratar un servicio de hosting que nos va a dar las credenciales de nuestra cuenta. 
+
+				```			
+				    SFTP server: sftp://demozilla.examplehostingprovider.net
+				    Username: demozilla
+				    Password: quickbrownfox
+				    Port: 5548
+				    To publish on the web, put your files into the Public/htdocs directory.
+
+				```
+
+				La dirección pricipal estará vacía.
+
+				Para conectar su cliente SFTP al servidor distante, siga estos pasos:
+
+				    Seleccione Archivos > Administrador de Sitios... en el menú principal.
+
+				    En la ventana del Administrador de Sitios, pulse el botón Nuevo Sitio, luego rellene el nombre del sitio como demozilla en el espacio proporcionado.
+
+				    Introduzca el servidor SFTP proporcionado por su host en el campo Host:.
+
+				    En el menú desplegable Tipo de inicio de sesión:, seleccione Normal y, a continuación, introduzca el nombre de usuario y la contraseña proporcionados en los campos correspondientes.
+
+				    Rellena el puerto correcto y otra información.
+
+				    Ahora pulse Conectar para conectarse al servidor SFTP.
+
+
+				Asegúrese de que su proveedor de alojamiento ofrece conexión SFTP (FTP seguro) a su espacio de alojamiento. FTP es intrínsecamente inseguro, y no deberías usarlo.
+
+
+			Vista de archivos remota y local: 
+
+				Una vez conectado, debemos ver: 
+
+				    En el panel central izquierdo, verás tus archivos locales. 
+
+				    Navegue hasta el directorio donde almacena su sitio web (por ejemplo, mdn).
+
+				    En el panel central derecho, verá los archivos remotos.
+
+				    Estamos logueados en nuestra raíz FTP remota (en este caso, usuarios/demozilla)
+				    Puede ignorar los paneles inferior y superior por ahora.
+
+				    Respectivamente, son un registro de mensajes que muestran el estado de la conexión entre tu ordenador y el servidor SFTP, y un registro en vivo de cada interacción entre tu cliente SFTP y el servidor.
+
+
+			Cargar, publicar o actualizar archivos al servidor:
+
+				Las instrucciones de nuestro host de ejemplo nos decían "Para publicar en la web, ponga sus archivos en el directorio Public/htdocs". 
+
+				Debe navegar hasta el directorio especificado en el panel derecho. 
+
+				Este directorio es efectivamente la raíz de su sitio web: 
+
+					donde su archivo index.html y otros recursos irán.
+
+				Una vez que haya encontrado el directorio remoto correcto en el que colocar sus archivos, para subirlos al servidor deberá arrastrarlos y soltarlos desde el panel izquierdo al panel derecho.
+
+
+			Verificar estado online: 
+
+				Para verificar si los archivos realmente están en línea, podemos comprobarlo volviendo a tu sitio web principal o al que deseamos verficar: 
+
+					Por ejemplo, http://demozilla.examplehostingprovider.net/ en el navegador.
+
+
+		Rsync: 
+
+			Rsync es una herramienta de sincronización de archivos de local a remoto, que suele estar disponible en la mayoría de sistemas basados en Unix (como macOS y Linux), aunque también existen versiones para Windows.
+
+			Se considera una herramienta más avanzada que SFTP, porque por defecto se utiliza en la línea de comandos. 
+
+			Un comando básico tiene el siguiente aspecto:
+
+			
+			```
+				rsync [-opciones] SOURCE user@x.x.x.x:DESTINATION
+
+			```
+
+		    -options es un guión seguido de una o más letras, por ejemplo -v para mensajes de error verbose, y -b para hacer copias de seguridad.
+
+		    Puedes ver la lista completa en la página de manual de rsync (busca "Options Summary").
+
+		    SOURCE es la ruta al archivo o directorio local desde el que desea copiar los archivos.
+
+		    user@ son las credenciales del usuario del servidor remoto al que desea copiar los archivos.
+
+		    x.x.x.x es la dirección IP del servidor remoto.
+
+		    DESTINATION es la ruta a la ubicación en la que quieres copiar el directorio o los archivos en el servidor remoto.
+
+			Tendrás que solicitar estos datos a tu proveedor de alojamiento.
+
+		
+			Conexión Segura: 
+
+				Por supuesto, es una buena idea utilizar una conexión segura, como con FTP a SFTP
+
+				En el caso de Rsync, se especifican los detalles SSH para realizar la conexión a través de SSH, utilizando la opción -e. Por ejemplo:
+
+				```
+					rsync [-options] -e "ssh [SSH DETAILS GO HERE]" SOURCE user@x.x.x.x:DESTINATION
+
+				```
+
+
+		GUI para Rsync
+
+			Existen herramientas GUI para Rsync (para aquellos que no se sientan tan cómodos utilizando la línea de comandos). 
+
+			Acrosync es una de estas herramientas, y está disponible para Windows y macOS.
+
+			Una vez más, tendrías que obtener las credenciales de conexión de tu proveedor de alojamiento, pero de esta manera tendrías una GUI para introducirlas.
+
+
+		GitHub:
+
+			GitHub te permite publicar sitios web a través de páginas GitHub (gh-pages).
+
+			Sin embargo, vale la pena saber que también puedes alojar un sitio web en GitHub, pero utilizando un dominio personalizado con él.
+
+
+		Web Interface: 
+
+			Provista por el hosting server. 
+
+
+		Web DAV: 
+
+			Extensión del protocolo HTTP, permite una gestión de archivos
+
+
+	Tipos de Servidores: 
+
+		El alojamiento web es un servicio en línea que hace que el contenido de su sitio web sea accesible en Internet. 
+
+		Cuando se contrata un plan de alojamiento, se alquila espacio en un servidor físico para almacenar todos los archivos y datos del sitio web.
+
+		Los proveedores de alojamiento web proporcionan diferentes tecnologías y los recursos necesarios para que su sitio web funcione de forma eficaz y segura. 
+
+		Se encargan de mantener el servidor en funcionamiento, aplicar las medidas de seguridad del alojamiento y garantizar que datos como textos, fotos y otros archivos se transfieran correctamente a los navegadores de los visitantes.
+
+
+		Autoalojamiento:
+
+			Puede alojar un sitio web usted mismo, pero requiere amplios conocimientos técnicos. 
+
+			El autoalojamiento implica instalar y configurar un servidor web desde cero, incluyendo el equipo, la infraestructura, el hardware y el software. 
+
+			Además, tendrá que ocuparse de todo el mantenimiento.
+
+
+		Proveedor de alojamiento: 
+
+			Un proveedor de servicios de alojamiento web garantiza que su sitio web funcione de forma óptima y con mejores protocolos de seguridad.
+
+			El servidor que aloja su sitio web es un ordenador físico que funciona continuamente para que el sitio esté disponible para los visitantes en todo momento.
+
+			Además, simplifica los numerosos y complejos aspectos de alojar un sitio web, desde la instalación del software hasta la asistencia técnica.
+
+			La mayoría de los proveedores de alojamiento web ofrecen diferentes paquetes de alojamiento para diferentes tipos de clientes, desde propietarios de sitios web empresariales hasta creadores de blogs personales.
+
+			Lo ideal es empezar con la solución de alojamiento más sencilla. 
+
+			Una vez que su sitio tenga más tráfico, puede cambiar a un plan más avanzado. 
+
+			No dude en consultar los precios de alojamiento de Hostinger para hacerse una idea general de los distintos tipos de alojamiento y sus costes.
+
+		
+		Shared Hosting: 
+
+			Con el alojamiento compartido, varios usuarios comparten los mismos recursos del servidor, incluida la memoria, la capacidad de procesamiento y el espacio de almacenamiento.
+
+			Debido a su sencillez y asequibilidad, el alojamiento web compartido es una solución excelente para pequeñas empresas y sitios web personales que no requieren una configuración avanzada o un mayor ancho de banda. 
+
+			Por lo tanto, el alojamiento compartido es una excelente opción para los principiantes que necesitan alojamiento barato para empezar.
+
+
+			Ventajas
+
+			    Rentable, ideal para sitios web de pequeña escala.
+
+			    No requiere conocimientos técnicos.
+
+			    Opciones de servidor preconfiguradas.
+
+			    No es necesario ocuparse del mantenimiento ni de la administración del servidor.
+
+
+			Contras
+
+			    Acceso mínimo a la configuración del servidor.
+
+			    El aumento de tráfico en otros sitios web puede afectar a la velocidad de su sitio web.
+
+
+		Virtual Private Server (VPS) Hosting:
+
+			Con este tipo de alojamiento web, su sitio web también comparte un servidor físico con otros usuarios, pero el proveedor de alojamiento web crea una partición virtual para cada usuario. 
+
+			Así, un sitio alojado en un servidor privado virtual obtiene una cantidad asignada de recursos.
+
+			El alojamiento web VPS es una gran opción para sitios de tamaño medio, tiendas de comercio electrónico y grandes blogs con un número de visitantes en rápido crecimiento.
+
+
+			Ventajas
+
+			    Espacio de servidor dedicado.
+
+			    El aumento de tráfico en otros sitios web no tiene impacto en el rendimiento de su sitio.
+
+			    Acceso raíz al servidor
+			    Gran capacidad de personalización.
+
+
+			Contras
+
+			    Los usuarios necesitan conocimientos técnicos para gestionarlo.
+
+			    Aunque es relativamente asequible, algunos usuarios pueden tener que contratar a un desarrollador para gestionar el servidor virtual, lo que incrementa los costes totales.
+
+
+		Cloud Hosting: 
+
+			Esta solución de alojamiento web utiliza varios servidores virtuales para alojar sitios.
+
+			Así, si un servidor experimenta un tráfico elevado o un problema, los restantes tomarán el relevo y mantendrán el sitio web operativo.
+
+			Puesto que se basa en un clúster de servidores (conjunto de servidores bajo la misma IP) para funcionar, los negocios con web site múltiples y los sitios grandes como tiendas del eCommerce pueden beneficiar de él, proporciona poco a ningún tiempo muerto.
+
+
+			Ventajas
+
+			    Menor probabilidad de tiempo de inactividad y fallos de hardware.
+
+			    Utiliza el equilibrio de carga para gestionar el tráfico elevado y evitar ataques DDoS.
+
+			    Escalabilidad: 
+
+			    	su sitio web no está limitado a los recursos de un único servidor.
+
+
+			Contras
+
+			    No siempre se proporciona acceso raíz.
+
+			    Es más caro que el VPS y el alojamiento compartido.
+
+
+		WordPress Hosting:
+
+			Este tipo de servicio de alojamiento web CMS proporciona un entorno de servidor optimizado para WordPress para ayudar a que su sitio cargue más rápido y minimizar los posibles problemas. 
+
+			Sin embargo, otros tipos de alojamiento web siguen funcionando para sitios web basados en este popular sistema de gestión de contenidos (CMS).
+
+			Normalmente, los planes de alojamiento optimizados para WordPress vienen con características tales como temas preinstalados, plugins para funciones básicas como el almacenamiento en caché y la seguridad, y otras herramientas.
+
+
+			Ventajas
+
+			    Bajo coste y fácil de usar para principiantes
+			    Rendimiento optimizado para sitios WordPress.
+
+			    Equipo de atención al cliente formado en problemas de WordPress.
+
+			    Plugins y temas de WordPress preinstalados
+
+
+			Contras
+
+			    No es un tipo de alojamiento web ideal para sitios web que no sean de WordPress.
+
+
+		Dedicated Hosting:
+
+			El alojamiento dedicado designa un servidor físico para cada sitio web. 
+
+			Al optar por el alojamiento dedicado, puede configurar el servidor, elegir el sistema operativo y el software que desee y personalizar todo el entorno de alojamiento según sus especificaciones.
+
+			Alquilar un servidor dedicado es tan potente como tener su propio servidor in situ, pero con la ventaja añadida de obtener asistencia profesional de su proveedor de alojamiento Web. 
+
+			Por lo tanto, el alojamiento dedicado es ideal para las grandes empresas en línea que se ocupan de tráfico pesado.
+
+
+			Ventajas
+
+			    Control total sobre la configuración del servidor.
+
+			    Alta fiabilidad.
+
+			    Acceso root al servidor.
+
+
+			Contras
+
+			    Coste elevado, más orientado a grandes empresas.
+
+			    Se requieren conocimientos técnicos y de gestión de servidores.
+
+
+	Características de 
+	los servicios de alojamiento web:
+
+		A medida que su sitio web crece, es posible que necesite más espacio de almacenamiento, ancho de banda y otros tipos de recursos. 
+
+		En ese caso, puede considerar migrar a una solución de alojamiento más avanzada, como alojamiento en la nube o VPS.
+
+		Por lo tanto, asegúrese de encontrar el mejor proveedor de alojamiento web que ofrezca una variedad de servicios para que pueda actualizar en cualquier momento. 
+
+		Además, hay varios factores a analizar cuando se trata de decidir entre proveedores de alojamiento web.
+
+
+		Panel de control:
+
+			Con un panel de control de alojamiento, podrá gestionar la cuenta de alojamiento sin tener que iniciar sesión en el servidor Web. 
+			
+			Por lo tanto, es mejor optar por proveedores de alojamiento web que ofrezcan una interfaz de usuario fácil de manejar para usuarios de todos los niveles.
+
+			Gestionar sus archivos, crear una copia de seguridad completa e instalar aplicaciones asociadas a su sitio web, de forma rápida y eficaz.
+
+
+		Tiempo de actividad del alojamiento web:
+
+			Debido a servidores web mal mantenidos o inestables, las caídas frecuentes e inesperadas pueden afectar gravemente a su negocio y a la confianza de sus clientes.
+
+			Por lo tanto, asegúrese de que el host que elija cumple la garantía de tiempo de actividad que anuncia.
+
+			Una garantía de tiempo de actividad y unas condiciones de servicio justas reflejan el compromiso de las empresas de alojamiento de mantener sus sistemas en funcionamiento.
+
+
+		Especificaciones técnicas:
+
+			Además de elegir servicios de alojamiento con suficiente espacio en disco, potencia de procesamiento y ancho de banda, debe buscar otras características que ayuden a que su sitio web funcione sin problemas.
+
+
+		Reseñas en línea:
+
+			Busque reseñas de alojamiento de sitios web que ofrezcan información detallada sobre los distintos proveedores de servicios de alojamiento web.
+
+			La mayoría de las reseñas en línea incluyen información sobre el tiempo de actividad y la velocidad, por lo que podrá ver cómo funcionan realmente los servidores del proveedor.
+
+		
+		Seguridad:
+
+			Asegúrese de que el proveedor de alojamiento esté bien equipado con medidas de seguridad avanzadas que le ayuden a proteger su sitio de malware o ataques DDoS.
+
+			Pueden incluir gestión de accesos, detección de malware, copias de seguridad automáticas y actualizaciones.
+		
+
+		Atención al cliente 24/7:
+
+			La asistencia técnica o al cliente las 24 horas del día es muy útil si su sitio web sufre retrasos inesperados, caídas o incluso fallos de seguridad. 
+
+			Compruebe si el host también proporciona recursos de soporte como tutoriales y bases de conocimiento.
+
+		
+		Servicios adicionales:
+
+			Un gran plan de alojamiento ofrece una excelente relación calidad-precio si contiene complementos y funciones gratuitos, como un certificado SSL, una cuenta de correo electrónico empresarial o una red de distribución de contenidos (CDN).
+
+
+	Servidor y nombre de dominio: 
+
+		Después de elegir dónde almacenar los archivos de su sitio web, el siguiente paso para configurar su sitio web es realizar una búsqueda de nombres de dominio y luego comprar un nombre de dominio. 
+
+		Dominio y alojamiento son dos cosas diferentes pero igualmente importantes necesarias para publicar su sitio web en línea.
+
+		Mientras que el alojamiento se utiliza para almacenar su sitio, un nombre de dominio actúa como identidad digital del sitio web, permitiendo a la gente acceder fácilmente a él.
+
+		Un nombre de dominio suele consistir en el nombre de un sitio web y una extensión de dominio como .com, .org o .net. Además, hay muchas otras opciones y nuevos nombres de dominio como .xyz, que se encuentran entre las alternativas más populares hoy en día.
+
+		Un dominio y una cuenta de alojamiento pueden comprarse al mismo proveedor o a proveedores diferentes. 
+
+		Muchas empresas de alojamiento, ofrecen también el registro de dominios.
+
+		Para empezar, decídase por un nombre de dominio y compruebe su disponibilidad.
+
+		Una vez que encuentres un nombre de dominio único, regístralo en un registrador de dominios. 
+
+		Si no es la misma empresa que eligió para alojar el sitio, compre un plan de alojamiento y apunte el nombre de dominio en consecuencia.
+
+		Otra opción es adquirir un plan de alojamiento que incluya el registro gratuito del nombre de dominio, una solución mucho más sencilla y asequible.
+
+		Sin embargo, si no está satisfecho con el servicio prestado, puede migrar el sitio a un nuevo proveedor. 
+
+		Sólo tienes que asegurarte de que la empresa es compatible con el framework de tu sitio web.
 
 
 
 
 
-|| Hosting
+|| Nombre de Dominio
+	
 
 
 
