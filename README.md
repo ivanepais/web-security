@@ -2206,10 +2206,455 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
-
-
 || Nombre de Dominio
 	
+	Un nombre de dominio es una dirección web única que puede adquirirse mediante el registro de un dominio.
+
+	Normalmente, los nombres de dominio constan de un nombre de sitio web y una extensión de nombre de dominio.
+
+	Un buen dominio refuerza su imagen de marca y ayuda a su público a encontrar su sitio web.
+
+	Un nombre de dominio es el equivalente de un sitio web a una dirección física. 
+
+	Consta de un nombre y una extensión.
+
+	Ayuda a los usuarios a encontrar fácilmente su sitio web y elimina la necesidad de memorizar la dirección del protocolo de Internet (IP) del sitio. 
+
+	Además, los nombres de dominio son fundamentales para la infraestructura de Internet.
+
+
+	Funcionamiento de los nombre de dominio: 
+
+		Se refiere a la interacción que hace el usuario/navegador con la red del DNS y servidores: 
+
+			Browser <-> DNS server - DNS server <-> Hosting server
+
+
+		Un nombre de dominio y un servidor de alojamiento web son los dos elementos principales de un sitio web. 
+
+		Todos los nombres de dominio se conectan a sus correspondientes direcciones IP y apuntan a los servidores específicos que alojan el sitio.
+
+		Cuando un usuario introduce un nombre de dominio en un navegador, una red mundial de servidores del Sistema de Nombres de Dominio (DNS) buscará su dirección IP y servidor web asociados. 
+
+		Este servidor web almacena los datos del sitio web, incluidos sus archivos, base de datos y código HTML.
+
+		A continuación, el servidor web correspondiente recogerá los datos solicitados del servicio de alojamiento del dominio y devolverá la solicitud al navegador.
+
+		Una vez que el navegador recibe los datos lo convertirá en una página web para el usuario.
+
+
+	Características que aportan los nombres de dominio: 
+
+	    Memorabilidad del sitio web: 
+
+	    	Técnicamente, su público puede visitar su sitio web introduciendo su dirección IP. 
+
+	    	Sin embargo, es difícil de recordar, ya que consiste en una cadena de números aleatorios. 
+
+	    	Los nombres de dominio hacen que un sitio sea más accesible para los usuarios.
+
+
+	    Marca eficaz: 
+
+	    	Un nombre de dominio bien pensado ayuda a transmitir los valores y la misión de su proyecto o negocio.
+
+
+	    Credibilidad: 
+
+	    	Los sitios web con nombres de dominio personalizados tienen un aspecto más profesional que los que tienen un subdominio gratuito, web.constructorweb.com.
+
+
+	    Direcciones de correo electrónico personalizadas: 
+
+	    	Un nombre de dominio te permite crear cuentas de correo electrónico profesionales, como name@yourdomain.com. 
+
+	    	También hace que tu presentación sea coherente en los distintos canales online.
+
+
+	    SEO: 
+
+	    	Un nombre de dominio memorable con palabras clave relevantes tendrá un impacto positivo en la optimización del motor de búsqueda de su sitio web, mejorando su clasificación en Google.
+
+
+	Tipos de nombres de dominio: 
+
+		TLD (Top Level Domain): 
+
+			Dominio de primer nivel
+
+			El Dominio de nivel superior es el término general para una extensión de dominio. 
+
+			Es la parte que aparece junto al nombre. 
+
+			Por ejemplo, en el nombre de dominio basicweb.com, ".com" es el dominio de nivel superior.
+
+			Hay varios TLD (dominios de nivel superior) disponibles en Internet, pero los dominios .com siguen siendo los más populares, ya que más del 47% de todos los sitios los utilizan. 
+
+			Aunque se suele utilizar para empresas comerciales, otros proyectos pueden utilizar el dominio de primer nivel .com para mejorar la credibilidad del sitio web.
+
+			Otra ventaja de las extensiones populares es que pueden impulsar un alto tráfico orgánico, ya que los usuarios suelen escribirlas por defecto. He aquí otras opciones de TLD populares:
+
+			   
+		    Dominio .net: 
+
+		    	las empresas que trabajan en el ámbito de las redes pueden elegir este TLD.
+
+		    	Dicho esto, .net es una gran alternativa a .com, independientemente de su nicho.
+
+
+		    Dominio .biz:
+
+		    	Otra alternativa a .com.
+
+		    	Es una buena opción para un nombre de dominio empresarial.
+
+
+		    Dominio .org: 
+
+		    	Es el TLD preferido por las organizaciones sin ánimo de lucro.
+
+
+		    Dominio .xyz:
+
+		    	En referencia a las generaciones X, Y y Z, esta extensión de dominio es una alternativa más asequible para cualquiera que desee construir su presencia en línea. 
+
+		    	Este TLD también es popular para sitios de pruebas.
+
+
+		    Dominio .icu:
+
+		    	Significa "I see you", esta extensión es adecuada para cualquier proyecto.
+
+
+			En el lado negativo, los nombres de dominio populares pueden ser muy caros.
+
+			Las extensiones menos comunes, como .online, .io, .shop y .tech, suelen ser más asequibles y exclusivas.
+
+			Sin embargo, con el creciente número de sitios nuevos que se crean a diario, la popularidad y el coste de un dominio de primer nivel específico pueden cambiar.
+
+			La Corporación de Asignación de Nombres y Números de Internet (ICANN) gestiona la distribución de los dominios de primer nivel. 
+
+			Entre las responsabilidades de la ICANN figuran:
+
+		    	Evaluar y aprobar las solicitudes de nuevos TLD.
+
+		    	Gestionar y supervisar los registros de dominios.
+
+		   		Desarrollar y coordinar la política del sistema de nombres de dominio.
+
+		    	Garantizar que la introducción de nuevos TLD se ajusta a la misión de la organización de potenciar la innovación, la competencia y las opciones del consumidor en línea.
+
+
+		ccTLD: Dominio de primer nivel en código de país:
+
+			Los ccTLD (country-code top-level domains) son extensiones específicas de un país concreto. 
+
+			Suelen constar de dos letras basadas en los códigos internacionales de los países.
+
+			A modo de ejemplo, los sitios de la India pueden utilizar .in como extensión de dominio, mientras que .us suele registrarse para sitios web con sede en Estados Unidos.
+
+			He aquí otros ejemplos de ccTLDs:
+
+			    .se - Suecia
+			    .lt - Lituania
+			    .de - Alemania
+			    .it - Italia
+
+			Un ccTLD es adecuado para empresas, organizaciones o entidades que operan en un país concreto. 
+
+			Las empresas internacionales también pueden utilizar ccTLD para diferenciar contenidos localizados en distintas regiones.
+
+			Por ejemplo, la BBC utiliza bbc.co.uk como dominio para el Reino Unido y bbc.com para la audiencia internacional.
+
+			Si no está seguro del código de país de un país, la base de datos de la Organización Mundial de la Propiedad Intelectual (WIPO) puede ayudarle a encontrar el correcto.
+
+
+		gTLD: Dominio genérico de primer nivel
+
+			Los gTLD (generic top-level domains) son extensiones de dominio que no dependen de un código de país. 
+
+			Los dominios .com y .net son excelentes ejemplos de gTLD.
+
+			Sin embargo, algunos de ellos están asociados a una comunidad específica, por lo que debe tener cuidado de no confundir a sus visitantes.
+
+			A menudo denominados TLD patrocinados, estas extensiones de dominio están representadas por una organización patrocinadora que establece y hace cumplir las normas del TLD. 
+
+			Ejemplos de TLD patrocinados:
+
+		    Dominio .edu:
+
+		    	Gestionado por EDUCAUSE, es elegible para instituciones de educación superior de EE.UU..
+
+
+		    Dominio .asia:
+
+		    	Las empresas, organizaciones o entidades que operan en la región Asia-Pacífico pueden utilizar este TLD.
+
+		    	Este TLD está patrocinado por DotAsia Organisation Ltd.
+
+
+		    Dominio .travel:
+
+		    	Propiedad de Donuts Inc., este TLD es una gran opción para agencias de viajes, líneas aéreas, hoteleros y oficinas de turismo.
+
+
+		    Dominio .gov:
+
+		    	patrocinado por Cybersecurity and Infrastructure Security Agency y reservado para organizaciones gubernamentales.
+
+
+			Si su empresa o proyecto no pertenece a una categoría concreta, no podrá utilizar un dominio de primer nivel genérico asociado a ella.
+
+
+		Dominio de segundo nivel/Second-Level-Domain:
+
+			Un dominio de segundo nivel (SLD) está por debajo de los TLD en la jerarquía de nombres de dominio. 
+
+			Un SLD es la sección de un nombre de dominio situada a la izquierda del último punto. Por ejemplo, en www.google.com, "google" es el SLD.
+
+			Algunos registros de nombres de dominio utilizan un dominio de segundo nivel para indicar la entidad específica que está registrada. 
+
+			Por ejemplo, las instituciones académicas del Reino Unido suelen registrar sitios web bajo .ac.uk, y las empresas comerciales de Australia utilizan nombres de dominio .com.au.
+
+
+			Los propietarios de sitios web suelen utilizar sus nombres comerciales registrados como nombres de dominio de segundo nivel.
+
+				Google/Alphabet en Google.com
+
+			Aunque suele ser una buena idea, no tiene por qué hacer que su nombre de dominio sea exactamente igual que el nombre de su empresa.
+
+			A continuación, le indicamos algunas razones por las que puede considerar la posibilidad de utilizar un nombre de dominio diferente:
+
+				Si el nombre de su empresa ya está ocupado, tendrá que elegir un nombre de dominio diferente.
+
+				Si el nombre de su empresa es demasiado largo, elija un nombre de dominio más corto.
+
+				Elija un nombre de dominio que sea más relevante para el contenido de su sitio web.
+
+
+		Subdominio
+
+			Un subdominio especifica una división separada de un dominio principal dentro de los mismos servidores. 
+
+			Por lo tanto, no necesita registrar un subdominio si ya posee el dominio.
+
+			Un subdominio también puede denominarse nombre de host.
+
+			La parte www en la mayoría de las URL es técnicamente un subdominio, lo que sugiere que un sitio web forma parte de la World Wide Web. 
+
+			Sin embargo, algunos sitios web tienen un subdominio adicional además del nombre de host.
+
+			Una razón común para crear subdominios es organizar el contenido web en secciones separadas. 
+
+			Por ejemplo, Google utiliza developers.google.com para proporcionar información específica para desarrolladores.
+
+			Un subdominio también es útil para la localización. 
+
+			Por ejemplo, Wikipedia. Tiene un subdominio para cada idioma: en.wikipedia.org para la versión inglesa y de.wikipedia.org para la alemana.
+
+			Para un sitio web empresarial, he aquí ejemplos de subdominios populares:
+
+		    blog.yourwebsite.com:
+
+		    	Para el blog de su empresa, que puede cubrir actualizaciones de la empresa e historias de clientes.
+
+
+		    news.yourwebsite.com:
+
+		    	Para las últimas noticias de la empresa.
+
+
+		    resources.yourwebsite.com:
+
+		    	para estudios de casos, libros blancos o libros electrónicos.
+
+
+		    support.yourwebsite.com:
+
+		    	Documentación, preguntas frecuentes e información de contacto.
+
+
+		Dominio gratuito:
+
+			Los creadores de sitios web suelen ofrecer nombres de dominio gratuitos a los nuevos usuarios. 
+
+			Normalmente, los principiantes aprovechan esta oportunidad para crear sitios web antes de invertir dinero en ellos. 
+
+			Una dirección de sitio web gratuita suele seguir la misma estructura que los subdominios.
+
+			Un subdominio gratuito a menudo viene con características y herramientas mínimas. 
+
+			Puede limitar las oportunidades de marca de tu sitio web, ya que sólo es un subdominio de tu plataforma de creación de sitios web.
+
+			Recomendamos invertir en un nombre de dominio personalizado de pago para mejorar la identidad de marca y la credibilidad.
+
+
+	Nombre de dominio vs URL: 
+		
+		Aunque un nombre de dominio y una de recursos URL (Universal Resource Locator) comparten algunas similitudes, son diferentes.
+
+		Una URL se refiere a una dirección web completa que dirige a los visitantes a una página específica, y un nombre de dominio es sólo una parte de una URL. 
+
+		Normalmente, las URL o direcciones web constan de estos elementos
+
+		    Un protocolo: 
+
+		    	Puede ser HTTP (Hypertext Transfer Protocol) o HTTPS (Hypertext Transfer Protocol Secure). 
+
+		    	Permite a los visitantes saber si un sitio está protegido con un certificado SSL.
+
+
+		    Un dominio: 
+
+		    	suele constar de un dominio de segundo nivel y un dominio de primer nivel.
+
+
+		    Ruta/path:
+
+		    	aparece sólo cuando se dirige a los visitantes a una página específica dentro de un sitio web.
+
+
+		También existe el nombre de dominio completo/ fully qualified domain name (FQDN). 
+
+		Es la versión completa de un nombre de dominio que también incluye el nombre de host, como www.		
+
+		No confunda una URL con un FQDN.
+
+		Una URL especifica la ubicación de un recurso en Internet. 
+
+		En cambio, un FQDN especifica la ubicación de un ordenador o servidor en Internet.
+
+		Una URL siempre incluye un FQDN, pero un FQDN no siempre incluye una URL. 
+
+		Por ejemplo, la dirección web del sitio web de Google es https://www.google.com/. 
+
+		En este ejemplo, el FQDN es www.google.com, pero la URL también incluye el protocolo https:// y la ruta /.
+
+
+		Exploremos cada elemento de una jerarquía FQDN:
+
+		    Nombre de host/Hostname:
+
+		    	Es una etiqueta asignada a un servicio de servidor (server service) disponible en una red. 
+
+		    	Un servidor DNS utiliza un nombre de host para que una dirección IP sea 
+		    	fácil de recordar.
+
+		    	Ejemplos de un nombre de host son "www" en www.google.com y "en" en.wikipedia.org.
+
+
+		    Subdominio/Subdomain:
+
+		    	Esta parte se encuentra a la izquierda de un dominio de segundo nivel y a veces indica una sección de un dominio mayor. 
+
+		    	Por ejemplo, support.google.com es una parte de google.com, y la palabra "support" es el subdominio. 
+
+		    	Tenga en cuenta que no todos los dominios tienen este elemento.
+
+
+		    Nombre de dominio/Domain name: 
+
+		    	Consta de un segundo nivel y un dominio de nivel superior (TLD). 
+
+		    	Por ejemplo, en google.com, "google" es el dominio de segundo nivel, y ".com" es el TLD.
+
+
+			La longitud máxima del nombre de host y del nombre de dominio completo es de 63 bytes por etiqueta y 255 bytes por FQDN.
+ 
+
+ 	Obtener un nombre de dominio:
+
+		El registro de un nombre de dominio implica la compra de un nombre de dominio a un registrador de dominios por un periodo determinado.
+
+		Por su parte, la transferencia de un nombre de dominio consiste en trasladar un dominio de un registrador a otro.
+
+
+		Registrar un nombre de dominio:
+
+			Si necesita ayuda para encontrar el nombre de dominio perfecto, un generador de nombres de dominio (domain name generators) es un buen punto de partida.
+
+			Para encontrar el dominio adecuado, tenga en cuenta la marca y el coste. 
+
+			Asegúrese de que sea memorable y se ajuste a su presupuesto.
+
+			Tenga en cuenta que los nombres de dominio populares suelen ser más caros y pueden estar ya ocupados. 
+
+			Algunos generadores ofrecen opciones alternativas si el dominio que quieres no está disponible. 
+
+			Puedes elegir otro dominio de nivel superior (TLD) con el mismo nombre o uno alternativo.
+
+			También puede utilizar una herramienta de comprobación de dominios, como la siguiente, para comprobar si el nombre que desea sigue disponible.
+
+
+		Una vez que haya encontrado un nombre de dominio válido, utilice un registrador de confianza para comprar el dominio. 
+
+		La base de datos de ICANN contiene una lista de registradores de dominios legítimos.
+
+
+		Comprar nombre de dominio en un registrador legitimo:
+
+		    Elija el nombre de dominio que desee y pase por caja.
+
+		    Seleccione el periodo de registro de su nombre de dominio.
+
+		    Acceda a su nueva cuenta tras el pago.
+
+		    Complete el proceso de registro introduciendo los campos requeridos, incluyendo su nombre y dirección postal.
+
+		
+		Una vez completado el registro del dominio, podrá acceder a un panel de control con todas las herramientas de gestión esenciales.
+
+		Puede incluir la protección de la privacidad del dominio.
+
+		Oculta su información sensible en la base de datos WHOIS, evitando la suplantación de identidad a través de la herramienta de búsqueda WHOIS.
+
+
+	Transferir un nombre de dominio:
+
+		La transferencia de nombres de dominio es el proceso de cambiar a otro registrador de dominios.
+
+		Un registrador de dominios diferente puede ofrecer un servicio de mejor calidad, lo que puede incitar al cambio.
+
+		Todo lo que tiene que hacer es enviar el código de autorización de dominio (EPP) de su proveedor actual y confirmar la transferencia. 
+
+		Este proceso puede tardar entre cuatro y siete días en completarse.
+
+		Lamentablemente, algunas extensiones no son transferibles.
+
+		Si un registrador de dominios no acepta determinados TLD, puede dirigir los servidores de nombres (nameservers) a una determinada empresa de alojamiento de sitios web. 
+
+		Para ello, tendrá que cambiar los nameservers.
+
+		Sólo puede cambiar la información del servidor web (web server information) del registrador de dominios original. 
+
+		Si el registrador no permite cambiar nameservers, puede intentar apuntar el dominio (pointing the domain) a otro registrador utilizando el registro A (A record).
+
+
+
+
+
+|| CMS/CRM
+
+
+
+
+|| WordPress
+
+
+
+
+|| Application Server
+
+
+
+
+|| Certificados 
+
+
+
+
+|| Claves, Credenciales y Cookies
+
 
 
 
