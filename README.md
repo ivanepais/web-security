@@ -2631,19 +2631,721 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
+|| Application Server
+
+	Por definición estricta, un servidor web es un subconjunto común de un servidor de aplicaciones.
+
+	Un servidor web entrega contenido web estático -por ejemplo, páginas HTML, archivos, imágenes, vídeo- principalmente en respuesta a peticiones de protocolo de transferencia de hipertexto (HTTP) de un navegador web.
+
+	Un servidor de aplicaciones también puede ofrecer contenidos web, pero su función principal es permitir la interacción entre los clientes finales y el código de la aplicación del lado del servidor -el código que representa lo que suele denominarse lógica empresarial (business logic)- para generar y ofrecer contenidos dinámicos, como resultados de transacciones, apoyo a la toma de decisiones o análisis en tiempo real.
+
+	El cliente de un servidor de aplicaciones puede ser la propia interfaz de usuario final de la aplicación, un navegador web o una aplicación móvil, y la interacción cliente-servidor puede producirse a través de cualquier número de protocolos de comunicación.
+
+	En la práctica, sin embargo, la línea que separa los servidores web de los servidores de aplicaciones es cada vez más difusa, sobre todo a medida que el navegador web se ha ido convirtiendo en el cliente de aplicaciones preferido y que han aumentado las expectativas de los usuarios sobre las aplicaciones web y su rendimiento.
+
+	La mayoría de los servidores web admiten plug-ins para lenguajes de programación (ASP, JSP, PHP, Perl, etc.) que permiten generar contenidos dinámicos basados en la lógica del servidor. 
+
+	Y cada vez son más los servidores de aplicaciones que no sólo incorporan funciones de servidor web, sino que utilizan HTTP como protocolo principal y admiten otros protocolos (por ejemplo, CGI y variantes de CGI) para interactuar con los servidores web. 
+
+	También permiten a las aplicaciones web aprovechar servicios como el proxy inverso, la agrupación en clústeres, la redundancia y el equilibrio de carga, servicios que mejoran el rendimiento y la fiabilidad y permiten a los desarrolladores centrarse menos en la infraestructura y más en la codificación.
+
+	Para mayor confusión, muchos servidores web y algunos servidores de aplicaciones se denominan, o se denominan a sí mismos, servidores de aplicaciones web.
+
+	En resumidas cuentas, los servidores web y de aplicaciones más populares hoy en día son híbridos de ambos.
+
+	La mayoría de las aplicaciones cada vez más ricas que utilizas hoy en día presentan una combinación de contenido web estático y contenido de aplicaciones dinámicas, entregado a través de una combinación de tecnologías de servidor web y servidor de aplicaciones.
+
+
+	Servidores web y servidores de aplicaciones de código abierto: 
+
+		El mercado está inundado de servidores web y de aplicaciones, demasiados para enumerarlos aquí. En su lugar, hemos pensado que sería más útil enumerar las opciones gratuitas de código abierto más populares:
+		
+
+		Nginx:	 
+
+			Nginx es un servidor web de código abierto que incluye proxy inverso, equilibrio de carga, proxy de correo y caché HTTP (reverse proxy, load balancing, mail proxy). 
+
+			Proxy: 
+
+				Es un sistema o router que proporciona una pasarela entre los usuarios e Internet. 
+
+				Por tanto, ayuda a impedir que los ciberatacantes entren en una red privada. 
+
+				Es un servidor, denominado "intermediario" porque se interpone entre los usuarios finales y las páginas web que visitan en línea.
+
+				Los servidores proxy proporcionan una valiosa capa de seguridad para su ordenador. 
+
+				Pueden configurarse como filtros web o cortafuegos (firewalls), protegiendo tu ordenador de amenazas de Internet como el malware.
+
+				Un servidor proxy tiene su propia dirección IP, actúa como intermediario entre un ordenador e Internet. 
+
+				Su ordenador conoce esta dirección, y cuando usted envía una solicitud a Internet, ésta se dirige al proxy, que obtiene la respuesta del servidor web y reenvía los datos de la página al navegador de su ordenador
+
+				Existen versiones de hardware y de software.
+
+				Las conexiones de hardware se sitúan entre tu red e Internet, donde obtienen, envían y reenvían los datos de la web. 
+
+				Los proxies de software suelen estar alojados por un proveedor o residir en la nube. 
+
+				Usted descarga e instala una aplicación en su ordenador que facilita la interacción con el proxy.
+
+
+			También hay disponibles versiones comerciales compatibles de Nginx, en Nginx, Inc.
+
+			Según la empresa de investigación de Internet y prevención de la ciberdelincuencia Netcraft Nginx sirvió o proxyó casi el 38% de todos los sitios web del mundo y más del 25% del millón de sitios más concurridos en diciembre de 2019. 
+
+			Entre los usuarios de Nginx de empresas mundialmente conocidas se incluyen Dropbox, Netflix y Zynga.
+		
+
+		Servidor HTTP Apache
+		 
+			Lanzado por primera vez en 1995, Apache HTTP Server (también conocido simplemente como 'Apache') es otro servidor web gratuito y de código abierto muy popular que, hasta hace muy poco, alimentaba más sitios web que cualquier otro servidor web-71% en su pico-antes de ser superado por Nginx en abril de 2019. 
+
+			En diciembre de 2019, Apache servía a más del 24% de todos los sitios en todo el mundo y al 31% del millón de sitios más activos.
+
+
+		Apache Tomcat:
+
+			Apache Tomcat es un servidor de aplicaciones de código abierto que ejecuta Java Servlets, renderiza y entrega páginas web que incluyen código JavaServer Page y sirve aplicaciones Java Enterprise Edition (Java EE).
+
+			Lanzado en 1998, Tomcat es el servidor de aplicaciones Java de código abierto más utilizado.
+		
+
+		Glassfish:
+			 
+			Glassfish es un servidor de aplicaciones Java EE de código abierto lanzado por Sun Microsystems en 2006, y actualmente está alojado en la Fundación Eclipse. 
+
+			Como la mayoría de servidores de aplicaciones Java, Glassfish soporta Java Servlets, Enterprise JavaBeans (EJB), etc., pero también puede funcionar como servidor web, sirviendo contenidos web en respuesta a peticiones HTTP.
+
+
+	Claves: 
+
+		Los servidores web y los servidores de aplicaciones tienen procesos independientes distintos. 
+
+		Sin embargo, son invisibles para el usuario final.
+
+		A pesar del contraste que implica "servidor de aplicaciones frente a servidor web", en Internet ambos tipos de servidores suelen desplegarse juntos con un objetivo común: satisfacer las peticiones de contenidos de un sitio web por parte de los usuarios. 
+
+		No existen documentos normativos que definan las propiedades de los servidores web y los servidores de aplicaciones, pero veamos cómo se entienden comúnmente estos términos.
+
+		El trabajo fundamental de un servidor web es aceptar y satisfacer las peticiones de los clientes de contenido estático de un sitio web (páginas HTML, archivos, imágenes, vídeo, etc.).
+
+		El cliente es casi siempre un navegador o una aplicación móvil y la petición adopta la forma de un mensaje HTTP (Hypertext Transfer Protocol), al igual que la respuesta del servidor web.	
+
+		El trabajo fundamental de un servidor de aplicaciones es proporcionar a sus clientes acceso a lo que comúnmente se denomina lógica de negocio, que genera contenido dinámico; es decir, es código que transforma datos para proporcionar la funcionalidad especializada que ofrece un negocio, servicio o aplicación. 
+
+		Los clientes de un servidor de aplicaciones suelen ser las propias aplicaciones, y pueden incluir servidores web y otros servidores de aplicaciones. 
+
+		La comunicación entre el servidor de aplicaciones y sus clientes puede adoptar la forma de mensajes HTTP, pero no es tan necesaria como para la comunicación entre los servidores web y sus clientes. 
+
+		Muchos otros protocolos son populares, incluyendo las variantes de CGI.
+
+		En un despliegue típico, un sitio web que proporciona contenidos tanto estáticos como generados dinámicamente ejecuta servidores web para los contenidos estáticos y servidores de aplicaciones para generar contenidos dinámicamente.
+
+		Un reverse proxy y un load balancer se sitúan frente a uno o varios servidores web y uno o varios servidores de aplicaciones web para dirigir el tráfico al servidor adecuado, primero en función del tipo de contenido solicitado y después en función del algoritmo de equilibrio de carga configurado.
+
+		La mayoría de los programas equilibradores de carga son también servidores proxy inversos, lo que simplifica la arquitectura de los servidores de aplicaciones web.
+
+
+	Diferencias entre un servidor web y un servidor de aplicaciones: 	
+
+		Un servidor web es una tecnología que aloja el código y los datos de un sitio web. Al ingresar una URL en el navegador, la URL es en realidad el identificador de dirección del servidor web.
+
+		Su navegador y servidor web se comunican de la siguiente manera:
+
+		    El navegador usa la URL para encontrar la dirección IP del servidor.
+
+		    El navegador envía una solicitud HTTP de información.
+
+		    El servidor web se comunica con un servidor de base de datos para encontrar los datos relevantes.
+
+		    El servidor web devuelve contenido estático, como páginas HTML, imágenes, videos o archivos, en una respuesta HTTP al navegador.
+
+		    A continuación, el navegador le mostrará la información.
+
+
+		Un sitio web que aloja contenido estático, como blogs, imágenes de encabezado o artículos, puede ejecutarse en un servidor web.
+
+		Sin embargo, la mayoría de los sitios web y aplicaciones web son mucho más interactivos y requieren un servidor de aplicaciones.
+
+
+		Un servidor de aplicaciones amplía las capacidades de un servidor web, pues admite la generación de contenido dinámico, la lógica de la aplicación y la integración con varios recursos.
+
+		Proporciona un entorno de tiempo de ejecución en el que puede ejecutar el código de la aplicación e interactuar con otros componentes de software, como los sistemas de mensajería y las bases de datos. 
+
+		Utiliza la lógica empresarial para transformar los datos de manera más significativa que un servidor web.
+		
+		Cuando intenta acceder al contenido interactivo de un sitio web, el proceso funciona de la siguiente manera:
+
+		    El navegador usa la URL para encontrar la dirección IP del servidor.
+
+		    El navegador envía una solicitud HTTP de información.
+
+		    El servidor web transfiere la solicitud al servidor de aplicaciones.
+
+		    El servidor de aplicaciones aplica la lógica empresarial y se comunica con otros servidores y sistemas de terceros para cumplir con la solicitud.
+
+		    El servidor de aplicaciones representa una nueva página HTML y la devuelve como respuesta al servidor web.
+
+		    El servidor web devuelve la respuesta al navegador.
+
+		    El navegador le muestra la información.
+
+		Para usar el ejemplo de un sitio web de comercio electrónico, cuando agrega artículos a su carrito o retira artículos, interactúa con el servidor de aplicaciones.
+
+
+		Tareas realizadas:
+
+			Un servidor web aloja sitios web y entrega respuestas a solicitudes sencillas. 
+
+			Los servidores web también registran la actividad del servidor y permiten la creación de secuencias de comandos en el servidor.
+
+			Por otro lado, los servidores de aplicaciones tienen un conjunto de tareas más complejo. 
+
+			Los servidores de aplicaciones gestionan la lógica empresarial para generar contenido dinámico mediante la conexión con sistemas, servicios y bases de datos empresariales.
+
+
+		Protocolos utilizados:
+
+			El protocolo principal que utilizan los servidores web es el protocolo HTTP. 
+
+			Sin embargo, diferentes servidores web también admiten FTP y Simple Mail Transfer Protocol (SMTP). 
+
+			Estos dos protocolos facilitan el almacenamiento y la transferencia de archivos, así como el funcionamiento del correo electrónico.
+
+			Además de los protocolos que utilizan los servidores web, los servidores de aplicaciones utilizan protocolos de comunicación adicionales para comunicarse con otros componentes de software. 
+
+			Por ejemplo, pueden usar la invocación de métodos remotos (RMI) y la llamada a procedimiento remoto (RPC).
+		
+
+		Tipos de contenidos:
+
+			Los servidores web ofrecen en su mayoría contenido estático. 
+
+			El contenido estático es el contenido que un servidor no necesita modificar o procesar antes de entregarlo. 
+
+			Por ejemplo, los archivos de imagen (como PNG, GIF y JPEG), los documentos descargables (PDF), los videos y los archivos HTML son todos contenidos estáticos. 
+
+			Los servidores de aplicaciones ofrecen en su mayoría contenido dinámico.
+
+			El contenido dinámico es el contenido que cambia en función de la forma en que el usuario interactúa con él.
+
+			Por ejemplo, los informes generados dinámicamente, las representaciones de datos personalizadas, las interfaces de usuario personalizadas, los resultados de las bases de datos y el HTML procesado son todos contenidos dinámicos.
+
+
+		Subprocesamiento múltiple:
+
+			Los subprocesos de un servidor son vías de operación independientes que permiten el procesamiento simultáneo de tareas. 
+
+			En el subprocesamiento múltiple, el servidor crea y ejecuta varios subprocesos simultáneamente y cada uno gestiona una tarea independiente o parte de una tarea. 
+
+			La compatibilidad con subprocesos múltiples ayuda a entregar contenido web más rápido y, al mismo tiempo, a administrar más tráfico web.
+
+			La mayoría de los servidores web no admiten subprocesos múltiples. 
+
+			Los servidores web colocan cada nueva solicitud de conexión en una cola y utilizan un bucle de eventos para supervisar las nuevas entradas y salidas de la cola. 
+
+			Para mejorar la eficiencia, el servidor procesa las solicitudes mediante E/S sin bloqueo y devoluciones de llamadas. 
+
+			Las operaciones sin bloqueo y la arquitectura basada en eventos permiten a los servidores web gestionar conexiones simultáneas.
+
+			Los servidores de aplicaciones utilizan subprocesos múltiples para proporcionar una alta escalabilidad y eficiencia.
+
+			Si una solicitud requiere recursos externos, el servidor de aplicaciones usa subprocesos independientes para hacer frente a esas interacciones. 
+
+			Puede procesar varios subprocesos a la vez, lo que permite muchas interacciones con los clientes en paralelo. 
+
 
 
 || CMS/CRM
 
+	Hay casos de en los que no se necesita una lógica de negocio o de aplicación como la que puede proveer los servidores de aplicaciones con una compleja base de datos que pueda generar contenido dinámico y personalizado para el usuario. 
+
+	Solo se necesita una plataforma para publicar contenido que se pueda comunicar, ver, leer o vender. 
 
 
+	Content Management System (CMS): 
 
-|| WordPress
+		Un sistema de gestión de contenidos (CMS) es una aplicación de software que se ejecuta en un navegador.
+
+		Proporciona a los usuarios una interfaz gráfica de usuario que les permite crear y gestionar un sitio web sin necesidad de programarlo desde cero. 
+
+		Con un CMS, se puede personalizar el diseño de un sitio web descargando y modificando plantillas y extensiones prediseñadas. 
+
+		Algunas de sus funciones también incluyen la gestión y modificación de contenidos, el almacenamiento de imágenes y la creación de páginas web. 
+
+		Hay muchos sistemas de gestión de contenidos disponibles en la red, cada uno con sus puntos fuertes y débiles. 
 
 
+	Existen varios tipos de sistemas de gestión de contenidos:
+
+		Un sistema de gestión de contenidos (CMS) es una aplicación de software que se encarga de la infraestructura básica de creación de sitios web.
+
+		Con un CMS, los usuarios pueden centrarse en las áreas front-end de la creación de sitios web, como la personalización del diseño del sitio web y la gestión de contenidos. 
 
 
-|| Application Server
+	    CMS de código abierto: 
+
+	    	Una comunidad de desarrolladores mantiene el software en lugar de que sea propiedad de una sola empresa. 
+
+	    	Los desarrolladores externos tienen acceso al código fuente y pueden desarrollar y mejorar las funcionalidades del software.  
+
+
+	    CMS en la nube:
+
+	    	Un sistema preconstruido accesible sin necesidad de descargar hardware o software. 
+
+	    	Los usuarios pueden gestionar contenidos web de forma segura a través de la nube y acceder a ellos fácilmente desde múltiples dispositivos.
+
+
+	    CMS propietario: 
+
+	    	Tiene un coste de licencia, ya que es propiedad legal de la empresa, organización o persona que lo ha creado. 
+
+	    	El coste puede ser un pago inicial único, una cuota mensual o un cargo anual.
+
+
+	Funcionamiento de un sitio web y de los CMS: 
+
+		Para entender cómo funciona un sistema de gestión de contenidos, primero hay que saber qué es un sitio web y cómo se construye uno desde cero.
+
+		Un sitio web consta de dos partes principales: 
+
+			El front-end es la parte que el usuario final ve en su navegador, como entradas de blog, galerías y vídeos.
+
+			Comprende lenguajes de marcado estándar llamados HTML, lenguaje de hojas de estilo CSS y JavaScript.
+
+		Por su parte, el back-end consiste en la base de datos y la funcionalidad de un sitio web.
+
+		Los distintos lenguajes de programación que se utilizan en su construcción son PHP, Python, Ruby y Java. 
+
+		Para que su sitio web sea visible en la web, también tiene que cargar manualmente todo el contenido de su sitio web en un servidor web. 
+
+		La base de datos del servidor web almacenará el contenido y lo enviará del back-end al front-end cada vez que un usuario acceda al sitio. 
+
+		Un sistema de gestión de contenidos permite agilizar estos procesos. 
+
+		Además de eliminar la necesidad de codificar, un sistema de gestión de contenidos también facilita la carga de contenidos. 
+
+		El editor de contenidos, muy fácil de usar, permite crear sin problemas entradas y páginas.
+
+		Además de archivos basados en texto, como documentos .PDF, el software editor de contenidos también permite organizar páginas web, imágenes, vídeos, texto y archivos de audio, entre otros tipos de archivos.
+
+		La mayoría de los software CMS también le proporcionan una interfaz a través de la cual puede tener el control de las revisiones. 
+
+		También puede utilizarlo para configurar los ajustes de su sitio web y establecer sistemas de permisos. 
+
+		Todo el proceso es sencillo y no requiere conocimientos técnicos.
+
+		Ten en cuenta que un sistema de gestión de contenidos es diferente de un sistema de gestión de contenidos empresariales (ECM). 
+
+		El ECM se centra más en la gestión de documentos y procesos relacionados con la empresa, como la digitalización de documentos en papel para una mejor organización, seguridad y trazabilidad.
+
+
+	Características de un CMS: 
+
+		Un sistema de gestión de contenidos consta de dos elementos básicos: la aplicación de gestión de contenidos (CMA) y la aplicación de entrega de contenidos (CDA).
+
+		La CMA gestiona la entrada de contenidos del sitio, permitiendo a los usuarios añadir, gestionar y modificar el contenido con facilidad. 
+
+		El front-end del software CMS suele incluir un editor de tipo "lo que ves es lo que obtienes" (WYSIWYG: what you see is what you get) que puede utilizarse para crear y publicar el contenido del sitio.
+
+		Mientras tanto, el CDA sirve como back-end del software CMS. 
+
+		El CDA almacena y gestiona el contenido que los propietarios del sitio introducen a través del CMA y lo publica para que sea visible para los visitantes del sitio. 
+
+		Todos los cambios realizados en las páginas web pasan por esta parte del CMS.
+
+
+	Plugins, extensiones y temas para un CRM: 
+
+		Por defecto, los sistemas de gestión de contenidos permiten crear entradas y páginas y modificar el diseño general del sitio web. 
+
+		Otras funciones, como la optimización para motores de búsqueda (SEO), las funciones de búsqueda, la seguridad y otras personalizaciones, están disponibles a través de extensiones como plugins y temas.
+
+		Una extensión o un plugin es un componente de software que conlleva una funcionalidad específica. 
+
+		Al añadirlo a un sitio web se amplían sus capacidades o se integra el sistema del sitio web con un servicio de terceros.
+
+		La mayoría de las plataformas CMS tienen sus propios directorios de extensiones o plugins. 
+
+		Por ejemplo, WordPress tiene miles de plugins gratuitos en su directorio oficial de plugins.
+
+		Algunos CMS también permiten adquirirlos en mercados de plugins de terceros como CodeCanyon y Mojo Marketplace.
+
+		En cuanto a cambiar la apariencia de tu sitio web, puedes hacerlo instalando un tema. 
+
+		Se trata de un conjunto de archivos de plantilla que proporcionan a un sitio una interfaz visual coherente sin afectar a su funcionalidad básica. 
+
+		Ten en cuenta que un tema suele estar orientado a un nicho específico en cuanto a diseño y funciones. 
+
+		Sin embargo, puedes editar los archivos para añadir o eliminar algunos elementos visuales y gráficos y modificar la combinación de colores. 
+
+		Al igual que los plugins, los temas se pueden descargar a través del directorio de temas del CMS o de mercados de terceros. 
+
+		El proceso de instalación de ambos componentes es relativamente sencillo.
+
+		Configurarlos y modificarlos puede requerir algunos conocimientos técnicos básicos, pero son más fáciles de aprender en comparación con aprender a programar desde cero.
+
+
+	CMS populares: 
+
+		Dado que cada plataforma CMS se dirige a necesidades de usuario diferentes, es esencial que determine sus objetivos para el resultado final. 
+
+		A continuación se enumeran algunas de las plataformas de sistemas de gestión de contenidos web (WCMS) más populares.
+
+
+		WordPress: 
+
+			WordPress, que ocupa el 42,9% de Internet, es el sistema de gestión de contenidos web más popular del mercado actual.
+
+			Este CMS gratuito y autoalojado comenzó como una plataforma de publicación de blogs, lo que le permitió contar con sólidas herramientas de gestión de contenidos. 
+
+			WordPress puede alojar todo tipo de sitios web, desde tiendas de comercio electrónico hasta sitios de aprendizaje y portafolios sencillas. 
+
+			Viene con una enorme colección de plugins y temas relativamente fáciles de configurar. 
+
+			Por este motivo, WordPress es muy versátil y escalable.
+
+			Al ser una plataforma de código abierto, WordPress cuenta con una gran comunidad y multitud de foros. 
+
+			Los propietarios de sitios web pueden ponerse en contacto con otros usuarios de WordPress o consultar sitios web de tutoriales de WordPress para obtener ayuda. 
+
+			Esto es especialmente beneficioso para los principiantes, ya que WordPress tiene una pronunciada curva de aprendizaje.
+
+
+		Drupal: 	
+
+			Drupal es uno de los sistemas de gestión de contenidos web más potentes del mercado.
+
+			Grandes empresas y entidades gubernamentales como la NASA, Tesla, Sony Music y Nokia lo utilizan para gestionar sus contenidos web en línea. 
+
+			Drupal ofrece un tiempo de carga de página excelente y herramientas de seguridad avanzadas. 
+
+			También viene con módulos incorporados, lo que le permite integrar su sitio web con herramientas de análisis populares, así como funciones de marketing y comercio electrónico.
+
+			Dicho esto, para crear un sitio web con Drupal sólo necesita servicios de alojamiento y conocimientos básicos de programación. 
+
+			Esta plataforma CMS está diseñada para profesionales, por lo que los principiantes pueden encontrar su interfaz mucho más complicada que la de WordPress.
+
+
+		PrestaShop: 
+
+			PrestaShop es un sistema de gestión de contenidos cada vez más popular entre las pequeñas y medianas empresas de comercio electrónico. 
+
+			Una de las ventajas de utilizar este software CMS es su sencillo proceso de integración y el acceso a herramientas de comercio electrónico fáciles de usar, que permiten a usuarios de todos los niveles crear una tienda online profesional.
+
+			Además de ser fácil de usar, PrestaShop también es compatible con varias divisas e idiomas. 
+
+			También dispone de herramientas SEO para mejorar el posicionamiento de su tienda en las SERPs.
+
+			Sin embargo, la escalabilidad limitada de Prestashop hace que no sea adecuado para las empresas a gran escala.
+
+			Tendrá que comprar módulos y plantillas premium para ampliar su tienda. 
+
+			Además, se necesitará un alojamiento fiable para Prestashop para poner en marcha su sitio web.
+
+
+		Magento: 
+
+			Magento es una popular plataforma de comercio electrónico para tiendas en línea de mediana y gran escala. 
+
+			Samsung, Nike y Ford son algunas de las muchas grandes empresas que utilizan Magento por su escalabilidad y sus avanzadas opciones de personalización. 
+
+			Magento está disponible en dos versiones: código abierto y Commerce. 
+
+			La versión gratuita de código abierto viene con un montón de características, como la venta global, la búsqueda en el sitio y la gestión de catálogos. 
+
+			Para acceder a funciones premium y soporte, tiene que comprar la versión Commerce de Magento, cuyo coste depende de sus necesidades individuales.
+
+
+		Joomla!: 
+
+			Joomla! es otro excelente sistema de gestión de contenidos de código abierto.
+
+			Al igual que WordPress, Joomla admite todo tipo de sitios web, ya sean para uso personal o empresarial.
+
+			Una de sus ventajas más significativas es que puedes gestionar el contenido en partes segregadas, lo que resulta ideal para sitios web con múltiples tipos de contenido. 
+
+			Las funciones de revisión de Joomla también le permiten modificar archivos de forma segura. 
+
+			Dado que Joomla requiere ciertos conocimientos técnicos, es más adecuado para desarrolladores y usuarios con experiencia en desarrollo web. 
+
+			Para los principiantes, optar por Joomla alojamiento web, ya que es una solución optimizada para Joomla que viene con herramientas de gestión de alojamiento fácil de usar para hacer su trabajo más fácil.
+
+
+		Otras opciones: 
+
+		    Squarespace:
+
+		    	Un CMS centrado en el comercio electrónico con aplicaciones móviles para ayudarle a gestionar el contenido sobre la marcha.
+
+
+		    Ghost:
+
+		    	Un CMS sin cabeza donde su repositorio de contenido está separado de la capa de presentación.
+
+
+		    Webflow:
+
+		    	Un WCMS con toneladas de opciones de personalización y excelentes funciones de gestión de formatos, ideal para diseñadores y agencias.
+
+
+	Ventajas y desventajas de un CRM: 	
+
+		A pesar de su facilidad de uso y abundantes funciones, utilizar un sistema de gestión de contenidos también tiene algunos inconvenientes. 
+
+		A continuación se exponen los pros y los contras de utilizar un sistema de gestión de contenidos web (WCMS) para construir y gestionar su sitio.
+
+
+		Ventajas:
+
+		    Facilidad de uso: 
+
+		    	No hace falta saber programar para utilizar un CMS. 
+
+		    	También puedes obtener soporte para las extensiones y plantillas si eliges las opciones premium.
+
+
+		    Rentable: 
+
+		    	La mayoría de las plataformas CMS son de uso gratuito y ofrecen extensiones y plantillas gratuitas.
+
+
+		    Altamente escalable:
+
+		    	la instalación de extensiones y plugins añadirá nuevas características a su sitio web, por lo que es más fácil de modificar según sea necesario. 
+
+		    	Hay multitud de opciones disponibles en directorios oficiales y sitios web de terceros.
+
+
+		    Funcionalidad de gestión de usuarios:
+
+		    	Todo sistema de gestión de contenidos, como WordPress, permite configurar diferentes roles y privilegios de usuario dentro del sitio.
+
+
+		    Bien documentado:
+
+		    	Documentación en línea, páginas de preguntas frecuentes, descripciones de extensiones y plantillas, tutoriales y vídeos están disponibles para ayudar a los principiantes a empezar.
+
+
+		Desventajas: 
+
+			Riesgos de seguridad: 
+
+				No actualizar las extensiones y plantillas con regularidad puede crear vulnerabilidades que los hackers pueden explotar. 
+
+				Por eso los piratas informáticos tienden a atacar sobre todo los sitios web con CMS.
+
+
+		    SEO mínimo:
+
+		    	Algunas plataformas CMS pueden proporcionar algunas herramientas SEO, pero su sitio web seguirá necesitando optimización manual para motores de búsqueda y extensiones adicionales para subir en las SERPs.
+
+
+		    Flexibilidad limitada:
+
+		    	Implementar funciones específicas en algunos CMS será un reto sin tener conocimientos técnicos o contratar a un desarrollador.		    
+
+
+	Consideraciones para elegir un CMS: 
+
+		Dado que cada sistema de gestión de contenidos presenta diferentes puntos fuertes y débiles, es fundamental elegir el más adecuado para su proyecto.
+
+
+	    Tipo de sitio web: 
+
+	    	Asegúrese de que el CMS elegido dispone de todas las herramientas necesarias para su tipo de sitio web. 
+
+	    	Por ejemplo, WordPress es el mejor para crear blogs, mientras que Magento es ideal para desarrollar sitios de comercio electrónico. 
+
+
+	    Coste: 
+
+	    	Aunque la mayoría de los sistemas de gestión de contenidos son gratuitos, suelen vender funciones adicionales como productos individuales.
+
+	    	Compruebe si el coste total se ajusta a su presupuesto.
+
+
+	    Escalabilidad:
+
+	    	Elegir un CMS con un amplio directorio de extensiones y plantillas le ofrece más opciones a la hora de crear su sitio web. 
+
+	    	Asegúrese también de comprobar los requisitos de servidor de las extensiones que desee utilizar.
+
+
+	    SEO:
+
+	    	El CMS que elija debe ser capaz de optimizar sus páginas web para los rastreadores de los motores de búsqueda.
+
+
+	    Marketing: 
+
+	    	La capacidad de realizar marketing por correo electrónico y redes sociales también ayuda a impulsar sus esfuerzos de SEO.
+
+
+	    Seguridad: 
+
+	    	Asegúrese de que las funciones de seguridad integradas en el CMS están actualizadas y son capaces de anticiparse a todos los tipos de malware.
+
+
+	CMS vs Website builders: 
+
+		Es fácil confundir un sistema de gestión de contenidos (CMS) con un creador de sitios web, otro tipo de software popular para crear sitios web sin tener que codificar.
+
+
+	    Alojamiento: 
+
+	    	Mientras que los creadores de sitios web suelen proporcionar servicios de alojamiento junto con su producto, el software CMS suele ser autoalojado, por lo que los usuarios pueden elegir los servicios de alojamiento web por separado.
+
+	    	Optar por el alojamiento CMS será lo más ideal, ya que el servicio está optimizado específicamente para este tipo de sitios web.
+
+
+    	Facilidad de uso: 
+
+    		Los creadores de sitios web suelen ofrecer editores fáciles de usar para crear contenidos y personalizar un sitio. 
+
+    		Mientras tanto, algunas plataformas CMS pueden tener una curva de aprendizaje más pronunciada para los usuarios no técnicos debido a la naturaleza de sus interfaces. 
+
+
+	    Escalabilidad: 
+
+	    	La mayoría de los CMS, especialmente los de código abierto, ofrecen una gran variedad de extensiones y plugins para ampliar un sitio. 
+
+	    	Los creadores de sitios web, sin embargo, suelen estar más limitados en cuanto al crecimiento del sitio.
+
+
+	Requisitos para hacer funcionar un CMS: 	
+
+		Antes de utilizar un CMS, hay que contratar un servicio de alojamiento web que permita almacenar todos los contenidos, archivos y bases de datos necesarios para el sitio web. 
+
+		Asegúrese de que el proveedor de alojamiento es compatible con el CMS elegido. 
+
+		Por ejemplo, los planes de alojamiento WordPress están diseñados específicamente para sitios web WordPress. 
+
+		No dude en consultar varias soluciones de alojamiento CMS de Hostinger y elija la más adecuada para su plataforma CMS.
+
+		El siguiente paso es registrar un dominio. 
+
+		Algunos proveedores de alojamiento incluyen nombres de dominio gratuitos con la mayoría de los planes de alojamiento. 
+
+		Alternativamente, puede registrar uno a través de un registrador de dominios. 
+
+		Una vez asegurados el alojamiento y el dominio, es hora de configurar el CMS desde la cuenta de alojamiento. 
+
+		La mayoría de los proveedores de alojamiento web ofrecen a los usuarios la posibilidad de configurar el CMS con un solo clic para agilizar este proceso.
+
+		Cuando el CMS esté en funcionamiento, podrás acceder al panel de control con el nombre de dominio registrado para empezar a personalizar tu sitio web y añadir contenido.
+
+		Asegúrese de que el proveedor de alojamiento es compatible con el CMS que ha elegido. 
+
+
+	Claves de los CRM: 
+
+		Un sistema de gestión de contenidos (CMS) permite crear y gestionar un sitio web profesional sin conocimientos de programación y a un coste mínimo. 
+
+		Además de su precio rentable, el principal atractivo de un CMS es su capacidad de personalización.
+
+		Gracias a las plantillas y extensiones prediseñadas, podrá elegir el diseño y las funciones que mejor se adapten a sus necesidades. 
+
+	
+	What you see is what you get (WYSIWYG):	
+
+		Un editor "lo que ves es lo que obtienes" (WYSIWYG) es una aplicación de software que contiene una interfaz que permite a los usuarios ver el resultado final del contenido mientras lo editan. 
+
+		Se suele utilizar en procesadores de texto, creadores de sitios web, sistemas de gestión de contenidos (CMS) y software de gestión de relaciones con los clientes (CRM).
+
+		En comparación con otros editores, las aplicaciones WYSIWYG permiten editar contenidos visualmente sin codificar. 
+
+		Ofrecen a los usuarios opciones de diseño y formato preestablecidas para añadir elementos, como imágenes, texto y vídeos, arrastrando y soltando el elemento en cualquier lugar de la página.
+
+
+		Funcionamiento de los editores WYSIWYG: 
+
+			Existen muchos editores WYSIWYG, pero su funcionamiento varía en función de sus características y capacidades. 
+
+			En general, estas plataformas incluyen lo siguiente.
+
+
+		    Interfaz gráfica de usuario:
+
+		    	Ofrece un editor visual con opciones de formato, botones y menús para crear o manipular elementos como tablas, listas, imágenes, contenido escrito y enlaces.
+
+
+		    Creación de contenidos en directo:
+
+		    	A medida que trabajas en el contenido, como añadir imágenes o modificar el formato, puedes verlos renderizados en la pantalla del editor en tiempo real.
+		    
+
+		    Código autogenerado: 
+
+		    	El editor WYSIWYG genera código o lenguajes de marcado como CSS y Lenguaje de Marcado de Hipertexto (HTML) según las modificaciones del usuario.
+
+
+		    Vista previa de la página y publicación:
+
+		    	Muchos editores WYSIWYG disponen de una función de vista previa que permite ver el aspecto final del contenido antes de ponerlo en línea. 
+
+		    	Una vez que esté satisfecho con los resultados, puede publicar con un solo clic.
+
+
+		Ventajas y desventajas de los WYSIWYG website builders: 
+
+			Ventajas: 
+
+				Edición sin código:
+
+					Un editor WYSIWYG ofrece una interfaz sin código que permite crear, formatear y modificar elementos visualmente. 
+
+					Con una curva de aprendizaje poco pronunciada, es perfecto para usuarios sin conocimientos técnicos ni habilidades de codificación.
+
+
+				Fácil de usar y centrado en el diseño:
+
+					Un editor WYSIWYG permite a los usuarios centrarse en la creación de una apariencia elegante del sitio web fácilmente sin prestar atención al código HTML específico. 
+
+					Suele venir con diseños o plantillas prefabricadas que puedes modificar para que tu sitio web destaque entre la competencia.
+
+
+				Flujo de trabajo eficaz:
+
+					Con un editor WYSIWYG, puedes crear y editar elementos web en línea, lo que lo hace excelente para la colaboración.
+
+					Además, los errores pueden resolverse fácilmente modificando elementos sin necesidad de despublicar y volver a publicar, lo que agiliza los flujos de trabajo.
+
+
+				Publicación rápida:
+
+					La publicación es más rápida utilizando un editor WYSIWYG, ya que no es necesario formatear el contenido del sitio manualmente desde cero. 
+
+					Incluye una función de publicación rápida que publica automáticamente el producto final en línea.
+
+
+			Desventajas: 	
+
+				Genera una cantidad excesiva de código:
+
+					Muchos editores WYSIWYG tienden a generar código excesivo o no conforme. 
+
+					En el primer caso, suele contener código hinchado y de mala calidad que puede hacer que su página se cargue lentamente.
+
+					Por su parte, el código no conforme puede romper las convenciones del sitio web y afectar a la usabilidad.
+
+
+				Funcionalidad de diseño limitada:
+
+					Algunos constructores web WYSIWYG ofrecen funciones de diseño limitadas, que sólo permiten crear un sitio web estándar.
+
+					Como tal, aquellos que construyen sitios complejos pueden necesitar utilizar CSS o código personalizado para ampliar la funcionalidad, ya que puede no ser posible utilizando las herramientas proporcionadas.
+
+
+				Oportunidades limitadas de optimización para motores de búsqueda:
+
+					Con algunos constructores web WYSIWYG, no puedes incluir explícitamente etiquetas de encabezado o atributos alt. 
+
+					Esto puede dificultar que su sitio web sea reconocido por los motores de búsqueda.
+
+					Sin embargo, los editores WYSIWYG más modernos incorporan funciones de optimización para motores de búsqueda (SEO).
 
 
 
@@ -2653,7 +3355,27 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
-|| Claves, Credenciales y Cookies
+
+|| Claves y Credenciales 
+
+
+
+
+
+||Cookies
+
+
+
+
+
+
+
+
+
+
+|| APIs 
+
+
 
 
 
