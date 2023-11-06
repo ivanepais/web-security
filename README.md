@@ -2861,7 +2861,7 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 	Hay casos de en los que no se necesita una lógica de negocio o de aplicación como la que puede proveer los servidores de aplicaciones con una compleja base de datos que pueda generar contenido dinámico y personalizado para el usuario. 
 
-	Solo se necesita una plataforma para publicar contenido que se pueda comunicar, ver, leer o vender. 
+	Solo se necesita una plataforma para publicar contenido que se pueda comunicar, ver, leer, vender o una plataforma para administrar un negocio. 
 
 
 	Content Management System (CMS): 
@@ -3349,10 +3349,673 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
+	CRM: 
+
+		Customer relationship management (CRM) es una tecnología para gestionar todas las relaciones e interacciones de su empresa con clientes y clientes potenciales. 
+
+		El objetivo es sencillo: Mejorar las relaciones comerciales para hacer crecer su negocio. 
+
+		Un sistema CRM ayuda a las empresas a mantenerse conectadas con los clientes, agilizar los procesos y mejorar la rentabilidad.
+
+		Cuando la gente habla de CRM, suele referirse a un sistema CRM, una herramienta que ayuda en la gestión de contactos, la gestión de ventas, la productividad de los agentes y mucho más. 
+
+		En la actualidad, las herramientas CRM pueden utilizarse para gestionar las relaciones con los clientes a lo largo de todo su ciclo de vida, abarcando el marketing, las ventas, el comercio digital y las interacciones con el servicio de atención al cliente.
+
+		Una solución CRM le ayuda a centrarse en las relaciones de su organización con personas individuales -incluidos clientes, usuarios de servicios, colegas o proveedores- a lo largo de su ciclo de vida con ellos, incluida la búsqueda de nuevos clientes, la captación de sus negocios y la prestación de asistencia y servicios adicionales a lo largo de la relación.
+
+
+	Propósito de un CRM: 
+
+		Un sistema CRM ofrece a todo el mundo -desde ventas, atención al cliente, desarrollo empresarial, contratación, marketing o cualquier otra línea de negocio- una forma mejor de gestionar las interacciones y relaciones externas que impulsan el éxito.
+
+		Una herramienta CRM le permite almacenar información de contacto de clientes y clientes potenciales, identificar oportunidades de venta, registrar problemas de servicio y gestionar campañas de marketing, todo ello en una ubicación central, y poner la información sobre cada interacción con el cliente a disposición de cualquier persona de su empresa que pueda necesitarla.
+
+		Con visibilidad y fácil acceso a los datos, es más fácil colaborar y aumentar la productividad.
+
+		Todos los miembros de su empresa pueden ver cómo se han comunicado con los clientes, qué han comprado, cuándo lo hicieron por última vez, cuánto han pagado y mucho más. 
+
+		CRM puede ayudar a empresas de todos los tamaños a impulsar el crecimiento del negocio, y puede ser especialmente beneficioso para una pequeña empresa, donde los equipos a menudo necesitan encontrar formas de hacer más con menos.
+
+
+	Ventajas de un CRM: 
+
+		Para que su empresa perdure, necesita una estrategia de futuro centrada en sus clientes y dotada de la tecnología adecuada. 
+
+		Usted tiene metas de ventas, objetivos empresariales y rentabilidad. 
+
+		Pero obtener información actualizada y fiable sobre su progreso puede ser complicado.
+
+		¿Cómo traduce los numerosos flujos de datos procedentes de las ventas, el servicio de atención al cliente, el marketing y el seguimiento de las redes sociales en información empresarial útil?
+
+		Un sistema CRM puede ofrecerle una visión clara de sus clientes.
+
+		Puede verlo todo en un único lugar: un panel de control sencillo y personalizable que le informa del historial de un cliente con usted, el estado de sus pedidos, cualquier problema pendiente con el servicio de atención al cliente y mucho más.
+
+		Incluso puede incluir información de su actividad pública en las redes sociales: lo que les gusta y lo que no, lo que dicen y comparten sobre usted o sus competidores. 
+
+		Los profesionales del marketing pueden utilizar una solución de CRM para gestionar y optimizar las campañas y los recorridos de los clientes potenciales con un enfoque basado en datos, y comprender mejor la cartera de ventas o los clientes potenciales que llegan, lo que simplifica las previsiones y las hace más precisas. 
+
+		Tendrá una visibilidad clara de cada oportunidad o cliente potencial, lo que le mostrará una ruta clara desde las consultas hasta las ventas.
+
+		Algunas de las mayores ganancias en productividad y en el cambio de toda la empresa hacia un enfoque centrado en el cliente pueden venir de ir más allá del CRM como mera herramienta de ventas y marketing, e integrarlo en su negocio, desde las finanzas a los servicios al cliente y la gestión de la cadena de suministro. 
+
+		Esto ayuda a garantizar que las necesidades del cliente estén en primera línea de los procesos empresariales y los ciclos de innovación.
+
+		Aunque los sistemas CRM se han utilizado tradicionalmente como herramientas de ventas y marketing, el servicio y la atención al cliente son un segmento en alza del CRM y una pieza fundamental en la gestión de una relación holística con el cliente. 
+
+		El cliente de hoy puede plantear un problema en un canal -por ejemplo, Twitter- y luego pasar al correo electrónico o al teléfono para resolverlo en privado. 
+
+		Una plataforma de CRM permite gestionar la consulta a través de los distintos canales sin perder el hilo, y ofrece a los departamentos de ventas, servicios y marketing una visión única del cliente que sirve de base para sus actividades. 
+
+		La capacidad de conectar estas tres funciones, y los equipos que las llevan a cabo, en una sola plataforma y con una sola visión del cliente, tiene un valor incalculable para ofrecer experiencias relevantes y conectadas.
+
+
+	Desventajas de un CRM: 
+
+		Más administración significa menos tiempo para todo lo demás.
+
+		Un equipo de ventas activo puede generar una avalancha de datos.
+
+		Los representantes se desplazan para hablar con los clientes, reunirse con posibles clientes y obtener información valiosa, pero con demasiada frecuencia esta información se almacena en notas manuscritas, ordenadores portátiles o dentro de las cabezas de los vendedores.
+
+		Los detalles pueden perderse, no se hace un seguimiento puntual de las reuniones y priorizar a los clientes puede ser una cuestión de conjeturas en lugar de un ejercicio riguroso basado en datos. 
+
+		Y todo esto puede agravarse si un vendedor clave se marcha. 
+
+		Pero no sólo las ventas sufren sin CRM.
+
+		Sus clientes pueden ponerse en contacto con usted a través de distintas plataformas (teléfono, correo electrónico o redes sociales) para hacerle preguntas, realizar el seguimiento de un pedido o plantearle un problema.
+
+		Sin una plataforma común para las interacciones con los clientes, las comunicaciones pueden perderse o perderse en la avalancha de información, lo que provoca una respuesta lenta o insatisfactoria.
+
+		Incluso si consigue recopilar todos estos datos, se enfrenta al reto de darles sentido, puede ser difícil extraer información. 
+
+		Los informes pueden ser difíciles de crear y pueden hacer perder un valioso tiempo de venta. 
+
+		Los directivos pueden perder de vista lo que hacen sus equipos, lo que significa que no pueden ofrecer el apoyo adecuado en el momento oportuno, mientras que la falta de supervisión también puede dar lugar a una falta de responsabilidad por parte del equipo.
+
+
+	Características de un CRM: 
+
+		Una solución de gestión de las relaciones con los clientes (CRM) le ayuda a encontrar nuevos clientes, captarlos y mantenerlos satisfechos organizando la información sobre clientes actuales y potenciales de forma que pueda establecer relaciones más sólidas con ellos y acelerar el crecimiento de su negocio. 
+
+		Los sistemas de CRM empiezan recopilando los datos del sitio web, el correo electrónico, el teléfono y las redes sociales de un cliente, entre otros, a través de múltiples fuentes y canales.
+
+		También puede extraer automáticamente otra información, como noticias recientes sobre la actividad de la empresa, y puede almacenar datos personales, como las preferencias personales de un cliente en las comunicaciones. 
+
+		La herramienta CRM organiza esta información para ofrecerle un registro completo de individuos y empresas en general, de modo que pueda comprender mejor su relación a lo largo del tiempo.
+
+		Con una visión consolidada de cada cliente potencial y cliente, un sistema CRM se utiliza para gestionar las actividades e interacciones diarias con los clientes. 
+
+		Desde el punto de vista del marketing, esto significa atraer a sus clientes potenciales con el mensaje adecuado, en el momento oportuno, a través de campañas y recorridos de marketing digital específicos. 
+
+		En cuanto a las ventas, los representantes pueden trabajar de forma más rápida e inteligente con una visión clara de su cartera y realizar previsiones más precisas. 
+
+		Los equipos de comercio pueden lanzar y ampliar rápidamente el comercio electrónico -desde los pedidos en línea hasta la recogida en la acera- para sus compradores particulares (comercio B2C) y empresariales (comercio B2B). 
+
+		Y los agentes de atención al cliente pueden responder a las necesidades de los clientes en cualquier canal: desde casa, sobre el terreno o en la oficina.
+
+		Una plataforma CRM también puede conectarse a otras aplicaciones empresariales que le ayuden a desarrollar relaciones con los clientes. 
+
+		Las soluciones CRM actuales son más abiertas y pueden integrarse con sus herramientas empresariales favoritas, como la firma de documentos, la contabilidad y la facturación, y las encuestas, de modo que la información fluye en ambos sentidos para ofrecerle una verdadera visión de 360 grados de su cliente.
+		
+		Y una nueva generación de CRM va un paso más allá: La inteligencia y la IA integradas automatizan las tareas administrativas, como la introducción de datos y el enrutamiento de clientes potenciales o casos de servicio, para que pueda dedicar tiempo a actividades más valiosas. 
+
+		La información generada automáticamente le ayuda a comprender mejor a sus clientes, incluso a predecir cómo se sentirán y cómo actuarán, para que pueda preparar el acercamiento adecuado. 
+
+		La IA también le ayuda a encontrar oportunidades que pueden estar ocultas en los datos de su empresa.
+
+
+	Herramientas de los CRM: 
+
+		Silos: 
+
+			El 56% de los directivos admite que los silos organizativos repercuten negativamente en la calidad de la experiencia de sus clientes actuales y potenciales. 
+
+			Los silos de información son un gran problema, pero una plataforma y un proceso compartidos para gestionar las relaciones con los clientes en todas las funciones pueden ser de gran ayuda. De hecho, el 80% de los líderes empresariales del mismo estudio afirman que utilizan cada vez más el CRM de su empresa como única fuente de información sobre sus clientes en todos los departamentos.
+
+			Con un CRM compartido, los empleados disponen de las herramientas y los datos adecuados para gestionar las relaciones con los clientes de forma más eficaz en todas las líneas de negocio, y tienen visibilidad de las interacciones con los clientes de otros departamentos. 
+
+			Pueden trabajar juntos de forma más eficaz y eficiente para ofrecer experiencias de cliente conectadas.
+
+
+		Cuenta de resultados: 
+
+			Se ha demostrado que la introducción de una plataforma CRM produce resultados reales, incluidas mejoras directas en los resultados finales. 
+
+			Los clientes globales de todos los tamaños de empresa tienen un historial probado de producir lo siguiente
+
+			Se ha demostrado que la introducción de una plataforma CRM produce resultados reales, incluidas mejoras directas en los resultados finales.
+
+
+		Clasificación de clientes: 
+
+			Un sistema CRM puede ayudarle a identificar y añadir nuevos clientes potenciales de forma fácil y rápida, y a clasificarlos con precisión.
+
+			Al centrarse en los clientes potenciales adecuados, el departamento de ventas puede dar prioridad a las oportunidades que permitirán cerrar acuerdos, y el de marketing puede identificar los clientes potenciales que necesitan más atención y prepararlos para que se conviertan en clientes potenciales de calidad.
+
+			Al disponer de información completa, precisa y centralizada sobre clientes y clientes potenciales, los departamentos de ventas y marketing pueden centrar su atención y energía en los clientes adecuados.
+
+
+		Relación cliente-empresa: 
+
+			Al conocer mejor a sus clientes, se hacen más evidentes las oportunidades de venta cruzada y upselling, lo que le da la oportunidad de conseguir nuevos negocios de sus clientes actuales.
+
+			Esto le ayuda a establecer relaciones más duraderas y rentables con sus clientes.
+
+			Con una mejor visibilidad, también podrá mantener a sus clientes satisfechos con un mejor servicio. 
+
+			Los clientes satisfechos suelen repetir, y los que repiten gastan más: hasta un 33% más, según algunos estudios.
+
+
+		Soporte/Atención al cliente: 
+
+			Los clientes de hoy en día esperan una asistencia rápida y personalizada, a cualquier hora del día o de la noche.
+
+			Un sistema CRM puede ayudarle a ofrecer el servicio de alta calidad que buscan los clientes. 
+
+			Sus agentes pueden ver rápidamente qué productos han pedido los clientes, y pueden obtener un registro de cada interacción para poder dar a los clientes las respuestas que necesitan, rápidamente.
+
+
+		Mejora de productos y servicios: 
+
+			Un buen sistema CRM recopilará información de una gran variedad de fuentes de su empresa y más allá. 
+
+			De este modo, puede servir como un motor de escucha de los clientes, proporcionándole una visión sin precedentes de cómo se sienten sus clientes y de lo que dicen de su organización, para que pueda mejorar lo que ofrece, detectar problemas a tiempo e identificar carencias.
+
+
+		Conexión remota: 
+
+			En un mundo en el que se trabaja desde cualquier lugar, nunca ha sido tan importante que sus equipos estén conectados en una plataforma compartida que les permita colaborar y trabajar desde cualquier sitio. 
+
+			Y dejando a un lado las fuerzas externas, las expectativas de los clientes seguirán empujando a su empresa a evolucionar con el tiempo, y un CRM flexible, escalable y basado en la nube puede ayudarle a mantenerse ágil y a hacer crecer su negocio sin importar las circunstancias. 
+
+
+	Cloud CRM: 
+
+		Quizá el avance reciente más significativo en los sistemas CRM haya sido el paso del software CRM local a la nube. 
+
+		Liberadas de la necesidad de instalar software en decenas, cientos o miles de ordenadores de sobremesa y dispositivos móviles, organizaciones de todo el mundo están descubriendo las ventajas de trasladar datos, software y servicios a un entorno en línea seguro.
+
+		Permiten que todos los usuarios dispongan de la misma información en todo momento. 
+
+		Sus equipos de ventas que están de viaje pueden consultar los datos, actualizarlos al instante después de una reunión o trabajar desde cualquier lugar. 
+
+		La misma información está disponible para cualquiera que la necesite, desde el equipo de ventas hasta los representantes del servicio de atención al cliente.
+
+
+		Reducir costes:
+
+			El CRM puede ser rápido y fácil de implantar. 
+
+			Un sistema basado en la nube no requiere ninguna instalación especial ni hardware que configurar, lo que mantiene bajos los costes de TI y elimina los quebraderos de cabeza del control de versiones y los calendarios de actualización.
+
+			Normalmente, los sistemas CRM basados en la nube tienen un precio basado en el número de usuarios que acceden al sistema y el tipo de funciones necesarias. 
+
+			Esto puede ser muy rentable en términos de desembolso de capital, y también es extremadamente flexible, lo que le permite escalar y añadir más personas a medida que crece su negocio.
+
+			Salesforce también es flexible en términos de funcionalidad: no pagará por ninguna función que no le resulte útil.
+
+
+		Una plataforma CRM basada en la nube le ofrece:
+
+		    Implementación más rápida.
+
+		    Actualizaciones automáticas de software.
+
+		    Rentabilidad y escalabilidad.
+
+		    La posibilidad de trabajar desde cualquier lugar, en cualquier dispositivo.
+
+		    Mayor colaboración.
+
+
+	Claves de un CRM: 
+
+		El uso de un sistema CRM ayuda a las empresas a ser más eficientes, mejorar las relaciones con sus clientes y aumentar su CLV (Customer Lifetime Value).
+
+    	Un sistema CRM almacena datos importantes sobre clientes y clientes potenciales, lo que permite a las empresas gestionar mejor sus relaciones clave.
+
+   		Entre las funciones importantes de un sistema CRM se incluyen la gestión de contactos y clientes potenciales, la previsión de ventas y los análisis basados en cuadros de mando.
+
+    	Al evaluar y comparar sistemas CRM, es importante que una organización decida primero qué se ajusta mejor a sus necesidades: un CRM basado en la nube o un CRM cliente/servidor.
+
+    	Los sistemas CRM pueden ayudar a seguir el ritmo de un mundo cambiante, son sistemas CRM son flexibles y escalables. 
+
+    	Las empresas pueden aprovechar la inteligencia artificial, integrar las redes sociales y adoptar la movilidad, en cualquier lugar y en cualquier momento.
+
+
 
 || Certificados 
 
+	Los certificados digitales (o simplemente certificados) son archivos electrónicos que identifican de forma única a personas y recursos en Internet.
 
+	Los certificados también permiten la comunicación segura y confidencial entre dos entidades.
+
+	Existen diferentes tipos de certificados, como los certificados personales, utilizados por particulares, y los certificados de servidor, utilizados para establecer sesiones seguras entre el servidor y los clientes mediante la tecnología de capa de sockets seguros (SSL).
+
+	Los certificados se basan en la criptografía de clave pública (public key cryptography), que utiliza pares de claves digitales (digital keys) (números muy largos) para cifrar (encrypt), o codificar, la información de modo que sólo pueda ser leída por su destinatario. 
+
+	A continuación, el destinatario descifra (decrypts) la información para leerla.
+
+	Un par de claves contiene una clave pública (public key) y una clave privada (private key). 
+
+	El propietario (owner) distribuye la clave pública y la pone a disposición de cualquiera. 
+
+	Pero el propietario nunca distribuye la clave privada; siempre se mantiene en secreto. 
+
+	Como las claves están relacionadas matemáticamente, los datos cifrados con una clave sólo pueden descifrarse con la otra clave del par.
+
+	Un certificado es como un pasaporte: identifica al titular y proporciona otra información importante. 
+
+	Los certificados los emite un tercero de confianza llamado Autoridad de Certificación (AC). 
+
+	La CA es análoga a la oficina de pasaportes: valida la identidad del titular del certificado y firma el certificado para que no pueda ser falsificado o manipulado. 
+
+	Una vez que una CA ha firmado un certificado, el titular puede presentarlo como prueba de identidad y para establecer comunicaciones cifradas y confidenciales.
+
+	Y lo que es más importante, un certificado vincula la clave pública del titular a su identidad. 
+
+	Al igual que un pasaporte vincula una fotografía a la información personal de su titular, un certificado vincula una clave pública a la información sobre su propietario.
+
+	Además de la clave pública, un certificado suele incluir información como:
+
+   		El nombre del titular y otra identificación, como la URL del servidor Web que utiliza el certificado o la dirección de correo electrónico de una persona.
+
+    	El nombre de la CA que emitió el certificado.
+
+    	Una fecha de caducidad.
+
+	Los certificados digitales se rigen por las especificaciones técnicas del formato X.509. 
+
+	Para verificar la identidad de un usuario en el ámbito de los certificados, el servicio de autenticación verifica un certificado X.509, utilizando el campo de nombre común del certificado X.509 como nombre principal.
+
+
+	Cadenas de Certificados: 
+
+		Los navegadores web están preconfigurados con un conjunto de certificados de CA raíz en los que el navegador confía automáticamente. 
+
+		Cualquier certificado procedente de otro lugar debe ir acompañado de una cadena de certificados para verificar su validez. 
+
+		Una cadena de certificados es una serie de certificados emitidos por sucesivas CA que acaban en un certificado de CA raíz.
+
+		Cuando se genera un certificado por primera vez, se trata de un certificado autofirmado. 
+
+		Un certificado autofirmado es aquel cuyo emisor (firmante) es el mismo que el sujeto (la entidad cuya clave pública está siendo autenticada por el certificado). 
+
+		Cuando el propietario envía una solicitud de firma de certificado (CSR) a una CA e importa la respuesta, el certificado autofirmado se sustituye por una cadena de certificados. 
+
+		Al final de la cadena se encuentra el certificado (respuesta) emitido por la CA que autentica la clave pública del sujeto. 
+
+		El siguiente certificado de la cadena es el que autentica la clave pública de la CA.
+
+		Normalmente, se trata de un certificado autofirmado (es decir, un certificado de la CA que autentica su propia clave pública) y el último certificado de la cadena.
+
+		En otros casos, la CA puede devolver una cadena de certificados. 
+
+		En este caso, el certificado inferior de la cadena es el mismo (un certificado firmado por la CA, que autentica la clave pública de la entrada de claves), pero el segundo certificado de la cadena es un certificado firmado por una CA diferente, que autentica la clave pública de la CA a la que enviaste la CSR. 
+
+		A continuación, el siguiente certificado de la cadena es un certificado que autentica la clave de la segunda CA, y así sucesivamente, hasta llegar a un certificado raíz autofirmado.
+
+		Así, cada certificado de la cadena (después del primero) autentica la clave pública del firmante del certificado anterior de la cadena.
+
+
+	SSL:
+
+		Secure Sockets Layer (SSL) es el estándar más popular para proteger las comunicaciones y transacciones en Internet. 
+
+		Las aplicaciones web utilizan HTTPS (HTTP sobre SSL), que emplea certificados digitales para garantizar comunicaciones seguras y confidenciales entre el servidor y los clientes. 
+
+		En una conexión SSL, tanto el cliente como el servidor cifran los datos antes de enviarlos y los descifran al recibirlos.
+
+		Cuando un navegador web (cliente) quiere conectarse a un sitio seguro, se produce un intercambio (handshake) SSL:
+
+		    El navegador envía un mensaje a través de la red solicitando una sesión segura (normalmente, solicitando una URL que empiece por https en lugar de http).
+
+		    El servidor responde enviando su certificado (incluida su clave pública).
+
+		    El navegador comprueba que el certificado del servidor es válido y está firmado por una CA cuyo certificado está en la base de datos del navegador (y que es de confianza). 
+
+		    También comprueba que el certificado de la CA no haya caducado.
+
+		    Si el certificado es válido, el navegador genera una única clave de sesión (session key) y la cifra (encrypt) con la clave pública del servidor. 
+
+		    A continuación, el navegador envía la clave de sesión cifrada al servidor para que ambos dispongan de una copia.
+
+		    El servidor descifra (decrypts) el mensaje utilizando su clave privada y recupera la clave de sesión.
+
+
+		Tras el apretón de manos, el cliente ha verificado la identidad del sitio web, y sólo el cliente y el servidor web disponen de una copia de la clave de sesión. 
+
+		A partir de ese momento, el cliente y el servidor utilizan la clave de sesión para cifrar todas las comunicaciones entre ellos.
+
+		De este modo, se garantiza la seguridad de sus comunicaciones.
+
+		La versión más reciente de la norma SSL se denomina TLS (Transport Layer Security). 
+
+		El Servidor de Aplicaciones soporta los protocolos de encriptación Secure Sockets Layer (SSL) 3.0 y Transport Layer Security (TLS) 1.0.
+
+		Para utilizar SSL, el Servidor de Aplicaciones debe tener un certificado para cada interfaz externa, o dirección IP, que acepte conexiones seguras. 
+
+		El servicio HTTPS de la mayoría de los servidores Web no funcionará a menos que se haya instalado un certificado digital.
+
+		Generar un certificado utilizando la utilidad keytool para configurar un certificado digital que su servidor Web pueda utilizar para SSL.
+
+
+	Cifrados (Ciphers): 
+
+		Un cifrado es un algoritmo criptográfico utilizado para cifrar o descifrar. 
+
+		Los protocolos SSL y TLS admiten diversos cifrados que se utilizan para autenticar el servidor y el cliente entre sí, transmitir certificados y establecer claves de sesión.
+
+		Algunos cifrados son más potentes y seguros que otros. 
+
+		Los clientes y servidores pueden soportar diferentes suites de cifrado. 
+
+		Elija cifradores de los protocolos SSL3 y TLS. 
+
+		Durante una conexión segura, el cliente y el servidor acuerdan utilizar el cifrado más potente que ambos tengan activado para la comunicación, por lo que suele ser suficiente con activar todos los cifrados.
+
+
+	Name-based Virtual Hosts:
+
+		El uso de hosts virtuales basados en nombres para una aplicación segura puede ser problemático. 
+
+		Se trata de una limitación de diseño del propio protocolo SSL.
+
+		El protocolo SSL, en el que el navegador del cliente acepta el certificado del servidor, debe producirse antes de que se acceda a la solicitud HTTP. 
+
+		Como resultado, la información de la solicitud que contiene el nombre del host virtual no puede determinarse antes de la autenticación y, por tanto, no es posible asignar varios certificados a una única dirección IP.
+
+		Si todos los hosts virtuales de una misma dirección IP necesitan autenticarse con el mismo certificado, la adición de múltiples hosts virtuales probablemente no interferirá con las operaciones SSL normales del servidor. 
+
+		Sin embargo, tenga en cuenta que la mayoría de los navegadores compararán el nombre de dominio del servidor con el nombre de dominio que aparece en el certificado, si lo hay (aplicable principalmente a certificados oficiales firmados por CA). 
+
+		Si los nombres de dominio no coinciden, estos navegadores muestran una advertencia. 
+
+		En general, sólo los hosts virtuales basados en direcciones se utilizan habitualmente con SSL en un entorno de producción.
+
+
+	Claves de los certificados en los sitios web: 
+
+		SSL es la tecnología de seguridad estándar para establecer un enlace cifrado entre un servidor web y un navegador. 
+
+		Este enlace protege la privacidad de todos los datos que se comuniquen entre el servidor web y el navegador.
+
+		Analicemos esta definición con un ejemplo: imagina que llegas a un sitio web que cuenta con un formulario y, después de completarlo y seleccionar «enviar», la información que acabas de mandar es interceptada por un hacker debido a que se trataba de un sitio web no seguro.
+
+		Los datos que compartes pueden ser de cualquier tipo, desde información bancaria, fiscal, de identidad, tus contactos, etc. 
+
+		En la jerga de los hackers, esta intercepción se conoce como «ataque de intermediario». 
+
+		El ataque puede ocurrir de varias maneras, pero una de las más comunes es cuando un hacker coloca un pequeño programa de espionaje indetectable en el servidor que aloja un sitio web.
+
+		Ese programa espera en segundo plano y, cuando un visitante comienza a escribir sus datos en el sitio, se activa para captar la información y enviársela al hacker. 
+
+		Si una organización desea tener un sitio web seguro que utilice cifrado, necesita obtener un certificado de sitio, o de host.
+
+		Hay dos elementos que indican que un sitio utiliza cifrado (para más información, consulte Protección de su privacidad):
+
+	    	Un candado cerrado, que, dependiendo de su navegador, puede estar situado en la barra de estado de la parte inferior de la ventana del navegador o en la parte superior de la ventana del navegador, entre los campos de dirección y búsqueda.
+
+	   		Un Localizador Uniforme de Recursos (URL) que comienza por "https:" en lugar de "http:"
+
+		Al asegurarse de que un sitio web cifra su información y tiene un certificado válido, puede ayudar a protegerse contra los atacantes que crean sitios maliciosos para recopilar su información. 
+
+		Asegúrese de saber adónde va su información antes de enviar nada (para más información, consulte Cómo evitar los ataques de ingeniería social y phishing).
+
+		Si un sitio web tiene un certificado válido, significa que una autoridad de certificación ha tomado medidas para verificar que la dirección web pertenece realmente a esa organización.
+
+		Cuando escriba una URL o siga un enlace a un sitio web seguro, su navegador comprobará el certificado para las siguientes características:
+
+		    La dirección del sitio web coincide con la del certificado.
+
+		    El certificado está firmado por una autoridad de certificación que el navegador reconoce como autoridad "de confianza".
+
+		Si el navegador detecta un problema, puede presentarle un cuadro de diálogo en el que se indica que hay un error con el certificado del sitio. 
+
+		Esto puede ocurrir si el nombre con el que está registrado el certificado no coincide con el nombre del sitio, si ha decidido no confiar en la empresa que emitió el certificado o si el certificado ha caducado.
+
+		Normalmente se le ofrecerá la opción de examinar el certificado, tras lo cual podrá aceptarlo para siempre, aceptarlo sólo para esa visita concreta o decidir no aceptarlo. 
+
+		A veces la confusión es fácil de resolver (quizá el certificado se emitió para un departamento concreto de la organización y no con el nombre que figura en el expediente). 
+
+		Si no está seguro de que el certificado sea válido o cuestiona la seguridad del sitio, no envíe información personal.
+
+		Aunque la información esté encriptada, asegúrese de leer primero la política de privacidad de la organización para saber qué se hace con ella (para más información, consulte Protección de su privacidad).
+
+
+	Verificar certificado en el navegador: 
+
+		Hay dos formas de verificar el certificado de un sitio web en Edge, Firefox o Chrome. 
+
+		Una opción es hacer clic en el icono del candado. 
+
+		Sin embargo, es posible que los ajustes de su navegador no estén configurados para mostrar la barra de estado que contiene el icono. 
+
+		Además, es posible que los atacantes puedan crear sitios web maliciosos que falsifiquen el icono del candado y muestren una ventana de diálogo falsa si hace clic en ese icono.
+
+		Una forma más segura de encontrar información sobre el certificado es buscar la función de certificado en las opciones del menú. 
+
+		Esta información puede estar en las propiedades del archivo o en la opción de seguridad dentro de la información de la página.
+
+		Obtendrá un cuadro de diálogo con información sobre el certificado, incluyendo:
+
+    		Quién emitió el certificado:
+
+    			Debe asegurarse de que el emisor es una autoridad de certificación legítima y de confianza (puede ver nombres como VeriSign o Entrust).
+
+    			Algunas organizaciones también tienen sus propias autoridades de certificación que utilizan para emitir certificados para sitios internos como intranets.
+
+
+    		A nombre de quién se emite el certificado:
+
+    			El certificado debe emitirse a nombre de la organización propietaria del sitio web. 
+
+    			No confíe en el certificado si el nombre que aparece en él no coincide con el de la organización o persona que espera.
+			
+
+			Fecha de caducidad:
+
+				La mayoría de los certificados se emiten para uno o dos años. 
+
+				Una excepción es el certificado para la propia autoridad de certificación, que, debido a la cantidad de implicación necesaria para distribuir la información a todas las organizaciones que poseen sus certificados, puede ser de diez años.
+
+				Desconfíe de las organizaciones con certificados válidos durante más de dos años o con certificados caducados.
+
+
+
+
+	Certificados SSL: 
+
+		Cada vez que los visitantes de tu sitio web acceden a tu sitio, los datos se transfieren de un servidor a otro antes de que lleguen a su destino. 
+
+		A medida que internet evoluciona, también lo hacen tus usuarios (y aquellos que desean explorarlo). Sin una conexión segura, los datos transmitidos están en riesgo. 
+
+		¿Cómo proteges a tus usuarios, prospectos y clientes mientras navegan? con SSL: 
+
+			Tecnología de seguridad que establece un cifrado en la comunicación o intercambio de datos sensibles (usuario/contraseña, datos de formularios, transferencias financieras, etc.) y otros, entre el cliente/navegador y servidor de aplicaciones.  
+
+		Cuando veas un icono de candado junto a la URL en la barra de direcciones de ciertos sitios, significa que están protegidos por SSL. 
+
+
+		Tipos de certificados SSL: 
+
+
+
+
+
+		Obtener certificados SSL: 
+
+			Una vez que elijas el tipo de certificado que necesitas, podrás buscar proveedores de certificados que ofrezcan SSL de esas características. 
+
+
+			1. Verificar la información de nuestro tu sitio web en ICANN Lookup : 
+
+				Antes de que apliques para un certificado SSL, debes asegurarte de que tu registro ICANN Lookup está actualizado y coincide con lo que presentas a la Autoridad de Certificación. 
+
+				Ingresa a la herramienta ICANN Lookup y revisa tu nombre de servidor, tu información de registro y tus servidores de autoridad. 
+
+
+			2. Genera la Petición de Registro de Certificado (CSR, por sus siglas en inglés)
+
+				Primero debes generar una Petición de Registro de Certificado, o Certificate Signing Request (CSR). 
+
+				Lo puedes hacer a través de tu servidor, tu cPanel o un generador CSR en línea.
+
+				Opción 1: Servidor
+
+					Si tienes acceso a tu servidor, puedes generar el CSR sin ayuda. 
+
+					Encuentra las instrucciones específicas de tu servidor aquí. 
+
+					Esta opción es recomendada para usuarios avanzados o desarrolladores web. 
+					
+
+				Opción 2: cPanel
+
+					Si tienes acceso a tu cPanel a través de tu proveedor de hosting, también puedes generar un CSR utilizando sus herramientas. 
+
+					Ingresa a tu cPanel por medio de tu proveedor de hosting
+
+					Ve hacia abajo hasta la sección que se llama «Seguridad». Haz clic en la opción «SSL/TSL». 
+
+					Desde ahí podrás encontrar una opción para generar un CSR.
+
+					Luego de hacer clic, la aplicación te llevará a un formulario que pide tu dominio, ciudad, estado, país y empresa.
+
+				Generador de CSR en línea 
+
+					Finalmente, puedes evitarte cualquier complicación y simplemente usar un generador CSR en línea gratuito.
+
+					Algunas opciones incluyen:
+
+				    	Namecheap's CSR Generator (recomendado para usuarios avanzados).
+				    	
+				    	Digicert’s CSR Wizard (recomendado para principiantes).
+
+					Te sugerimos utilizarlo como último recurso porque no está conectado a tu servidor, servicio de hosting o cPanel.
+
+				Si no sabes cómo avanzar, contacta a tu proveedor de hosting para que te dé soporte, así tendrás instrucciones específicas para tu sitio web. 
+
+				También pueden recomendarte el tipo de certificado CSR que debes pedir.
+
+		
+			3. Presenta tu CSR a la autoridad de certificación para validar tu dominio 
+
+				Cuando compras un certificado SSL a una autoridad de certificación, se te pedirá que presentes tu CSR. 
+
+				Asegúrate de que lo tienes a la mano cuando termines el proceso de registro para tu certificado SSL. 
+
+
+			4. Instala el certificado en tu sitio web 
+
+				Por último, instala el certificado en tu sitio web, La mejor manera de hacerlo es a través de tu cPanel. 
+
+				En el menú de «Seguridad» haz clic en «SSL/TLS». Luego en «Gestionar sitios SSL». 
+
+				Ahí podrás subir un nuevo certificado al dominio de tu elección. 
+
+				Si compraste un SSL a tu proveedor de hosting, el certificado ya debería haberse instalado automáticamente en tu sitio, así que no tendrás que hacerlo manualmente. 
+
+
+		Plugins de WordPress para la instalación de SSL:
+
+			Si utilizas WordPress para alojar tu contenido y tu sitio web, podrías necesitar un certificado SSL en función de tu proveedor de dominio. 
+
+			A continuación, compartimos contigo algunos plugins que podrían ayudarte en el proceso:
+
+			    Really Simple SSL: 		
+
+			    	Adquirir el certificado SSL es solo el primer paso. Este plugin te ayuda a instalarlo en todo tu contenido alojado en WordPress. 
+
+			    	Existen versiones premium disponibles para facilitar la instalación en todos tus sitios y verificar que ninguno de ellos presentará advertencias de seguridad. 
+
+			    	El precio de las versiones premium oscila entre los 20 USD y los 145 USD por una configuración completa y 
+			    	optimización de SSL.
+
+
+			    Insecure Content Fixer:  
+
+			    	Una vez que hayas obtenido e instalado tu certificado SSL, deberás considerar otros aspectos, por ejemplo, si tu sitio web fue desarrollado utilizando referencias codificadas a "http" (p. ej., un archivo de imagen), mostrará una advertencia cuando se intente cargar de modo seguro. 
+
+			    	Este plugin te ayudará a encontrar y resolver cualquier contenido codificado de tu sitio para que se muestre de manera segura a todos los visitantes.
+
+
+			    WP Force SSL:
+
+			    	Cuando finalmente hayas obtenido e instalado tu certificado SSL y hayas solucionado todos los errores posibles, deberás garantizar que todo tu tráfico visualice la versión segura de tu sitio web. 
+
+			    	Con este plugin, podrás dirigir todo tu tráfico a tu versión HTTPS de modo que únicamente se cargará la versión segura. 
+
+			    	Recomendamos verificar que no dispones de contenido no seguro (es decir, «contenido mixto») antes de activar este plugin. 
+
+			    	Si no completas dicha comprobación, es posible que tu sitio se muestre como no seguro.
+
+
+		Lets'Encrypt:
+
+			Para habilitar HTTPS en tu página de web, tienes que obtener un certificado (un tipo de archivo) de una Autoridad de Certificación (AC, o CA por sus siglas en inglés). 
+
+			Let’s Encrypt es una AC. 
+
+			Para obtener un certificado para tu dominio de sitio web de Let’s Encrypt, tienes que demonstrar control sobre ese dominio. 
+
+			Con Let’s Encrypt, puedes hacer esto con software que usa el protocolo ACME, el cual típicamente corre en tu hospedaje de web.
+
+			Para averiguar cuál método funcionará mejor para ti, tendrás que saber si tienes acceso shell (también conocido como acceso SSH) a tu hospedaje de web. 
+
+			Si manejas tu sitio web enteramente mediante un panel de control como cPanel, Plesk, o WordPress, hay una buena posibilidad que no tienes acceso shell. 
+
+			Puedes preguntarle a tu proveedor de hospedaje para estar seguro.
+
+
+			Con Acceso Shell:
+
+				Recomendamos que la mayoría de las personas con acceso shell usen el cliente ACME llamado Certbot. 
+
+				Éste puede automatizar la emisión e instalación de certificados con cero tiempo de inactividad.
+
+				También tiene modos de expertos para personas que no quieren autoconfiguración. 
+
+				Es fácil de usar, funciona en muchos sistemas operativos, y tiene documentación genial.
+
+				Visita la página web de Certbot para conseguir instrucciones para tu sistema operativo y servidor de web.
+
+				Si Certbot no cumple con tus necesidades, o quisieras tratar otra cosa, hay muchos otros clientes ACME para escoger. 
+
+				Una vez hayas escogido un cliente ACME, ve la documentación para ese cliente para proceder.
+
+				Si estás experimentando con diferentes clientes ACME, usa nuestro ambiente de staging para evitar que llegues a nuestros limites de tarifa.
+
+
+			Sin Acceso Shell:
+
+				La mejor forma de utilizar Let’s Encrypt sin acceso shell es usando el soporte incorporado de tu proveedor de hospedaje.
+
+				Si tu proveedor de hospedaje ofrece soporte para Let’s Encrypt, pueden solicitar un certificado gratis en su nombre, instalarlo, y mantenerlo actualizado automáticamente. 
+
+				Para algunos proveedores de hospedaje, esto es un ajuste de configuración que tienes que prender.
+
+				Otros proveedores automaticamente solicitan e instalan certificados para todos sus clientes.
+
+				Revisa nuestra lista de proveedores de hospedaje para ver si el tuyo está en ella. 
+
+				Si lo está, sigue su documentación para configurar tu certificado de Let’s Encrypt.
+
+				Si tu proveedor de hospedaje no tiene soporte para Let’s Encrypt, puedes contactarlos para que lo soporten. 
+
+				Hacemos lo mejor que podemos para hacer fácil añadir soporte para Let’s Encrypt, !y proveedores suelen estar felices de escuchar sugerencias de clientes!
+
+				Si tu proveedor de hospedaje no quiere integrar Let’s Encrypt, pero sí tiene soporte para subir certificados custom, puedes instalar Certbot en tu propia computadora y usarlo en modo manual. 
+
+				En modo manual, tu subes un archivo específico a tu sitio web para probar tu control. 
+
+				Certbot recuperará un certificado que tu puedes subir a tu proveedor de hospedaje. 
+
+				No recomendamos esta opción porque es un contratiempo y necesitaras repetirlo varias veces durante el año cuando tu certificado expira. 
+
+				Para la mayoría de las personas es mejor solicitar soporte para Let’s Encrypt de su proveedor de hospedaje, o cambiar de proveedor si no tienen planes de implementarlo.
 
 
 
@@ -3378,6 +4041,8 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
+
+|| Protocolo SSH (Secure Shell)
 
 
 
