@@ -4019,9 +4019,382 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 
 
-|| Claves y Credenciales 
+|| Session Key y Credenciales 
 
 
+	Session Key: 
+
+
+		Una clave de sesión es una clave de cifrado y descifrado que se genera aleatoriamente para garantizar la seguridad de una sesión de comunicaciones entre un usuario y otro ordenador o entre dos ordenadores. 
+
+		Las claves de sesión se denominan a veces claves simétricas (symmetric keys) porque se utiliza la misma clave para cifrar y descifrar.
+
+		La clave de sesión sólo se utiliza para una sesión. 
+
+		Después se descarta y se genera aleatoriamente una nueva clave para la siguiente sesión. 
+
+		Las claves públicas (Public keys) o el cifrado asimétrico (asymmetric encryption), por el contrario, utilizan dos claves (una pública y otra privada) en lugar de una única para proteger la comunicación de datos entre dos partes a través de una red abierta (SSL/TLS).
+
+
+	Sessión: 
+
+		Una sesión es una interacción entre un usuario y un servidor web caracterizada por un intercambio de información. 
+
+		Este intercambio puede adoptar la forma de una solicitud-respuesta entre un navegador y un servidor web.
+
+		Alternativamente, la interacción puede no implicar una petición o respuesta entre las dos partes.
+
+		Por ejemplo, cuando un usuario se registra en un servicio web, la sesión es esencialmente un intercambio de información que tiene como resultado que el usuario se registra y el servidor almacena esta información para su uso posterior.
+
+		Otro tipo de sesión es la sesión de navegador, que se produce cuando alguien realiza una petición a un servidor web. 
+
+		En este caso, una sesión comienza cuando un usuario solicita por primera vez una página a un servidor web y finaliza cuando ese navegador ha enviado todos los paquetes de información que el servidor solicitó, como cuando un usuario inicia sesión en un sitio web. 
+
+		Esto se considera una sesión porque se trata de una serie de interacciones con el sitio web que requieren una conexión de datos.
+
+
+		Otros tipos de sesiones son los siguientes: 
+
+		    Sesiones HTTP (Hypertext Transfer Protocol):
+
+		    	Una sesión HTTP es una serie de interacciones entre el navegador de un usuario y un servidor web que persiste más allá de la visualización de una sola página y permite al servidor realizar un seguimiento de la actividad de un usuario.
+
+
+		    Sesión TCP (Protocolo de Control de Transmisión):
+
+		    	Una sesión TCP es una conexión lógica entre dos hosts de red establecida por el intercambio de segmentos de la capa de transporte.
+
+
+		    Sesión de inicio de sesión remota Telnet (Protocolo para acceder a otros ordenadores de forma remota):
+
+		    	Una sesión de inicio de sesión remota Telnet es un método utilizado para conectarse e interactuar con un servidor remoto.
+	
+
+	Criptográfica: 	
+
+		Los términos más importantes que hay que conocer cuando se habla de criptografía, incluidas las claves de sesión, son los siguientes:
+
+	    Cifrado (Encryption): 
+
+	    	Proceso de convertir datos en un formato ilegible sin conocimientos especiales.
+
+
+	    Descifrado (Decryption):
+
+	    	El proceso de volver a convertir los datos cifrados a su formato original legible.
+
+
+	    Clave simétrica (Symmetric key):
+
+	    	Clave única y compartida utilizada por dos partes para cifrar y descifrar datos.
+
+
+	    Clave asimétrica (Asymmetric key):
+
+	    	Dos claves distintas utilizadas para cifrar y descifrar datos.
+
+
+	Ventajas de las claves de sesión criptográficas:
+
+		La criptografía es una herramienta esencial en la lucha contra la usurpación de identidad que se utiliza para proteger la información en una amplia gama de aplicaciones, como el comercio electrónico, la seguridad de la información y el almacenamiento de datos. 
+
+		La criptografía utiliza claves para cifrar y descifrar datos. 
+
+		El tipo más común de clave criptográfica es una clave simétrica, que utiliza la misma clave para cifrar y descifrar datos, a diferencia de las claves asimétricas, que utilizan una clave distinta para cifrar y descifrar.
+
+		Generadas mediante un algoritmo simétrico, las claves de sesión tienen varias ventajas:
+
+		    La principal ventaja de las claves de sesión es su comodidad de uso. 
+
+		    Las claves de sesión pueden ser una única clave fija o pueden generarse dinámicamente a partir de un conjunto de claves existentes.
+
+		    Las claves de sesión ofrecen una protección añadida porque la clave se descarta después de haber sido utilizada para establecer un canal de comunicación seguro, como durante una conexión TLS (Transport Layer Security).
+
+		    Los algoritmos asimétricos suelen tardar más en calcularse que los simétricos. 
+
+		    Dado que las claves de sesión son claves simétricas de un solo uso, son mucho más rápidas de utilizar para aplicaciones concretas, incluido el almacenamiento en caché de datos temporales.
+
+
+	Desventajas de las claves de sesión:
+
+		Las claves de sesión no están exentas de desventajas, entre las que se incluyen las siguientes:
+
+		    La mayor desventaja de utilizar claves de sesión es que no son tan seguras como las claves públicas debido a su simplicidad. 
+
+		    Utilizar una clave de sesión para más de una sesión puede comprometerla.
+
+		    Otra desventaja de utilizar una clave de sesión para cifrar datos es que es vulnerable a las escuchas y al compromiso. 
+
+		    Como clave simétrica, una clave de sesión se utiliza tanto para cifrar como para descifrar datos. 
+
+		    Esto hace que la información sea vulnerable si malos actores interceptan la clave en tránsito por la red o la roban cuando está almacenada en la memoria de un servidor.
+
+
+	Cifrado HTTPS y claves de sesión:
+
+		HTTP sobre Secure Sockets Layer, o SSL, también conocido como HTTP seguro (HTTPS), es un protocolo web que cifra los datos enviados entre un navegador y un sitio web. 
+
+		La encriptación lleva los datos a su destino de forma segura para que no puedan ser interceptados y leídos en tránsito.
+
+		Al añadir una capa de cifrado a la conexión, HTTPS garantiza que la conexión sea privada. 
+
+		Con HTTPS, cuando un navegador envía una solicitud para acceder a un sitio web, genera una clave de sesión. 
+
+		La clave de sesión cifra los datos enviados y los descifra cuando los recibe.
+
+		Por ejemplo, si un usuario introduce los datos de su cuenta corriente para comprar artículos en Internet, su navegador cifrará esa información mediante una clave de sesión. 
+
+		A continuación, el servidor del sitio web la descifrará utilizando la clave de sesión que recibió del navegador.
+
+
+	TLS Handshake: 
+
+		Para crear una conexión segura entre dos ordenadores, hay que seguir una serie de pasos.
+
+		Denominados "protocolo TLS", estos pasos son lo primero que ocurre al conectarse a un sitio web con HTTPS.
+
+		Piensa en el handshake TLS como un protocolo que permite a dos ordenadores ponerse de acuerdo sobre cómo se van a comunicar. 
+
+		Si el handshake falla, entonces la conexión no es segura. 
+
+		Aunque un protocolo TLS puede fallar de muchas maneras diferentes, la razón más común es debido a información errónea transmitida de un lado a otro entre dos ordenadores que se comunican.
+
+
+		Un protocolo TLS consta de los tres pasos siguientes:
+
+		    El servidor envía su certificado SSL al cliente.
+
+		    El cliente comprueba el certificado.
+
+		    El cliente cifra un número aleatorio con una clave pública.
+
+
+		La clave de sesión cifra la mayor parte de los datos transmitidos en el protocolo TLS y se genera y negocia independientemente de la versión del protocolo y del conjunto de cifrado seleccionados por los clientes y los servidores. 
+
+		Como resultado, la clave de sesión es la misma para todas las conexiones establecidas entre dos pares que soporten la misma versión de protocolo.
+
+
+	Conceptos relacionados:
+		
+		Master encryption key/Clave maestra de cifrado (MEK):
+
+			Una MEK es una clave de cifrado que protege otras claves de cifrado. 
+
+			Clave criptográfica utilizada para generar un gran número de otras claves, una clave maestra no suele utilizarse directamente para cifrar o descifrar. 
+
+			Más bien se utiliza para generar claves de sesión que luego se utilizan para las comunicaciones. 
+
+			Dado que las claves de sesión sólo se necesitan durante un breve periodo de tiempo, una clave maestra es más práctica que una clave por uso.
+
+
+		Key encryption key/Clave de cifrado (KEK):
+
+			Una KEK se utiliza para cifrar otras claves, como la clave de cifrado de datos o la clave de cifrado de tráfico, que se utilizan para cifrar datos sensibles.
+
+
+		Content encryption key/Clave de cifrado de contenido (CEK):
+
+			Una CEK es una clave que puede encriptarse aún más utilizando una KEK. 
+
+			La CEK se utiliza para cifrar contenidos para su almacenamiento o transmisión, incluidos contenidos en forma de mensajes, imágenes, audio, etc.
+
+
+	Credenciales: 	
+
+		Una credencial de inicio de sesión es una combinación de ID de usuario y contraseña que permite a los usuarios acceder a un sitio web o una aplicación.
+
+		Los usuarios tienen que introducir sus credenciales de inicio de sesión cada vez que quieran utilizar el sitio o la aplicación.
+
+		Las credenciales de inicio de sesión también se conocen como nombre de usuario y contraseña, ID de usuario y contraseña, o simplemente datos de la cuenta.
+
+		Los usuarios pueden registrarse en un sitio web utilizando su dirección de correo electrónico actual, crear una nueva dirección de correo electrónico específica para ese sitio o hacerlo a través de otra cuenta de redes sociales conectada al mismo sitio web.
+
+		Al crear una cuenta en la mayoría de los sitios web o aplicaciones, se le pedirá que introduzca su nombre de usuario y contraseña.
+
+		Los usuarios pueden tener diferentes credenciales de inicio de sesión para distintos servicios, como sitios de redes sociales, entidades financieras y tiendas en línea.
+
+		Suelen utilizarse para verificar la identidad de una persona que inicia sesión en el sistema cuando ello puede entrañar algún riesgo, como en el caso de una cuenta bancaria en línea, un servicio de comercio electrónico o una plataforma de redes sociales en la que se publican algunos datos personales, como la fecha de nacimiento o el domicilio.
+
+
+	Tipos de credenciales de inicio de sesión:
+
+		Existen dos tipos principales de credenciales de inicio de sesión, en función de cómo se generan y cómo se protegen:
+
+	    Estáticas/Static: 
+
+	    	Se trata de una credencial que se genera y guarda en un servidor y que permanece invariable durante toda la sesión de inicio de sesión del usuario. 
+
+	    	Esto significa que tu contraseña seguirá siendo la misma a menos que la actualices.
+
+
+	    Transitoria/Transient: 
+
+	    	Se trata de una credencial que se genera cada vez que un usuario inicia sesión: cambia cada vez.
+
+	    	También se conoce como "contraseña de un solo uso", o OTP, porque el servidor generará un código totalmente nuevo cada vez que el usuario inicie sesión. 
+
+	    	Muchas instituciones financieras utilizan las OTP como credenciales de inicio de sesión, por ejemplo para acceder a su cuenta corriente o de ahorros. 
+
+	    	Las OTP se recomiendan para las credenciales de inicio de sesión cuando existe el riesgo de que agentes maliciosos entren en un servidor y accedan a información privada.
+
+
+	Recordar credenciales: 	
+
+		Existen algunas formas probadas de recordar las credenciales de inicio de sesión, pero sólo si el sitio o la aplicación en la que te registras es de uso habitual.
+
+		Esto significa que probablemente deberías olvidarte de la libreta digital o el diario de papel donde escribías tus credenciales de inicio de sesión. 
+
+		Hay otras formas mejores y más seguras de llevar un registro de tus diferentes credenciales, por ejemplo, utilizar un gestor de contraseñas.
+
+		La mejor forma de llevar un registro de las credenciales de inicio de sesión es utilizar un gestor de contraseñas.
+
+		Esta herramienta te permite almacenar las credenciales de inicio de sesión en un solo lugar y generar nuevas credenciales de inicio de sesión seguras cuando necesites iniciar sesión en un nuevo sitio o aplicación.
+
+
+	Credenciales fuertes: 
+
+	    Utilice contraseñas largas:
+
+	    	Si un sitio web o una aplicación te permite crear contraseñas largas con letras, números y símbolos, hazlo. 
+
+	    	Las contraseñas largas son más difíciles de descifrar y tardan más tiempo en piratearse por fuerza bruta, pero sólo si utilizas una contraseña fuerte y difícil de descifrar.
+
+
+	    Evite palabras comunes en las contraseñas:
+
+	    	Las herramientas de pirateo como los diccionarios y las herramientas de fuerza bruta pueden probar miles de contraseñas sencillas como "password" o "12345678" antes de pasar a contraseñas más complicadas.
+
+
+	    No utilices la misma contraseña para varios sitios web o aplicaciones:
+
+	    	Si necesitas configurar las credenciales de inicio de sesión para un nuevo sitio web, asegúrate de que no estás reutilizando la misma contraseña de otro sitio web.
+
+	    	Si la reutilizas, sustitúyela por una contraseña más segura y exclusiva para el nuevo sitio.
+
+
+	Tecnológias que refuerzan la identificación de usuarios: 
+
+		Los nombres de usuario y las contraseñas por sí solos sólo proporcionan niveles de seguridad limitados y son relativamente fáciles de interceptar por los piratas informáticos o de olvidar o perder por los usuarios. 
+
+		Es vital complementar las credenciales de inicio de sesión con tecnologías que refuercen el proceso de autenticación e impidan el acceso no autorizado a las redes.
+
+
+		Autenticación de dos factores ( Two-factor Authentication):
+
+			La autenticación de dos factores (2FA) refuerza las credenciales de inicio de sesión proporcionando un nivel adicional de certeza de que el usuario es quien dice ser. 
+
+			Cuando un usuario inicia sesión con su nombre de usuario y contraseña, se le pide que introduzca un segundo dato que verifica su identidad.
+
+			Esta información suele ser algo que sabe, como un PIN o un código de acceso; algo que posee, como un código en una aplicación de autenticación o en su dispositivo móvil; o algo que es, normalmente un factor biométrico.
+
+
+		Biometría (Biometrics):
+
+			Los datos biométricos son atributos personales o algo que el usuario es, como su huella dactilar, su cara o su voz. 
+
+			También incluyen la biometría del comportamiento, como la dinámica de pulsación de teclas o el patrón de habla de un usuario. 
+
+			La autenticación biométrica se utiliza habitualmente para proteger dispositivos como ordenadores y teléfonos móviles para evitar accesos no autorizados. 
+
+			Esto añade una capa de seguridad más difícil de obtener con las credenciales de inicio de sesión tradicionales.
+
+
+		Inicio de sesión único (Single Sign-on):
+
+			El inicio de sesión único es una técnica que permite a los usuarios iniciar sesión en varios servicios y sitios web utilizando un conjunto de credenciales de inicio de sesión. 
+
+			Valida a los usuarios en varias aplicaciones utilizando un token de autenticación para verificar su identidad ante los proveedores de servicios conectados. 
+
+			Los usuarios sólo tienen que recordar un conjunto de credenciales de inicio de sesión, lo que fomenta el uso de una contraseña fuerte y única y reduce la repetición de contraseñas.
+
+
+	Amenazas para las credenciales de usuario/Threats To User Credentials:
+
+		Las credenciales de inicio de sesión de los usuarios son objetivos muy valiosos para los piratas informáticos, que utilizan diversas técnicas para intentar robar estos datos. 
+
+		Esto supone un riesgo importante para la información sensible de los usuarios, que podría utilizarse para cometer robos de identidad o llevar a cabo ataques más amplios contra las organizaciones. 
+
+		Varios ataques específicos tienen como objetivo las credenciales de inicio de sesión.
+
+
+		Ataque de fuerza bruta (Brute-force Attack): 
+
+			Un ataque de fuerza bruta consiste en que los hackers utilizan un método de ensayo y error para descifrar las credenciales de inicio de sesión, las contraseñas y las claves de cifrado de los usuarios. 
+
+			Es una táctica sencilla, fiable y popular que los hackers utilizan para obtener acceso no autorizado a cuentas, redes y sistemas informáticos.
+
+
+		Phishing:
+
+			Los ataques de phishing consisten en que los hackers utilizan credenciales de inicio de sesión para enviar un correo electrónico desde lo que parece un remitente de confianza de una empresa legítima. 
+
+			El hacker suele incluir enlaces o archivos adjuntos maliciosos en el mensaje o pide a la víctima que realice una transacción financiera.
+		
+
+		Malware: 
+
+			El malware es software malicioso, como ransomware, spyware y virus, que los hackers utilizan para tomar el control de un dispositivo, obtener acceso a una red o dañar datos y sistemas.
+
+
+		Spyware: 
+
+			El spyware es una forma de malware que recopila datos del dispositivo de un usuario y los envía a un tercero sin su consentimiento, lo que los hackers pueden utilizar para suplantar la identidad.
+
+			Algunos programas espía están diseñados para dañar los dispositivos. 
+
+			Los piratas informáticos también pueden utilizar programas espía para ver o robar la actividad de navegación y las credenciales de inicio de sesión de los usuarios.
+
+
+	Autentificación sin contraseña: 
+
+		La autenticación sin contraseña es un proceso de inicio de sesión en una cuenta que permite a los usuarios verificar su identidad utilizando un método distinto a la combinación tradicional de nombre de usuario y contraseña.
+
+		Las formas más populares incluyen el uso de un segundo dispositivo o la biometría para verificar la identidad de un usuario. 
+
+
+		Entre los distintos tipos de autenticación sin contraseña se encuentran: 
+
+	    Autenticación biométrica: 
+
+	    	Una de las formas más seguras de verificar la identidad de una persona es utilizar algo que es único para cada individuo. 
+
+	    	La autenticación biométrica se basa en rasgos físicos únicos, normalmente una huella dactilar y el reconocimiento facial o del iris, para verificar que un usuario es quien dice ser. 
+
+
+	    Códigos de un solo uso: 
+
+	    	Este método de autenticación sin contraseña se basa en que los usuarios introduzcan un código único que se les envía cuando intentan acceder a una cuenta. 
+
+	    	Se les enviará un código de un solo uso (OTC) o una contraseña de un solo uso (OTP) a su dirección de correo electrónico o dispositivo móvil, y deberán introducir el mismo código en el dispositivo original para verificar su identidad.
+
+
+	    Enlaces mágicos: 
+
+	    	En este tipo de autenticación sin contraseña, los usuarios introducen su dirección de correo electrónico en un cuadro de inicio de sesión de una aplicación o servicio. 
+
+	    	A continuación, se les envía un correo electrónico con un enlace en el que deben hacer clic para confirmar su identidad.
+
+
+	    Notificaciones push: 
+
+	    	Este proceso de autenticación sin contraseña implica el uso de aplicaciones de autenticación, como FortiAuthenticator y Google Authenticator. 
+
+	    	El usuario recibe una notificación push que le lleva a la aplicación, donde puede verificar si ha intentado o no acceder a un servicio conectado a la aplicación.
+
+
+	Ventajas de la autenticación sin contraseña: 
+
+		La autenticación sin contraseña biológica refuerza el proceso de inicio de sesión al proporcionar un mayor nivel de certeza de que un usuario es quien dice ser. 
+
+		Por ejemplo, los procesos de autenticación biométrica, como el escaneado de huellas dactilares o el reconocimiento del iris, ofrecen más garantías de que el usuario es auténtico que la simple introducción de las credenciales de inicio de sesión.
+
+		Los métodos de autenticación sin contraseña eliminan la dependencia de que los usuarios recuerden sus contraseñas. 
+
+		La gente olvida a menudo sus contraseñas para varias cuentas en línea o reutiliza la misma contraseña para distintos servicios. 
+
+		Esto supone importantes riesgos para la seguridad, por lo que eliminar la necesidad de contraseñas es crucial para reforzar los inicios de sesión.
+
+		Los sistemas de autenticación sin contraseña también utilizan métodos de autenticación modernos, como los dispositivos compatibles con Fast IDentity Online (FIDO), que reducen la vulnerabilidad de una organización a los ataques de malware y phishing.
 
 
 
