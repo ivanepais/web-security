@@ -5158,6 +5158,570 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 		Se envía fuera de los datos cifrados simétricamente como sección final del paquete de comunicación.
 
 
+	Funcionamiento de la criptografía en SSH: 
+
+		La forma en que funciona SSH es haciendo uso de un modelo cliente-servidor para permitir la autenticación de dos sistemas remotos y el cifrado de los datos que pasan entre ellos.
+
+		SSH funciona por defecto en el puerto TCP 22 (aunque el puerto SSH puede cambiarse si es necesario). 
+
+		El host (servidor) escucha en el puerto 22 (o en cualquier otro puerto asignado a SSH) las conexiones entrantes. 
+
+		Organiza la conexión segura autenticando al cliente y abriendo el entorno shell correcto si la verificación tiene éxito.
+
+		El cliente debe comenzar la conexión SSH iniciando el handshake TCP con el servidor, asegurando una conexión simétrica segura, verificando si la identidad mostrada por el servidor coincide con los registros previos (normalmente registrados en un archivo de almacenamiento de claves RSA), y presentando las credenciales de usuario requeridas para autenticar la conexión.
+
+		El establecimiento de una conexión consta de dos etapas: en primer lugar, ambos sistemas deben acordar unas normas de cifrado para proteger las comunicaciones futuras y, en segundo lugar, el usuario debe autenticarse. Si las credenciales coinciden, el usuario obtiene acceso SSH.
+
+
+		Negociación del cifrado de sesión:
+
+			Cuando un cliente intenta conectarse al servidor a través de TCP, el servidor presenta los protocolos de cifrado y las versiones respectivas que admite. 
+
+			Si el cliente tiene un par similar de protocolo y versión, se llega a un acuerdo y se inicia la conexión con el protocolo aceptado. 
+
+			El servidor también utiliza una clave pública asimétrica que el cliente puede utilizar para verificar la autenticidad del host.
+
+			Una vez establecido esto, las dos partes utilizan lo que se conoce como algoritmo de intercambio de claves Diffie-Hellman para crear una clave simétrica. 
+
+			Este algoritmo permite al cliente y al servidor llegar a una clave de cifrado compartida que se utilizará en adelante para cifrar toda la sesión de comunicación.
+
+
+			Así es como funciona el algoritmo a un nivel muy básico:
+
+			    Tanto el cliente como el servidor se ponen de acuerdo en un número primo muy grande, que por supuesto no tiene ningún factor en común. 
+
+			    Este valor de número primo también se conoce como valor semilla.
+
+			    A continuación, las dos partes acuerdan un mecanismo de cifrado común para generar otro conjunto de valores manipulando los valores semilla de una manera algorítmica específica.
+
+			    Estos mecanismos, también conocidos como generadores de cifrado, realizan grandes operaciones sobre la semilla. 
+
+			    Un ejemplo de este tipo de generador es AES (Advanced Encryption Standard).
+
+			    Ambas partes generan independientemente otro número primo. 
+
+			    Éste se utiliza como clave privada secreta para la interacción.
+
+			    Esta clave privada recién generada, con el número compartido y el algoritmo de cifrado (por ejemplo, AES), se utiliza para calcular una clave pública que se distribuye al otro ordenador.
+
+			    A continuación, las partes utilizan su clave privada personal, la clave pública compartida de la otra máquina y el número primo original para crear una clave compartida final. 
+
+			    Esta clave es calculada de forma independiente por ambos ordenadores, pero creará la misma clave de cifrado en ambos lados.
+
+			    Ahora que ambas partes tienen una clave compartida, pueden cifrar simétricamente toda la sesión SSH. 
+
+			    La misma llave puede ser usada para encriptar y desencriptar mensajes (lea: sección sobre encriptación simétrica).
+
+			Ahora que se ha establecido la sesión cifrada simétricamente segura, el usuario debe ser autenticado
+
+
+	Autenticación del usuario: 
+
+		La etapa final antes de conceder al usuario acceso SSH al servidor es autenticar sus credenciales.
+
+		Para ello, la mayoría de los usuarios de SSH utilizan una contraseña. 
+
+		Se pide al usuario que introduzca su nombre de usuario, seguido de la contraseña. 
+
+		Estas credenciales pasan de forma segura a través del túnel cifrado simétricamente, por lo que no hay posibilidad de que sean capturadas por un tercero.
+
+		Aunque las contraseñas están encriptadas, no se recomienda utilizarlas para conexiones seguras. 
+
+		Esto se debe a que muchos bots pueden simplemente hacer fuerza bruta con contraseñas fáciles o predeterminadas y obtener acceso shell a tu cuenta. 
+
+		En su lugar, la alternativa recomendada son los Pares de Claves SSH.
+
+		Se trata de un conjunto de claves asimétricas utilizadas para autenticar al usuario sin necesidad de introducir ninguna contraseña.
+
+
+	Claves de SSH: 
+
+		Comprender en profundidad cómo funciona SSH puede ayudar a los usuarios a entender los aspectos de seguridad de esta tecnología.
+
+		La mayoría de la gente considera que este proceso es extremadamente complejo e incomprensible, pero es mucho más sencillo de lo que la mayoría piensa.
+
+		Si te estás preguntando cuánto tarda un ordenador en calcular un hash y autenticar a un usuario, pues bien, sucede en menos de un segundo. 
+
+		De hecho, la mayor cantidad de tiempo se emplea en transferir datos a través de Internet.
+
+		Esperemos que este tutorial de SSH te haya ayudado a ver la forma en que diferentes tecnologías pueden unirse para crear un sistema robusto en el que cada mecanismo tiene un papel muy importante que desempeñar.
+
+		Además, ahora sabes por qué Telnet se convirtió en cosa del pasado tan pronto como apareció SSH.
+
+		El protocolo SSH (también denominado Secure Shell) es un método para el inicio de sesión remoto seguro de un ordenador a otro. 
+
+		Ofrece varias opciones alternativas para una autenticación segura y protege la seguridad y la integridad de las comunicaciones mediante un cifrado seguro. 
+
+		Es una alternativa segura a los protocolos de inicio de sesión no protegidos (como telnet, rlogin) y a los métodos inseguros de transferencia de archivos (como FTP).
+
+
+		El protocolo se utiliza en redes corporativas para:
+
+    		Proporcionar acceso seguro a usuarios y procesos automatizados.
+
+    		Transferencias de archivos interactivas y automatizadas.
+
+    		Emitir comandos remotos.
+
+    		Gestionar la infraestructura de red y otros componentes críticos del sistema.
+
+
+    	El protocolo funciona en el modelo cliente-servidor, lo que significa que la conexión la establece el cliente SSH que se conecta al servidor SSH. 
+
+    	El cliente SSH dirige el proceso de establecimiento de la conexión y utiliza criptografía de clave pública para verificar la identidad del servidor SSH.
+
+    	Después de la fase de configuración, el protocolo SSH utiliza un cifrado simétrico fuerte y algoritmos hash para garantizar la privacidad y la integridad de los datos que se intercambian entre el cliente y el servidor.
+
+
+		Diagrama simplificado de una conexión shell segura: 
+
+			1. El cliente inicia la conexión poniéndose en contacto con el servidor.
+
+			2. El servidor envia sus claves públicas. 
+
+			3. El cliente y el servidor negocian parametros de conexión.
+
+			4. Negocian los parámetros y abren un canal seguro.
+
+
+	Autenticación fuerte con claves SSH:
+
+		Hay varias opciones que se pueden utilizar para la autenticación de usuarios. 
+
+		Las más comunes son las contraseñas y la autenticación de clave pública.
+
+		El método de autenticación de clave pública se utiliza principalmente para la automatización y, a veces, por los administradores del sistema para el inicio de sesión único.
+
+		Su uso se ha extendido mucho más de lo previsto. 
+
+		La idea es tener un par de claves criptográficas -clave pública y clave privada- y configurar la clave pública en un servidor para autorizar el acceso y conceder acceso al servidor a cualquiera que tenga una copia de la clave privada. 
+
+		Las claves utilizadas para la autenticación se denominan claves SSH. 
+
+		La autenticación con clave pública también se utiliza con tarjetas inteligentes, como las tarjetas CAC y PIV utilizadas por el gobierno de Estados Unidos.
+
+		El principal uso de la autenticación basada en claves es permitir la automatización segura. 
+
+		Las transferencias automatizadas de archivos shell seguros se utilizan para integrar aplicaciones sin problemas y también para la gestión automatizada de sistemas y configuraciones.
+
+		Hemos descubierto que las grandes organizaciones tienen muchas más claves SSH de las que imaginan, y la gestión de claves SSH se ha convertido en algo muy importante. 
+
+		Las claves SSH conceden acceso como lo hacen los nombres de usuario y las contraseñas.
+
+		Requieren procesos similares de aprovisionamiento y terminación.
+
+		En algunos casos hemos encontrado varios millones de claves SSH autorizando el acceso a servidores de producción en entornos de clientes, con un 90% de las claves en realidad sin usar y representando accesos que fueron aprovisionados pero nunca terminados. 
+
+		Garantizar políticas, procesos y auditorías adecuadas también para el uso de SSH es fundamental para una correcta gestión de identidades y accesos. 
+
+		Los proyectos tradicionales de gestión de identidades han pasado por alto hasta el 90% de todas las credenciales al ignorar las claves SSH. 
+
+		Ofrecemos servicios y herramientas para implementar la gestión de claves SSH.
+
+
+	Seguridad de transacción en SSH: 
+
+		SSH proporciona un cifrado fuerte y protección de la integridad
+
+		Una vez establecida la conexión entre el cliente y el servidor SSH, los datos que se transmiten se cifran según los parámetros negociados en la configuración.
+
+		Durante la negociación, el cliente y el servidor acuerdan el algoritmo de cifrado simétrico que se utilizará y generan la clave de cifrado que se empleará.
+
+		El tráfico entre las partes que se comunican está protegido con algoritmos de cifrado fuertes estándar de la industria (como AES (Advanced Encryption Standard)), y el protocolo SSH también incluye un mecanismo que garantiza la integridad de los datos transmitidos mediante el uso de algoritmos hash estándar (como SHA-2 (Standard Hashing Algorithm)).
+
+
+	Problemas de seguridad con SSH: 
+
+		Las empresas que utilizan SSH deben considerar la posibilidad de encontrar formas de gestionar las claves de host almacenadas en los sistemas cliente. 
+
+		Estas claves pueden acumularse con el tiempo, especialmente para el personal de tecnología de la información (TI) que necesita poder acceder a hosts remotos con fines de gestión.
+
+		Dado que los datos almacenados en un archivo SSH known_hosts se pueden utilizar para obtener acceso autenticado a sistemas remotos, las organizaciones deben ser conscientes de la existencia de estos archivos y deben tener un proceso estándar para mantener el control sobre los archivos, incluso después de que un sistema se ponga fuera de servicio, ya que los discos duros pueden tener estos datos almacenados en texto plano.
+
+		Los desarrolladores deben tener cuidado al incorporar comandos o funciones SSH en un script u otro tipo de programa. 
+
+		Aunque es posible emitir un comando SSH que incluya un ID de usuario y una contraseña para autenticar al usuario de la máquina local en una cuenta del host remoto, hacerlo puede exponer las credenciales a un atacante con acceso al código fuente.
+
+		Shellshock, un agujero de seguridad en el procesador de comandos Bash, puede ejecutarse a través de SSH pero es una vulnerabilidad en Bash, no en SSH.
+
+		La mayor amenaza para SSH es una mala gestión de claves. 
+
+		Sin la adecuada creación, rotación y eliminación centralizadas de claves SSH, las organizaciones pueden perder el control sobre quién tiene acceso a qué recursos y cuándo, especialmente cuando SSH se utiliza en procesos automatizados de aplicación a aplicación.
+
+
+	Transferencia de archivos: 
+
+		Telnet fue uno de los primeros protocolos de aplicación de Internet -- el otro es FTP. 
+
+		Se utiliza para iniciar y mantener una sesión de emulación de terminal en un host remoto.
+
+		SSH y Telnet son funcionalmente similares, con la diferencia principal de que el protocolo SSH utiliza criptografía de clave pública para autenticar los puntos finales al establecer una sesión de terminal, así como para cifrar los comandos y la salida de la sesión.
+
+		Mientras que Telnet se utiliza principalmente para emular terminales, SSH puede utilizarse para emular terminales (de forma similar al comando rlogin), así como para emitir comandos de forma remota (como con rsh), transferir archivos mediante el protocolo de transferencia de archivos SSH (SFTP) y tunelizar otras aplicaciones.
+
+
+	Archivo SSH: 	
+
+		El protocolo Transport Layer Security (TLS), que actualiza el protocolo Secure Sockets Layer (SSL), fue diseñado para proporcionar seguridad a las transmisiones de red en la capa de transporte. 
+
+		El protocolo SSH también opera en la capa de transporte o justo por encima de ella, pero existen diferencias importantes entre ambos protocolos.
+
+		Aunque ambos se basan en pares de claves públicas/privadas para autenticar hosts, sólo el servidor se autentica con un par de claves en TLS.
+
+		SSH utiliza un par de claves separado para autenticar cada conexión: un par de claves para una conexión desde una máquina local a una máquina remota y un segundo par de claves para autenticar la conexión desde la máquina remota a la máquina local.
+
+		Otra diferencia entre SSH y TLS es que TLS permite cifrar las conexiones sin autenticación o autenticarlas sin cifrado. 
+
+		SSH cifra y autentica todas las conexiones.
+
+		SSH proporciona a los profesionales de TI y seguridad de la información (infosec) un mecanismo seguro para gestionar clientes SSH de forma remota. 
+
+		En lugar de requerir la autenticación con contraseña para iniciar una conexión entre un cliente SSH y un servidor, SSH autentica los propios dispositivos. 
+
+		Esto permite al personal informático conectarse con sistemas remotos y modificar las configuraciones SSH, incluida la adición o eliminación de pares de claves de host en el archivo known_hosts.
+
+
+	SSH tunneling: 
+
+		SSH tunneling, también conocido como SSH port forwarding, es una técnica que permite a un usuario abrir un túnel seguro entre un host local y un host remoto.
+
+		El reenvío de puertos SSH redirige el tráfico de red a un determinado puerto/dirección IP para que las aplicaciones del host local puedan acceder directamente a un host remoto. 
+
+		El destino puede estar en el servidor SSH remoto, o ese servidor puede estar configurado para reenviar a otro host remoto.
+
+		Los túneles SSH son herramientas poderosas para los administradores de TI, así como para los actores maliciosos, porque pueden atravesar un cortafuegos empresarial sin ser detectados. 
+
+		Como resultado, hay herramientas disponibles para prevenir el uso no autorizado de túneles SSH a través de un cortafuegos corporativo.
+
+
+	SFPT: 
+
+		SFTP (SSH File Transfer Protocol) es un protocolo seguro de transferencia de archivos. 
+
+		Se ejecuta sobre el protocolo SSH. 
+
+		Es compatible con todas las funciones de seguridad y autenticación de SSH.
+
+		SFTP ha sustituido en gran medida a FTP como protocolo de transferencia de archivos, y está reemplazando rápidamente a FTP/S.
+
+		Proporciona toda la funcionalidad ofrecida por estos protocolos, pero de forma más segura.
+
+		Proporciona toda la funcionalidad que ofrecen estos protocolos, pero de forma más segura y fiable, y con una configuración más sencilla. 
+
+		Básicamente, ya no hay razón para utilizar los protocolos heredados.
+
+		SFTP también protege contra el robo de contraseñas y los ataques "man-in-the-middle". 
+
+		Protege la integridad de los datos mediante cifrado y funciones hash criptográficas, y autentica tanto al servidor como al usuario.
+
+
+		Número de puerto SFTP:
+
+			El número de puerto SFTP es el puerto SSH 22.
+
+			Es básicamente un servidor SSH. 
+
+			Sólo una vez que el usuario ha iniciado sesión en el servidor utilizando SSH se puede iniciar el protocolo SFTP. 
+
+			No hay ningún puerto SFTP separado expuesto en los servidores. 
+
+			No es necesario configurar otro agujero en los cortafuegos.
+
+
+		Clientes SFPT: 
+
+			Muchos clientes SSH soportan SFTP:
+
+			Cliente SSH Tectia
+
+    		WinSCP
+
+    		FileZilla
+
+    		PuTTY
+
+    		Cyberduck
+
+
+    	SFPT Servers: 
+
+    		El servidor SFTP suele formar parte de una implementación SSH. 
+
+    		La mayoría de las organizaciones utilizan Tectia SSH u OpenSSH como servidor; ambos vienen con implementaciones de servidor SFTP listas para usar.
+
+			Servidor Tectia SSH para Windows
+
+   			Servidor Tectia SSH para mainframes IBM z/OS
+
+    		OpenSSH - servidor de código abierto para Linux y Unix
+
+    		FileZilla - un servidor sftp gratuito para Windows
+
+
+    	Comandos SCP:
+
+    		El comando scp es un programa de transferencia de archivos para SFTP en Linux. 
+
+    		La interfaz de línea de comandos scp fue diseñada a partir del antiguo comando rcp en BSD Unix. 
+
+    		El scp también suele venir con el paquete OpenSSH.
+
+			Su uso típico es:
+
+			```
+				scp [-r] fichero ... [usuario@]host:[ruta]
+
+			```
+
+			Básicamente, esto copia uno o más archivos al host dado. 
+
+			Si se indica el usuario, se copian a esa cuenta en el host. 
+
+			Si no se indica ningún usuario, se asume el mismo nombre de usuario que en el lado del cliente. 
+
+			Si se indica la ruta, los archivos se copian en ese directorio (relativo al directorio personal del usuario indicado). 
+
+			Si no se indica ninguna ruta, los archivos se copian en el directorio personal del usuario. 
+
+			Si se proporciona la opción -r, los archivos pueden ser directorios, y se copian el directorio dado y todos sus subdirectorios y archivos (recursivamente).
+
+			También se puede copiar en sentido inverso:
+
+			scp [-r] [usuario@]host:ruta del fichero
+
+			Normalmente, la ruta sería ., es decir, el directorio actual.
+
+
+		SSHFS y el uso de SFTP para compartir archivos:
+
+			SFTP también puede utilizarse para compartir archivos, de forma similar a como se hace en Windows y Linux con NFS.
+
+			La principal diferencia es que SFTP es seguro, y se puede utilizar de forma fiable a través de Network Address Translation (NAT) y la Internet pública.
+
+			Sshfs es un sistema de archivos de red para Linux que se ejecuta sobre el protocolo SFTP. 
+
+			Puede utilizar cualquier servidor SSH como servidor y utilizar archivos remotos a través de la red como si fueran archivos locales. 
+
+			El sistema de archivos remoto puede montarse y desmontarse como se desee. 
+
+			Es la forma más cómoda de montar archivos remotos ad hoc, sin necesidad de ninguna configuración por parte del administrador del servidor.
+
+			Las claves SSH pueden incluso automatizar completamente el establecimiento de la conexión con el servidor.
+
+			Básicamente, cualquiera que pueda conectarse al servidor puede montar su sistema de archivos, con acceso a aquellos archivos a los que el usuario tenga acceso.
+
+			Otras implementaciones de compartición de archivos mediante SFTP son:
+
+			    Expandrive (Windows y Mac)
+
+			    Apache Commons VFS
+
+			    chromeos-filesystem-sftp
+
+
+		Transferencias de archivos seguras, interactivas y automatizadas:
+
+			Al igual que SSH, SFTP es un protocolo cliente-servidor.
+
+			Los clientes SFTP están incluidos en los clientes SSH de calidad y las implementaciones SSH de nivel empresarial completas proporcionan funcionalidad tanto de cliente como de servidor SFTP. 
+
+			Algunos clientes SSH, como Tectia SSH, también proporcionan vistas gráficas del gestor de archivos en sistemas de archivos remotos.
+
+			En Linux, SFTP se utiliza a menudo como una utilidad de línea de comandos que admite transferencias de archivos interactivas y automatizadas.
+
+			La autenticación de clave pública puede utilizarse para automatizar completamente los inicios de sesión para transferencias de archivos automatizadas. 
+
+			Sin embargo, la gestión adecuada del ciclo de vida de las claves SSH es importante para mantener el acceso bajo control.
+
+			Entre los casos de uso más comunes para las transferencias automatizadas de archivos se incluyen las copias de seguridad nocturnas del sistema, la copia de datos a sistemas de recuperación ante desastres, la distribución de datos de configuración y el traslado de registros de transacciones a sistemas de archivo. 
+
+			Muchas organizaciones realizan miles de transferencias SSH diarias.
+
+			En algunos casos, hemos visto más de 5 millones de inicios de sesión SSH automatizados diarios.
+
+
+		SFPT Protocol: 	
+
+			El protocolo SFTP se ejecuta sobre el protocolo SSH como un subsistema. 
+
+			Fue diseñado originalmente por Tatu Ylonen para SSH 2.0 en 1997-1998. 
+
+			No hay un puerto SFTP separado; utiliza el puerto SSH normal.
+
+			El protocolo soporta múltiples operaciones concurrentes.
+
+			Cada operación se identifica mediante un número único asignado por el cliente, y la respuesta del servidor contiene el mismo número identificativo. 
+
+			El servidor puede procesar las peticiones de forma asíncrona y devolver las respuestas fuera de orden.
+
+			Por razones de rendimiento, los clientes de transferencia de archivos suelen enviar varias solicitudes antes de detenerse a esperar las respuestas.
+
+
+			Operaciones o paquetes soportados: 
+
+
+				INIT: envía los números de versión del cliente y las extensiones al servidor.
+
+				VERSION: devuelve al cliente el número de versión y las extensiones del servidor
+
+				OPEN: abre o crea un archivo, devolviendo un manejador de archivo
+
+				CLOSE: cierra un manejador de fichero
+
+				READ: lee datos de un archivo
+
+				WRITE: escribe datos en un fichero
+
+				OPENDIR: abre un directorio para lectura, devolviendo un manejador de directorio
+
+				READDIR: lee los nombres y atributos de los ficheros de un directorio
+
+				MKDIR: crea un directorio
+
+				RMDIR: elimina un directorio
+
+				REMOVE: elimina un fichero
+
+				RENAME: cambia el nombre de un fichero
+
+				STAT: devuelve los atributos de un fichero dada una ruta, siguiendo los enlaces simbólicos
+
+				LSTAT: devuelve los atributos de un fichero dada una ruta, sin seguir los enlaces simbólicos
+
+				FSTAT: devuelve los atributos de un fichero a partir de su manejador
+
+				SETSTAT: modifica los atributos de un fichero dada una ruta
+
+				FSETSTAT: modifica los atributos de un fichero a partir de su manejador
+
+				READLINK: lee el valor de un enlace simbólico
+
+				SYMLINK: crea un enlace simbólico
+
+				REALPATH: canonicaliza una ruta relativa del tamaño del servidor a una ruta absoluta
+
+
+			El servidor devuelve los siguientes paquetes de respuesta:
+
+				STATUS: indica el éxito o el fracaso de una operación
+
+				HANDLE: devuelve un manejador de fichero en caso de éxito
+
+				DATA: devuelve datos en caso de éxito
+
+				ATTRS: devuelve los atributos del archivo en caso de éxito
+
+				También existe un mecanismo de extensión para extensiones arbitrarias específicas del proveedor. 
+
+				Las extensiones admitidas se negocian mediante los paquetes INIT y VERSION.
+
+				EXTENDED: envía una petición específica del proveedor del cliente al servidor.
+
+				EXTENDED_REPLY: envía una respuesta específica del proveedor del servidor al cliente.
+
+
+		SFTP vs. FTPS
+
+			A menudo la gente quiere comparar SFTP vs. FTPS. 
+
+			FTPS es básicamente el antiguo protocolo ftp ejecutado sobre SSL (Secure Sockets Layer) o TLS (Transport Layer Security).
+
+			Los beneficios de SFTP sobre FTPS incluyen:
+
+			    SFTP se ejecuta sobre SSH en el puerto SSH estándar.
+
+			    Por lo tanto, no es necesario abrir puertos adicionales en el servidor ni mantener una autenticación adicional.
+
+			    Esto simplifica la configuración y reduce la probabilidad de errores de configuración.
+
+			    FTPS necesita una configuración complicada del cortafuegos y puede que no funcione sobre NAT. 
+
+			    Los puertos 989 y 990 deben estar abiertos.
+
+			    Además, FTPS admite los modos activo y pasivo (véase FTP), lo que complica aún más las configuraciones del cortafuegos y es propenso a problemas.
+
+			    FTPS requiere un certificado X.509 para el servidor, normalmente de una autoridad de certificación pública.
+
+			    SSH funciona sin ninguna infraestructura centralizada. 
+
+			    SFTP puede utilizar cualquier método de distribución de claves o certificación de host que se utilice para SSH, sin necesidad de trabajo adicional ni mantenimiento continuo.
+
+			    FTPS es básicamente FTP, lo que significa que tiene modo ASCII, que puede corromper archivos si el modo no está correctamente configurado. 
+
+			    Algunas implementaciones tienen por defecto el modo ASCII.
+
+			    FTPS no puede utilizarse como sistema de archivos.
+
+			    (Esto no mejora la seguridad, ya que puede seguir leyendo los mismos archivos).
+
+			    FTPS requiere instalar y parchear un paquete de software de servidor adicional, mientras que SFTP suele venir con SSH con el sistema.
+
+
+	Comandos SSH: 
+
+		Aunque existen implementaciones gráficas de SSH, el programa suele invocarse en la línea de comandos o ejecutarse como parte de un script. 
+
+		Ejecutar el comando ssh por sí solo, sin argumentos como un host de destino o ID de usuario, devuelve una lista de parámetros y opciones del comando SSH.
+
+		La forma más básica del comando SSH es invocar el programa y el nombre del host de destino o la dirección del Protocolo de Internet (IP):
+
+		```
+			ssh server.example.org
+
+		```
+
+		Esto conectará con el destino, servidor.ejemplo.org. 
+
+		El host de destino responderá solicitando una contraseña para el ID de usuario de la cuenta bajo la que se está ejecutando el cliente. 
+
+		En otras palabras, si el ID de usuario en uso es jsmith, entonces el host remoto pedirá una contraseña asociada con la cuenta jsmith en el host remoto.
+
+		En muchos casos, el ID de usuario para el host remoto será diferente, en cuyo caso el comando debe ser emitido con el ID de usuario del host remoto, así:
+
+		```
+			ssh remote_host_userID@server.example.org
+
+		```
+
+		SSH también se puede utilizar desde la línea de comandos para emitir un único comando en el host remoto y luego salir -- por ejemplo:
+
+		```
+			ssh example.org ls
+
+		```
+
+		Este comando ejecuta el comando ls de Unix, que lista todos los contenidos del directorio actual en el host remoto. 
+
+		Aunque este ejemplo es trivial, demuestra que SSH puede utilizarse para ejecutar comandos más interesantes en un host remoto.
+
+		Por ejemplo, se puede crear un comando que inicialice una instancia de servidor que dará acceso a una máquina remota a un único archivo - u otro recurso - y luego terminar el servidor después de que el archivo sea accedido por el host remoto especificado.
+
+		Además del ejecutable ssh, SSH tiene otros comandos ejecutables usados en la línea de comandos para funciones adicionales, incluyendo las siguientes:
+
+			sshd inicia el servidor SSH, que espera las solicitudes de conexión SSH entrantes y permite a los sistemas autorizados conectarse al host local.
+
+		    ssh-keygen es un programa para crear un nuevo par de claves de autenticación para SSH, que puede utilizarse para automatizar inicios de sesión, implementar SSO y autenticar hosts.
+
+		    ssh-copy-id es un programa utilizado para copiar, instalar y configurar una clave SSH en un servidor para automatizar inicios de sesión sin contraseña y SSO.
+
+		    ssh-agent es un programa de ayuda que rastrea las claves de identidad y sus frases de contraseña -- a partir de las cuales SSH deriva una clave de cifrado -- y permite al usuario utilizar las claves de identidad para iniciar sesión en diferentes servidores sin necesidad de volver a introducir contraseñas o frases de contraseña.
+
+		    ssh-add se utiliza para añadir una clave al agente de autenticación SSH y se utiliza con ssh-agent para implementar SSO utilizando SSH.
+
+		    scp es un programa utilizado para copiar archivos de un ordenador a otro y es una versión segura SSH de rcp.
+
+		    sftp es un programa utilizado para copiar archivos de un ordenador a otro y es una versión protegida por SSH de ftp, el Protocolo de Transferencia de Archivos original. 
+
+		    SFTP se ha convertido en el mecanismo preferido para compartir archivos a través de Internet, sustituyendo tanto a FTP como a FTP/S (FTP Secure), que es un protocolo para utilizar FTP a través de un túnel SSL/TLS.
+
+
+
+|| Firewall
+
+
+
+
+
 
 || HTTP/1 y HTTP/2
 
