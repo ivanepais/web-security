@@ -4400,24 +4400,762 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 ||Cookies
 
+	Las cookies son pequeños archivos de información que un servidor web genera y envía a un navegador web.
+
+	Los navegadores almacenan las cookies que reciben durante un periodo de tiempo predeterminado, o durante la sesión del usuario en un sitio web.
+
+	Adjuntan las cookies pertinentes a cualquier solicitud futura que el usuario haga al servidor web.
+
+	Las cookies ayudan a informar a los sitios web sobre el usuario, lo que permite a los sitios web personalizar la experiencia del usuario. 
+
+	Por ejemplo, los sitios web utilizan cookies para saber el comportamiento o la interacción de los usuarios con la plataforma. 
+
+	Además, algunas cookies son necesarias por motivos de seguridad, como las cookies de autenticación.
+
+	Las cookies que se utilizan en Internet también se llaman "cookies HTTP". 
+
+	Como gran parte de la web, las cookies se envían utilizando el protocolo HTTP.
+
+
+	Almacenamiento de Cookies: 
+
+		Los navegadores web almacenan las cookies en un archivo designado en los dispositivos de los usuarios. 
+
+		El navegador web Google Chrome, por ejemplo, almacena todas las cookies en un archivo denominado "Cookies". 
+
+		Los usuarios de Chrome pueden ver las cookies almacenadas por el navegador abriendo las herramientas para desarrolladores, haciendo clic en la pestaña "Aplicación" y en "Cookies" en el menú lateral izquierdo.
+
+
+	Uso de Cookies: 
+
+		Sesiones de usuario: 
+
+			Las cookies ayudan a asociar la actividad del sitio web con un usuario específico. 
+
+			Una cookie de sesión contiene una cadena única (una combinación de letras y números) que asocia una sesión de usuario con datos y contenidos relevantes para ese usuario.
+
+			Si un usuario accede a su cuenta desde la página de inicio del sitio web. 
+
+			Al hacerlo, el servidor del sitio genera una cookie de sesión y la envía al navegador del usuario. 
+
+			Esta cookie le dice al sitio web que cargue el contenido de la cuenta personal del usuario, de modo que la página de inicio se personaliza con su nombre.
+
+			Cuando el navegador web del usuario envía una petición HTTP al sitio web para la página que quiere, incluye la cookie de sesión personalizada con la petición o solicitud. 
+
+			Como el sitio web tiene esta cookie, reconoce al usuario, y no tiene que volver a iniciar sesión cuando se carga la nueva página.
+
+
+		Personalización: 
+
+			Las cookies ayudan a un sitio web a "recordar" las acciones o preferencias del usuario, lo que permite al sitio web personalizar la experiencia del usuario.
+
+			Si sale del sitio web, su nombre de usuario puede almacenarse en una cookie y enviarse a su navegador. 
+
+			La próxima vez que acceda a ese sitio, el navegador enviará la cookie al servidor web, que le pedirá que inicie sesión con el nombre de usuario que utilizó la última vez.
+
+
+		Seguimiento (Tracking): 
+
+			Algunas cookies registran qué sitios web visitan los usuarios. 
+
+			Esta información se envía al servidor que originó la cookie la próxima vez que el navegador tenga que cargar contenido de ese servidor.
+
+			Con las cookies de seguimiento de terceros, este proceso tiene lugar cada vez que el navegador carga un sitio web que utiliza ese servicio de seguimiento.
+
+			Si el usuario ha visitado previamente un sitio web que envió a su navegador una cookie de seguimiento, esta cookie puede registrar qué está viendo ahora el usuario.
+
+			La próxima vez que Alicia visite un sitio web que utilice este servicio de seguimiento, es posible que vea anuncios relacionados.
+
+			Sin embargo, la publicidad no es el único uso de las cookies de seguimiento.
+
+			Muchos servicios de análisis también utilizan cookies de seguimiento para registrar de forma anónima la actividad del usuario. 
+
+	
+	Tipos de Cookies: 
+
+		Cookies de sesión
+
+			Una cookie de sesión ayuda a un sitio web a seguir la sesión de un usuario. 
+
+			Las cookies de sesión se eliminan cuando finaliza la sesión del usuario, es decir, cuando éste cierra la sesión en un sitio web o sale de él.
+
+			Las cookies de sesión no tienen fecha de caducidad, lo que indica al navegador que debe eliminarlas una vez finalizada la sesión.
+
+
+		Cookies persistentes:
+
+			A diferencia de las cookies de sesión, las cookies persistentes permanecen en el navegador del usuario durante un periodo de tiempo predeterminado, que puede ser un día, una semana, varios meses o incluso años. 
+
+			Las cookies persistentes siempre contienen una fecha de caducidad.
+
+
+		Cookies de autenticación:
+
+			Las cookies de autenticación ayudan a gestionar las sesiones de usuario; se generan cuando un usuario inicia sesión en una cuenta a través de su navegador.
+
+			Garantizan que la información confidencial se envíe a las sesiones de usuario correctas asociando la información de la cuenta de usuario a una cadena identificadora de cookies.
+
+
+		Cookies de seguimiento:
+
+			Las cookies de seguimiento son generadas por servicios de seguimiento. 
+
+			Registran la actividad del usuario, y los navegadores envían este registro al servicio de seguimiento asociado la próxima vez que cargan un sitio web que utiliza ese servicio de seguimiento.
+
+
+		Cookies zombi:
+
+			Al igual que los "zombis" de la ficción popular, las cookies zombi se regeneran después de ser eliminadas.
+
+			Las cookies zombi crean versiones de seguridad de sí mismas fuera de la ubicación típica de almacenamiento de cookies de un navegador.
+
+			Utilizan estas copias de seguridad para reaparecer en un navegador después de haber sido eliminadas. 
+
+			Las cookies zombi son utilizadas a veces por redes publicitarias sin escrúpulos, e incluso por ciberatacantes.
 
 
 
+	Thrid-party cookie: 
+
+		Una cookie de terceros es una cookie que pertenece a un dominio distinto del que se muestra en el navegador. 
+
+		Las cookies de terceros se utilizan con mayor frecuencia para fines de seguimiento.
+
+		Contrastan con las cookies de origen, que están asociadas al mismo dominio que aparece en el navegador del usuario.
+
+		Cuando un usuario hace sus compras en jeans.example.com, el servidor de origen de jeans.example.com utiliza una cookie de sesión para recordar que ha iniciado sesión en su cuenta. 
+
+		Este es un ejemplo de cookie de origen. 
+
+		Sin embargo, el usuario puede no ser consciente de que una cookie de example.ad-network.com también está almacenada en su navegador y está rastreando su actividad en jeans.example.com, aunque no esté accediendo en ese momento a example.ad-network.com. 
+
+		Este es un ejemplo de cookie de terceros.
 
 
+	Privacidad y Cookies: 
 
+		Como se ha descrito anteriormente, las cookies pueden utilizarse para registrar la actividad de navegación, incluso con fines publicitarios. 
+
+		Sin embargo, muchos usuarios no quieren que se rastree su comportamiento en línea. 
+
+		Los usuarios también carecen de visibilidad o control sobre lo que los servicios de seguimiento hacen con los datos que recogen.
+
+		Incluso cuando el rastreo basado en cookies no está vinculado al nombre o dispositivo de un usuario concreto, con algunos tipos de rastreo podría ser posible vincular un registro de la actividad de navegación de un usuario con su identidad real.
+
+		Esta información podría utilizarse de muchas maneras, desde publicidad no deseada hasta la vigilancia, el acecho o el hostigamiento de los usuarios.
+
+		(Este no es el caso de todo el uso de cookies).
+
+		Algunas leyes sobre privacidad, como la Directiva sobre privacidad electrónica de la UE, abordan y regulan el uso de cookies. 
+
+		Según esta directiva, los usuarios tienen que dar su "consentimiento informado" -se les tiene que notificar cómo utiliza las cookies el sitio web y tienen que aceptar este uso- antes de que el sitio web pueda utilizar cookies. 
+
+		(La excepción son las cookies "estrictamente necesarias" para que el sitio web funcione). 
+
+		El Reglamento General de Protección de Datos (RGPD) de la UE considera que los identificadores de las cookies son datos personales, por lo que sus normas se aplican también al uso de cookies en la UE. 
+
+		Además, cualquier dato personal recogido por las cookies entra dentro de la jurisdicción del GDPR.
+
+		En gran parte debido a estas leyes, muchos sitios web ahora muestran banners de cookies que permiten a los usuarios revisar y controlar las cookies que esos sitios web utilizan.
 
 
 
 || APIs 
 
+	Las API permiten que su producto o servicio se comunique con otros productos y servicios sin tener que saber cómo están implementados. 
 
+	Esto puede simplificar el desarrollo de aplicaciones, ahorrando tiempo y dinero. 
+
+	A la hora de diseñar nuevas herramientas y productos, o de gestionar los existentes, las API aportan flexibilidad, simplifican el diseño, la administración y el uso, y ofrecen oportunidades de innovación.
+
+	A veces se piensa en las API como si fueran contratos, con documentación que representa un acuerdo entre las partes: Si la parte 1 envía una solicitud remota estructurada de una manera determinada, así es como responderá el software de la parte 2.
+
+	Dado que las API simplifican la integración de nuevos componentes de aplicación en una arquitectura existente, ayudan a colaborar a los equipos de negocio y de TI. 
+
+	Las necesidades empresariales suelen cambiar rápidamente en respuesta a los mercados digitales en constante evolución, donde los nuevos competidores pueden cambiar todo un sector con una nueva aplicación. 
+
+	Para seguir siendo competitivos, es importante apoyar el rápido desarrollo y despliegue de servicios innovadores. 
+
+	El desarrollo de aplicaciones nativas en la nube es una forma identificable de aumentar la velocidad de desarrollo, y se basa en la conexión de una arquitectura de aplicaciones de microservicios a través de API.
+
+	Las API son una forma simplificada de conectar su propia infraestructura mediante el desarrollo de aplicaciones nativas en la nube, pero también le permiten compartir sus datos con clientes y otros usuarios externos. 
+
+	Las API públicas representan un valor empresarial único porque pueden simplificar y ampliar la forma de conectar con tus socios, así como monetizar potencialmente tus datos (la API de Google Maps es un ejemplo popular).
+
+
+	Ejemplo: 
+
+		Por ejemplo, imaginemos una empresa distribuidora de libros.
+
+		El distribuidor de libros podría ofrecer a sus clientes una aplicación en la nube que permitiera a los dependientes de las librerías comprobar la disponibilidad de los libros con el distribuidor. 
+
+		Esta aplicación podría ser cara de desarrollar, estar limitada por la plataforma y requerir largos periodos de desarrollo y mantenimiento continuo.
+
+		Como alternativa, el distribuidor de libros podría proporcionar una API para comprobar la disponibilidad de las existencias. 
+
+		Este enfoque tiene varias ventajas:
+
+		    Permitir a los clientes acceder a los datos a través de una API les ayuda a agregar información sobre sus existencias en un único lugar.
+
+		    El distribuidor de libros puede hacer cambios en sus sistemas internos sin afectar a los clientes, siempre que no cambie el comportamiento de la API.
+
+		    Con una API a disposición del público, los desarrolladores que trabajan para el distribuidor de libros, los vendedores de libros o terceros podrían desarrollar una aplicación para ayudar a los clientes a encontrar los libros que buscan. 
+
+		    Esto podría traducirse en mayores ventas u otras oportunidades de negocio.
+
+
+		En resumen, las API le permiten abrir el acceso a sus recursos manteniendo la seguridad y el control. 
+
+		Tú decides cómo y a quién abres el acceso. 
+
+		La seguridad de las API depende de una buena gestión de las mismas, lo que incluye el uso de una pasarela API. 
+
+		Conectarse a las API y crear aplicaciones que consuman los datos o la funcionalidad expuestos por las API puede hacerse con una plataforma de integración distribuida que lo conecte todo, incluidos los sistemas heredados y el Internet de las cosas (IoT).
+
+
+	Tipos de APIs: 
+
+		Privada: 
+
+			La API es sólo para uso interno. 
+
+			De este modo, las empresas tienen el máximo control sobre su API.
+
+
+		Partner (Socio): 
+			
+			La API se comparte con socios comerciales específicos. 
+
+			Esto puede proporcionar fuentes de ingresos adicionales sin comprometer la calidad.
+
+
+		Pública: 
+
+			La API está disponible para todo el mundo. 
+
+			Esto permite a terceros desarrollar aplicaciones que interactúen con su API y puede ser una fuente de innovación.
+
+
+	Innovar con API:
+
+		Exponer sus API a socios o al público puede:
+
+		    Crear nuevos canales de ingresos o ampliar los existentes.
+
+		    Ampliar el alcance de su marca.
+
+		    Facilitar la innovación abierta o la mejora de la eficiencia a través del desarrollo y la colaboración externos.
+
+		Suena muy bien, ¿verdad? Pero, ¿cómo pueden las API hacer todo eso?
+
+		Volvamos al ejemplo de la empresa distribuidora de libros.
+
+		Supongamos que uno de los socios de la empresa desarrolla una aplicación que ayuda a encontrar libros en las estanterías de las librerías. 
+
+		Esta experiencia mejorada atrae a más compradores a la librería -el cliente del distribuidor- y amplía un canal de ingresos existente.
+
+		Puede que un tercero utilice una API pública para desarrollar una aplicación que permita comprar libros directamente al distribuidor, en lugar de a una tienda. Esto abre un nuevo canal de ingresos para el distribuidor de libros.
+
+		Compartir API -con socios selectos o con todo el mundo- puede tener efectos positivos.
+
+		Cada asociación amplía el reconocimiento de su marca más allá de los esfuerzos de marketing de su empresa. 
+
+		Abrir la tecnología a todo el mundo, como ocurre con una API pública, anima a los desarrolladores a crear un ecosistema de aplicaciones en torno a su API. 
+
+		Cuanta más gente utilice su tecnología, más probabilidades habrá de que hagan negocios con usted.
+
+		Hacer pública la tecnología puede dar lugar a resultados novedosos e inesperados. 
+
+		A veces, estos resultados trastornan sectores enteros. 
+
+		Para nuestra empresa de distribución de libros, las nuevas empresas -un servicio de préstamo de libros, por ejemplo- podrían cambiar radicalmente su forma de hacer negocios. 
+
+		Las API públicas y de socios le ayudan a utilizar los esfuerzos creativos de una comunidad mayor que su equipo de desarrolladores internos. 
+
+		Las nuevas ideas pueden venir de cualquier parte, y las empresas necesitan estar al tanto de los cambios en su mercado y preparadas para actuar en consecuencia.
+
+
+	Una historia extraordinariamente breve de las API:
+
+		Las API surgieron en los inicios de la informática, mucho antes del ordenador personal. 
+
+		En aquella época, una API se utilizaba normalmente como una biblioteca para los sistemas operativos. 
+
+		La API era casi siempre local a los sistemas en los que operaba, aunque a veces pasaba mensajes entre mainframes. 
+
+		Después de casi 30 años, las API salieron de sus entornos locales.
+
+		A principios de la década de 2000, se estaban convirtiendo en una importante tecnología para la integración remota de datos.
+
+
+	API remotas:
+
+		Las API remotas están diseñadas para interactuar a través de una red de comunicaciones. 
+
+		Por remoto entendemos que los recursos manipulados por la API se encuentran en algún lugar fuera del ordenador que realiza la solicitud. 
+
+		Dado que la red de comunicaciones más utilizada es Internet, la mayoría de las API están diseñadas según los estándares web. 
+
+		No todas las APIs remotas son APIs web, pero es justo asumir que las APIs web son remotas.
+
+		Las API web suelen utilizar HTTP para los mensajes de solicitud y proporcionan una definición de la estructura de los mensajes de respuesta. 
+
+		Estos mensajes de respuesta suelen adoptar la forma de un archivo XML o JSON. 
+
+		Tanto XML como JSON son los formatos preferidos porque presentan los datos de una forma fácil de manipular por otras aplicaciones.
+
+
+	SOAP vs. REST:
+
+		A medida que las API web se han ido extendiendo, se ha desarrollado una especificación de protocolo para ayudar a estandarizar el intercambio de información: Simple Object Access Protocol, más conocido como SOAP.
+
+		Las API diseñadas con SOAP utilizan XML como formato de mensaje y reciben peticiones a través de HTTP o SMTP. 
+
+		SOAP facilita el intercambio de información entre aplicaciones que funcionan en distintos entornos o están escritas en distintos idiomas.
+
+		Otra especificación es Representational State Transfer (REST). 
+
+		Las API web que se adhieren a las restricciones arquitectónicas de REST se denominan API RESTful.
+
+		REST difiere de SOAP en un aspecto fundamental: SOAP es un protocolo, mientras que REST es un estilo arquitectónico. 
+
+		Esto significa que no existe un estándar oficial para las API web RESTful. 
+
+		Tal y como se define en la disertación de Roy Fielding "Architectural Styles and the Design of Network-based Software Architectures" (Estilos arquitectónicos y diseño de arquitecturas de software basadas en red), las API son RESTful siempre y cuando cumplan las 6 restricciones que guían un sistema RESTful:
+
+
+		Arquitectura cliente-servidor: 
+
+			La arquitectura REST se compone de clientes, servidores y recursos, y gestiona las peticiones a través de HTTP.
+
+
+		Sin estado (Statelessness): 
+
+			Ningún contenido del cliente se almacena en el servidor entre peticiones. 
+
+			En cambio, la información sobre el estado de la sesión se guarda en el cliente.
+
+
+		Almacenamiento en caché: 
+
+			El almacenamiento en caché puede eliminar la necesidad de algunas interacciones cliente-servidor.
+
+
+		Sistema en capas: 
+
+			Las interacciones cliente-servidor pueden estar mediadas por capas adicionales. 
+
+			Estas capas pueden ofrecer características adicionales como equilibrio de carga, cachés compartidas o seguridad.
+
+
+		Código bajo demanda (opcional):
+
+			Los servidores pueden ampliar la funcionalidad de un cliente transfiriendo código ejecutable.
+
+
+		Interfaz uniforme: 
+
+			Esta restricción es fundamental para el diseño de las API RESTful e incluye 4 facetas:
+
+		    Identificación de recursos en las solicitudes: 
+
+		    	Los recursos se identifican en las solicitudes y son independientes de las representaciones devueltas al cliente.
+
+
+		    Manipulación de recursos a través de representaciones: 
+
+		    	Los clientes reciben archivos que representan recursos. 
+
+		    	Estas representaciones deben tener suficiente información para permitir su modificación o eliminación.
+
+
+		    Mensajes autodescriptivos:
+
+		    	Cada mensaje devuelto a un cliente contiene información suficiente para describir cómo el cliente debe procesar la información.
+
+
+		    Hipermedia como motor del estado de la aplicación: 
+
+		    	Tras acceder a un recurso, el cliente REST debe ser capaz de descubrir a través de hipervínculos todas las demás acciones disponibles en ese momento.
+		
+
+		Estas restricciones pueden parecer muchas, pero son mucho más sencillas que un protocolo prescrito. 
+
+		Por eso, las API RESTful son cada vez más frecuentes que las SOAP.
+
+		En los últimos años, la especificación OpenAPI ha surgido como un estándar común para definir las API REST. 
+
+		OpenAPI establece una forma agnóstica al lenguaje para que los desarrolladores construyan interfaces API REST de modo que los usuarios puedan entenderlas con un mínimo de conjeturas.
+
+		Otro estándar de API que ha surgido es GraphQL, un lenguaje de consulta y tiempo de ejecución en el servidor que es una alternativa a REST. 
+
+		GraphQL da prioridad a proporcionar a los clientes exactamente los datos que solicitan y nada más.
+
+		Como alternativa a REST, GraphQL permite a los desarrolladores crear solicitudes que extraen datos de varias fuentes en una sola llamada a la API.
+
+
+	Arquitectura SOA vs. Arquitectura de Microservicios:
+
+		Los 2 enfoques arquitectónicos que más utilizan API remotas son la arquitectura orientada a servicios (SOA) y la arquitectura de microservicios. 
+
+		SOA, el más antiguo de los dos enfoques, comenzó como una mejora de las aplicaciones monolíticas.
+
+		Mientras que una única aplicación monolítica lo hace todo, algunas funciones pueden ser suministradas por diferentes aplicaciones que se acoplan libremente a través de un patrón de integración, como un bus de servicios empresariales (ESB).
+
+		Aunque SOA es, en la mayoría de los aspectos, más sencilla que una arquitectura monolítica, conlleva el riesgo de cambios en cascada en todo el entorno si no se comprenden claramente las interacciones de los componentes.
+
+		Esta complejidad adicional reintroduce algunos de los problemas que SOA pretendía remediar.
+
+		Las arquitecturas de microservicios son similares a los patrones SOA en su uso de servicios especializados y poco acoplados. 
+
+		Pero van aún más lejos en la ruptura de las arquitecturas tradicionales. 
+
+		Los servicios dentro de la arquitectura de microservicios utilizan un marco de mensajería común, como las API RESTful.
+
+		Utilizan API RESTful para comunicarse entre sí sin difíciles transacciones de conversión de datos ni capas de integración adicionales. 
+
+		El uso de API RESTful permite, e incluso fomenta, una entrega más rápida de nuevas funciones y actualizaciones. 
+
+		Cada servicio es independiente. Un servicio puede sustituirse, mejorarse o eliminarse sin que ello afecte a ningún otro servicio de la arquitectura. Esta arquitectura ligera ayuda a optimizar los recursos distribuidos o en la nube y admite la escalabilidad dinámica de los servicios individuales.
+
+
+	APIs vs webhooks:
+
+		Un webhook es una función callback basada en HTTP que permite una comunicación ligera y basada en eventos entre 2 API. 
+
+		Los webhooks son utilizados por una amplia variedad de aplicaciones web para recibir pequeñas cantidades de datos de otras aplicaciones, pero también pueden utilizarse para activar flujos de trabajo de automatización en entornos GitOps.
+
+		Los webhooks suelen denominarse API inversas o push API, porque hacen recaer la responsabilidad de la comunicación en el servidor, en lugar de en el cliente.
+
+		En lugar de que el cliente envíe solicitudes HTTP -pidiendo datos hasta que el servidor responde-, el servidor envía al cliente una única solicitud HTTP POST en cuanto los datos están disponibles. 
+
+		A pesar de sus apodos, los webhooks no son APIs, sino que funcionan conjuntamente. 
+
+		Una aplicación debe tener una API para utilizar un webhook
 
 
 
 || Protocolo SSH (Secure Shell)
+	
+	El protocolo Secure Shell (SSH) es un método para enviar comandos de forma segura a un ordenador a través de una red no segura. 
+
+	SSH utiliza criptografía para autenticar y cifrar las conexiones entre dispositivos. 
+
+	SSH también permite hacer tunneling, or port forwarding, que es cuando los paquetes de datos son capaces de cruzar redes que de otro modo no podrían cruzar. 
+
+	SSH se utiliza a menudo para controlar servidores a distancia, gestionar infraestructuras y transferir archivos.
+
+	Del mismo modo, SSH permite a los administradores gestionar servidores y dispositivos desde lejos. 
+
+	Los protocolos de gestión remota más antiguos, como Telnet, transportaban los comandos de los administradores de forma que cualquiera pudiera verlos.  
+
+	A diferencia de Telnet, SSH es seguro, de ahí el nombre de Secure Shell.
 
 
+	Propósito de SSH:
+
+		Conexiones remotas encriptadas: SSH establece una conexión entre el dispositivo de un usuario y una máquina lejana, a menudo un servidor. 
+
+		Utiliza el cifrado para codificar los datos que atraviesan la conexión. 
+
+		Una parte interceptora sólo encontraría algo como estática: datos aleatorios que no significan nada a menos que se descifren. 
+
+		(SSH utiliza métodos de cifrado que hacen que el descifrado sea prohibitivamente difícil para los intrusos).
+
+		La capacidad de hacer tunneling: En redes, el tunneling es un método para mover paquetes a través de una red usando un protocolo o ruta que normalmente no podrían usar. 
+
+		Los túneles funcionan envolviendo los paquetes de datos* con información adicional -llamada cabecera- para cambiar su destino. 
+
+		Los túneles SSH utilizan una técnica llamada reenvío de puertos (port forwarding) para enviar paquetes de una máquina a otra. 
+
+		El reenvío de puertos se explica con más detalle a continuación.
+
+		*Todos los datos que cruzan una red se dividen en trozos más pequeños; estos trozos se llaman "paquetes".
+
+
+	Funcionamiento de SSH: 
+
+		TCP/IP: 
+
+			SSH se ejecuta sobre el conjunto de protocolos TCP/IP, en el que se basa gran parte de Internet. 
+
+			TCP significa Protocolo de Control de Transmisión e IP significa Protocolo de Internet. 
+
+			TCP/IP combina estos dos protocolos para formatear, enrutar y entregar paquetes.
+
+			IP indica, entre otra información, a qué dirección IP debe ir un paquete (piense en una dirección postal), mientras que TCP indica a qué puerto debe ir un paquete en cada dirección IP (piense en la planta de un edificio o el número de un apartamento).
+
+			TCP es un protocolo de capa de transporte: se ocupa del transporte y entrega de paquetes de datos.
+
+			Normalmente, se utilizan protocolos adicionales sobre TCP/IP para poner los datos transmitidos en una forma que las aplicaciones puedan utilizar. 
+
+			SSH es uno de estos protocolos. (Otros ejemplos son HTTP, FTP y SMTP).
+
+
+	Criptografía de clave pública:
+
+		SSH es "seguro" porque incorpora encriptación y autenticación a través de un proceso llamado criptografía de clave pública (Public Key). 
+
+		La criptografía de clave pública es una forma de encriptar datos, o firmar datos, con dos claves diferentes. 
+
+		Una de las claves, la pública, está a disposición de cualquiera. La otra, la clave privada, la mantiene en secreto su propietario. 
+
+		Como las dos claves se corresponden, para establecer la identidad del propietario de la clave es necesario poseer la clave privada que acompaña a la pública.
+
+		Estas claves "asimétricas", llamadas así porque tienen valores diferentes, también permiten a las dos partes de la conexión negociar claves simétricas idénticas y compartidas para el cifrado posterior a través del canal. 
+
+		Una vez concluida esta negociación, las dos partes utilizan las claves simétricas para cifrar los datos que intercambian.
+
+		En una conexión SSH, ambos lados tienen un par de claves pública/privada, y cada lado autentica al otro usando estas claves. 
+
+		Esto diferencia SSH de HTTPS, que en la mayoría de las implementaciones sólo verifica la identidad del servidor web en una conexión cliente-servidor. 
+
+		(Otras diferencias incluyen que HTTPS normalmente no permite al cliente acceder a la línea de comandos del servidor, y que los cortafuegos a veces bloquean SSH pero casi nunca HTTPS).
+
+
+		Autenticación:
+
+			Aunque la criptografía de clave pública autentica los dispositivos conectados en SSH, un ordenador debidamente protegido seguirá requiriendo la autenticación de la persona que utiliza SSH. 
+
+			A menudo esto toma la forma de introducir un nombre de usuario y una contraseña.
+
+			Una vez completada la autenticación, la persona puede ejecutar comandos en la máquina remota como si lo estuviera haciendo en su propia máquina local.
+
+
+		SSH tunnelingo o "reenvío de puertos
+
+			El reenvío de puertos es como reenviar un mensaje entre dos personas. 
+
+			Bob puede enviar un mensaje a Alice, que a su vez se lo pasa a Dave. 
+
+			Del mismo modo, el reenvío de puertos envía paquetes de datos dirigidos a una dirección IP y un puerto de una máquina a una dirección IP y un puerto de otra máquina.
+
+			Por ejemplo, imagina que un administrador quiere hacer un cambio en un servidor dentro de una red privada que gestiona, y quiere hacerlo desde una ubicación remota.
+
+			Sin embargo, por razones de seguridad, ese servidor sólo recibe paquetes de datos de otros ordenadores dentro de la red privada. 
+
+			En su lugar, el administrador podría conectarse a un segundo servidor dentro de la red - uno que esté abierto a recibir tráfico de Internet - y luego utilizar el reenvío de puertos SSH para conectarse al primer servidor. 
+
+			Desde la perspectiva del primer servidor, los paquetes de datos del administrador provienen del interior de la red privada.
+
+
+		Usar SSH:	
+
+			Los sistemas operativos Linux y Mac vienen con SSH integrado.
+
+			Las máquinas Windows pueden necesitar tener instalada una aplicación cliente SSH. 
+
+			En ordenadores Mac y Linux, los usuarios pueden abrir la aplicación Terminal e introducir directamente comandos SSH.
+
+
+	Casos de uso de SSH:
+
+		Técnicamente, SSH puede transmitir cualquier dato arbitrario a través de una red, y los túneles SSH pueden configurarse para una miríada de propósitos. 
+
+		Sin embargo, los casos de uso de SSH más comunes son:
+
+		    Gestión remota de servidores, infraestructuras y ordenadores de empleados.
+
+		    Transferencia segura de archivos (SSH es más seguro que los protocolos no cifrados como FTP).
+
+		    Acceder a servicios en la nube sin exponer los puertos de una máquina local a Internet.
+
+		    Conexión remota a servicios de una red privada.
+
+		    Eludir las restricciones de los cortafuegos.
+
+
+	Puertos que usa SSH: 
+
+		El puerto 22 es el puerto por defecto para SSH. 
+
+		A veces, los cortafuegos pueden bloquear el acceso a determinados puertos en servidores situados detrás del cortafuegos, pero dejan el puerto 22 abierto. 
+
+		Por lo tanto, SSH es útil para acceder a servidores situados al otro lado del cortafuegos: los paquetes dirigidos al puerto 22 no se bloquean y pueden reenviarse a cualquier otro puerto.
+
+
+	Riesgos de seguridad en SSH: 
+
+		Cualquier protocolo puede ser abusado por partes malintencionadas, y la naturaleza encriptada de SSH y sus capacidades de túnel lo hacen particularmente atractivo para los atacantes. 
+
+		SSH se ha utilizado en una serie de ataques documentados con el fin de extraer datos privados, abrir rutas de puerta trasera (backdoor) en una red segura, e incluso obtener acceso root en los servidores.
+
+		Ciertos tipos de ataques también pueden robar claves SSH para acceder a ordenadores y servidores privados. 
+
+		De hecho, la gestión de claves SSH es un gran problema de seguridad para las grandes organizaciones, ya que sus numerosos servidores pueden utilizar miles o incluso millones de claves, y el seguimiento y actualización de las mismas es casi imposible. 
+
+		Una vez que un atacante obtiene una clave, puede tener acceso persistente durante meses o años.
+
+
+	Diferencia de SSH con otros protocolos tunneling?
+
+		Una de las principales diferencias entre SSH y otros protocolos de tunelización es la capa OSI en la que operan. 
+
+		GRE, IP-in-IP e IPsec son protocolos de capa de red. 
+
+		Como tales, no son conscientes de los puertos (un concepto de la capa de transporte), sino que operan entre direcciones IP. 
+
+		(La capa OSI exacta de SSH no está estrictamente definida, pero la mayoría de las fuentes lo describen como un protocolo de capa 7/capa de aplicación).
+
+		Otra diferencia es el uso de TCP por parte de SSH. 
+
+		TCP, como se describió anteriormente, es un protocolo de capa de transporte, y uno de los principales utilizados en Internet. 
+
+		Otro protocolo de capa de transporte ampliamente utilizado es UDP, el Protocolo de Datagramas de Usuario. 
+
+		UDP es un protocolo de transporte de "mejor esfuerzo" -envía paquetes sin garantizar su entrega-, lo que lo hace más rápido pero a veces provoca la pérdida de paquetes. 
+
+		Aunque TCP es más lento que UDP, garantiza la entrega de todos los paquetes en orden, por lo que es más fiable.
+
+		IPsec utiliza exclusivamente UDP en lugar de TCP para permitir que los paquetes IPsec atraviesen cortafuegos.
+
+		Por lo tanto, los túneles IPsec suelen ser más rápidos que los túneles SSH, pero pueden perder paquetes en tránsito. 
+
+		GRE e IP-in-IP pueden utilizarse tanto con TCP como con UDP.
+
+		Por último, SSH sólo encripta una aplicación a la vez, no todo el tráfico que va hacia y desde un dispositivo. 
+
+		Esto diferencia a SSH de IPsec, que cifra todo el tráfico de red, sin importar de qué aplicación provenga. 
+
+		Por esta razón, SSH no se utiliza para configurar VPNs.
+
+		Aunque el uso de SSH está muy extendido, exponer los puertos de un servidor a Internet siempre es arriesgado. 
+		 
+
+	Ejecutar SSH:
+
+		En la terminal de Linux o Mac, ejecutar el comando: 
+
+		```	
+			ssh {user}@{host}
+
+		```
+
+		El comando SSH key indica al sistema que desea abrir una conexión Secure Shell cifrada.
+
+		{user} representa la cuenta a la que quieres acceder. 
+
+		Por ejemplo, puedes querer acceder al usuario root, que es básicamente sinónimo del administrador del sistema con derechos completos para modificar cualquier cosa en el sistema.
+
+		{host} se refiere al ordenador al que quieres acceder. 
+
+		Puede ser una dirección IP (por ejemplo, 244.235.23.19) o un nombre de dominio (por ejemplo, www.xyzdomain.com).
+
+		Cuando pulses intro, se te pedirá que introduzcas la contraseña de la cuenta solicitada. 
+
+		Cuando la escribas, no aparecerá nada en la pantalla, pero tu contraseña está siendo transmitida. 
+
+		Una vez que haya terminado de escribirla, vuelva a pulsar Intro. 
+
+		Si la contraseña es correcta, aparecerá una ventana de terminal remoto.
+
+
+	Criptográfia y técnicas de encriptación: 
+
+		La ventaja significativa ofrecida por SSH sobre sus predecesores es el uso de encriptación para asegurar una transferencia segura de información entre el host y el cliente. 
+
+		El host se refiere al servidor remoto al que estás intentando acceder, mientras que el cliente es el ordenador que estás utilizando para acceder al host.
+
+		Existen tres tecnologías de encriptación diferentes utilizadas por SSH:
+
+		    Cifrado simétrico
+		    Cifrado asimétrico
+		    Hashing
+
+
+		Cifrado simétrico:
+
+			El cifrado simétrico es una forma de cifrado en la que se utiliza una clave secreta tanto para cifrar como para descifrar un mensaje por parte del cliente y del host.
+
+			En efecto, cualquiera que posea la clave puede descifrar el mensaje que se transfiere.
+
+			El cifrado simétrico suele denominarse cifrado de clave compartida o de secreto compartido (shared key or shared secret encryption). 
+
+			Normalmente sólo se utiliza una clave, o a veces un par de claves, donde una clave puede calcularse fácilmente utilizando la otra.
+
+			Las claves simétricas se utilizan para cifrar toda la comunicación durante una sesión SSH. 
+
+			Tanto el cliente como el servidor derivan la clave secreta utilizando un método acordado, y la clave resultante nunca se revela a terceros.
+
+			El proceso de creación de una clave simétrica se lleva a cabo mediante un algoritmo de intercambio de claves. 
+
+			Lo que hace que este algoritmo sea especialmente seguro es el hecho de que la clave nunca se transmite entre el cliente y el host.
+
+			En su lugar, los dos ordenadores comparten datos públicos y luego los manipulan para calcular independientemente la clave secreta. 
+
+			Incluso si otra máquina capta los datos compartidos públicamente, no podrá calcular la clave porque no se conoce el algoritmo de intercambio de claves.
+
+			Hay que tener en cuenta, sin embargo, que la clave secreta es específica para cada sesión SSH, y se genera antes de la autenticación del cliente. 
+
+			Una vez generada la clave, todos los paquetes que se muevan entre las dos máquinas deben estar cifrados por la clave privada. 
+
+			Esto incluye la contraseña tecleada en la consola por el usuario, por lo que las credenciales están siempre protegidas de los sniffers de paquetes de red.
+
+			Existe una gran variedad de cifrados simétricos, entre los que se incluyen AES (Advanced Encryption Standard), CAST128, Blowfish, etc. 
+
+			Antes de establecer una conexión segura, el cliente y el host deciden qué cifrado utilizar, publicando una lista de cifrados admitidos por orden de preferencia. 
+
+			El cifrado más preferido -de los cifrados soportados por el cliente- que esté presente en la lista del host se utiliza como cifrado bidireccional.
+
+			Por ejemplo, si dos máquinas Ubuntu 14.04 LTS se comunican entre sí a través de SSH, utilizarán aes128-ctr como cifrado por defecto.
+
+
+	Cifrado asimétrico:
+
+		A diferencia del cifrado simétrico, el asimétrico utiliza dos claves distintas para cifrar y descifrar. 
+
+		Estas dos claves se conocen como clave pública y clave privada.
+
+		Juntas forman un par de claves pública y privada.
+
+		Una clave pública puede ser utilizada por cualquier individuo para cifrar un mensaje y sólo puede ser descifrada por el destinatario que posea su clave privada particular, y viceversa.
+
+		Éstas consisten en combinaciones extensas y aparentemente aleatorias de números y símbolos, sin embargo, tanto las claves públicas como las privadas se emparejan mediante complejos algoritmos matemáticos.
+
+		Por ejemplo, para autenticar al remitente, un mensaje se cifra utilizando su propia clave privada. 
+
+		Por lo tanto, el mensaje sólo puede descifrarse utilizando la clave pública de ese remitente concreto. 
+
+		Ten en cuenta que tanto el mecanismo de cifrado como el de descifrado son procesos automáticos: no necesitas hacer nada manualmente.
+
+		A diferencia de la percepción general, el cifrado asimétrico no se utiliza para cifrar toda una sesión SSH. 
+
+		En su lugar, se utiliza durante el algoritmo de intercambio de claves del cifrado simétrico.
+
+		Antes de iniciar una conexión segura, ambas partes generan pares temporales de claves pública-privada y comparten sus respectivas claves privadas para producir la clave secreta compartida
+
+		Una vez establecida una comunicación simétrica segura, el servidor utiliza la clave pública del cliente para generar un desafío y transmitirlo al cliente para su autenticación. 
+
+		Si el cliente puede descifrar con éxito el mensaje, significa que posee la clave privada necesaria para la conexión: comienza entonces la sesión SSH.
+
+
+	Hashing: 	
+
+		El hash unidireccional es otra forma de criptografía utilizada en las conexiones Secure Shell.
+
+		Las funciones hash unidireccionales difieren de las dos formas de cifrado anteriores en el sentido de que nunca están pensadas para ser descifradas.
+
+		Generan un valor único de una longitud fija para cada entrada que no muestra ninguna tendencia clara que pueda ser explotada.
+
+		Esto las hace prácticamente imposibles de revertir.
+
+		Es fácil generar un hash criptográfico a partir de una entrada dada, pero imposible generar la entrada a partir del hash. 
+
+		Esto significa que si un cliente posee la entrada correcta, puede generar el hash criptográfico y comparar su valor para verificar si posee la entrada correcta.
+
+		SSH utiliza hashes para verificar la autenticidad de los mensajes.
+
+		Esto se hace utilizando HMACs, o Hash-based Message Authentication Codes. 
+
+		Esto asegura que el comando recibido no ha sido manipulado de ninguna manera.
+
+		Mientras se selecciona el algoritmo de cifrado simétrico, también se selecciona un algoritmo de autenticación de mensajes adecuado. 
+
+		Esto funciona de forma similar a cómo se selecciona el cifrado, como se explica en la sección de cifrado simétrico.
+
+		Cada mensaje que se transmite debe contener una MAC, que se calcula utilizando la clave simétrica, el número de secuencia del paquete y el contenido del mensaje. 
+
+		Se envía fuera de los datos cifrados simétricamente como sección final del paquete de comunicación.
 
 
 
