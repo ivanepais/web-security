@@ -5718,8 +5718,202 @@ Construir aplicaciones y servicios en Internet para aprovechar su potencia y con
 
 || Firewall
 
+	Un cortafuegos es un sistema de seguridad que supervisa y controla el tráfico de red basándose en un conjunto de reglas de seguridad. 
+
+	Los cortafuegos suelen situarse entre una red fiable y otra que no lo es; a menudo, la red no fiable es Internet.
+
+	Por ejemplo, las redes de oficinas suelen utilizar un cortafuegos para proteger su red de las amenazas en línea.
+
+	Los cortafuegos deciden si permiten el paso del tráfico entrante y saliente. 
+
+	Pueden estar integrados en hardware, software o una combinación de ambos.
+
+	En realidad, el término "cortafuegos" procede de una práctica de la construcción consistente en levantar muros en medio de los edificios para contener un incendio. 
+
+	Del mismo modo, los cortafuegos de red sirven para contener las amenazas en línea.
 
 
+	Uso de Firewall: 
+
+		El principal uso de un cortafuegos es la seguridad. 
+
+		Los cortafuegos pueden interceptar el tráfico malicioso entrante antes de que llegue a la red, así como impedir que la información sensible salga de la red.
+
+		Los cortafuegos también pueden utilizarse para filtrar contenidos. 
+
+		Por ejemplo, una escuela puede configurar un cortafuegos para impedir que los usuarios de su red accedan a material para adultos. 
+
+		Del mismo modo, en algunas naciones el gobierno gestiona un cortafuegos que puede impedir que las personas dentro de esa nación-estado accedan a ciertas partes de Internet.
+
+		Este artículo se centrará en los cortafuegos configurados para la seguridad, de los que hay varios tipos.
+
+
+	Tipos de firewall: 
+
+		Firewalls basados en proxy:
+
+			Son proxies* que se sitúan entre los clientes y los servidores. 
+
+			Los clientes se conectan al cortafuegos y éste inspecciona los paquetes salientes, tras lo cual creará una conexión con el destinatario previsto (el servidor web). 
+
+			Del mismo modo, cuando el servidor web intenta enviar una respuesta al cliente, el cortafuegos intercepta la solicitud, inspecciona los paquetes y entrega la respuesta en una conexión independiente entre el cortafuegos y el cliente.
+
+			Un cortafuegos basado en proxy impide de hecho una conexión directa entre el cliente y el servidor.
+
+			Un cortafuegos basado en proxy es como el portero de un bar. 
+
+			Este portero detiene a los clientes antes de que entren en el bar para asegurarse de que no son menores de edad, no van armados o no suponen una amenaza para el bar y sus clientes. 
+
+			El portero también detiene a los clientes a la salida para asegurarse de que tienen una forma segura de llegar a casa y no piensan beber y conducir.
+
+			El inconveniente de tener un portero en el bar es que cuando mucha gente intenta entrar o salir simultáneamente, se formará una larga cola y varias personas sufrirán retrasos. 
+
+			Del mismo modo, un gran inconveniente de un cortafuegos basado en proxy es que puede causar latencia, sobre todo en momentos de mucho tráfico.
+
+			*Un proxy es un ordenador que actúa como pasarela entre una red local y una red mayor, como Internet.
+
+
+		Firewalls con estado (Stateful):
+
+			En informática, una aplicación "con estado" es aquella que guarda datos de eventos e interacciones anteriores.
+
+			Un cortafuegos con estado guarda información sobre las conexiones abiertas y la utiliza para analizar el tráfico entrante y saliente, en lugar de inspeccionar cada paquete. 
+
+			Como no inspeccionan cada paquete, los cortafuegos con seguimiento de estado son más rápidos que los cortafuegos basados en proxy.
+
+			Los cortafuegos con seguimiento de estado dependen mucho del contexto a la hora de tomar decisiones. 
+
+			Por ejemplo, si el cortafuegos registra paquetes salientes en una conexión que solicitan un determinado tipo de respuesta, sólo permitirá los paquetes entrantes en esa conexión si proporcionan el tipo de respuesta solicitada.
+
+			Los cortafuegos con seguimiento de estado también pueden proteger los puertos* manteniéndolos todos cerrados a menos que los paquetes entrantes soliciten acceso a un puerto específico. 
+
+			Esto puede mitigar un ataque conocido como escaneo de puertos.
+
+			Una vulnerabilidad conocida asociada a los cortafuegos con seguimiento de estado es que pueden ser manipulados engañando a un cliente para que solicite cierto tipo de información. 
+
+			Una vez que el cliente solicita esa respuesta, el atacante puede enviar paquetes maliciosos que coincidan con ese criterio a través del cortafuegos. 
+
+			Por ejemplo, los sitios web inseguros pueden utilizar código JavaScript para crear este tipo de solicitudes falsificadas desde un navegador web.
+
+
+			*Un puerto de red es una ubicación a la que se envía información; no es un lugar físico, sino un punto final de comunicaciones. 
+
+
+		Firewalls de nueva generación (NGFW):
+
+			Los NGFW (Next-generation firewalls) son cortafuegos que tienen las capacidades de los cortafuegos tradicionales, pero también emplean una serie de características añadidas para hacer frente a las amenazas en otras capas del modelo OSI. 
+
+			Algunas funciones específicas de los NGFW son
+
+			    Inspección profunda de paquetes (DPI):
+
+			    	los NGFW realizan una inspección mucho más profunda de los paquetes que los cortafuegos tradicionales.
+
+			    	Esta inspección en profundidad puede examinar aspectos como la carga útil de los paquetes y la aplicación a la que acceden. 
+
+			    	Esto permite al cortafuegos aplicar reglas de filtrado más granulares.
+
+
+			    Conocimiento de aplicaciones: 
+
+			    	al activar esta función, el cortafuegos sabe qué aplicaciones se están ejecutando y qué puertos utilizan.
+
+			    	Esto puede proteger contra ciertos tipos de malware que pretenden terminar un proceso en ejecución y luego tomar el control de su puerto.
+
+
+			    Conocimiento de la identidad: 
+
+			    	permite al cortafuegos aplicar reglas basadas en la identidad, como el ordenador que se está utilizando, el usuario que ha iniciado sesión, etc.
+
+
+			    Sandboxing:
+
+			    	Los cortafuegos pueden aislar fragmentos de código asociados a paquetes entrantes y ejecutarlos en un entorno "sandbox" para asegurarse de que no se comportan de forma maliciosa.
+
+			    	Los resultados de esta prueba pueden utilizarse como criterio a la hora de decidir si se permite o no que los paquetes entren en la red.
+
+
+			Cortafuegos de aplicaciones web (WAF):
+
+				Mientras que los cortafuegos tradicionales ayudan a proteger las redes privadas de las aplicaciones web maliciosas, los WAF ayudan a proteger las aplicaciones web de los usuarios maliciosos. 
+
+				Un WAF ayuda a proteger las aplicaciones web filtrando y supervisando el tráfico HTTP entre una aplicación web e Internet. 
+
+				Suele proteger las aplicaciones web de ataques como falsificación de sitios cruzados, secuencias de comandos cruzados (XSS), inclusión de archivos e inyección SQL, entre otros.
+
+				Al desplegar un WAF delante de una aplicación web, se coloca un escudo entre la aplicación web e Internet.
+
+				Mientras que un cortafuegos basado en proxy protege la identidad de una máquina cliente utilizando un intermediario, un WAF es un tipo de proxy inverso, que protege al servidor de la exposición haciendo que los clientes pasen a través del WAF antes de llegar al servidor.
+
+
+				Un WAF funciona mediante un conjunto de reglas a menudo denominadas políticas. 
+
+				El objetivo de estas políticas es proteger contra las vulnerabilidades de la aplicación filtrando el tráfico malicioso. 
+
+				El valor de un WAF proviene en parte de la velocidad y facilidad con la que se puede implementar la modificación de políticas, lo que permite una respuesta más rápida a los diferentes vectores de ataque; durante un ataque DDoS, la limitación de velocidad se puede implementar rápidamente modificando las políticas del WAF.
+
+				Los productos WAF comerciales como Cloudflare Web Application Firewall protegen millones de aplicaciones web de ataques cada día.
+
+
+			Cortafuegos como servicio (FWaaS):
+
+				Firewall-as-a-service (FWaaS) es un modelo más reciente para ofrecer capacidades de cortafuegos a través de la nube.
+
+				Este servicio también puede llamarse "cortafuegos en la nube". 
+
+				FWaaS forma una barrera virtual alrededor de las plataformas, infraestructuras y aplicaciones en la nube, del mismo modo que los cortafuegos tradicionales forman una barrera alrededor de la red interna de una organización.
+
+				FWaaS es a menudo más adecuado para proteger activos en la nube y multi-nube que los cortafuegos tradicionales.
+
+
+	Firewall de red:
+
+		Un "cortafuegos de red" es cualquier cortafuegos que defiende una red. 
+
+		Por definición, casi todos los cortafuegos de seguridad son cortafuegos de red, aunque los cortafuegos también pueden proteger máquinas individuales.
+
+		Aunque los cortafuegos son un componente importante de la seguridad de la red, esta área tiene también muchos otros aspectos, como el control de acceso, la autenticación de usuarios y la mitigación de DDoS.
+
+
+	Cortafuegos de software y hardware?
+
+		Originalmente, los cortafuegos eran dispositivos de hardware (véase la sección sobre la historia de los cortafuegos más adelante). 
+
+		Aunque todavía se utilizan algunos cortafuegos de hardware, muchos de los cortafuegos modernos están basados en software, lo que significa que pueden ejecutarse en diferentes tipos de hardware. 
+
+		El FWaaS, por su parte, se aloja en la nube.
+
+
+	Historia de los cortafuegos:
+
+		Los cortafuegos se remontan a finales de la década de 1980. 
+
+		Los primeros cortafuegos permitían o bloqueaban paquetes de datos individuales. 
+
+		Decidían qué paquetes permitir y cuáles bloquear inspeccionando sus cabeceras de capa de red y capa de transporte para ver su dirección IP y puerto de origen y destino (como ver las secciones "para" y "desde" de un correo electrónico). 
+
+		Esto impedía el paso del tráfico ilegítimo y detenía muchos ataques de malware.
+
+		La siguiente generación de cortafuegos añadió funciones de estado. 
+
+		Y las nuevas generaciones (como los NGFW) añadieron la capacidad de inspeccionar el tráfico en la capa de aplicación.
+
+		Al igual que las capacidades de los cortafuegos han evolucionado con el tiempo, también lo ha hecho la forma de desplegarlos.
+
+		Al principio, los cortafuegos eran dispositivos físicos de hardware que se conectaban a la infraestructura de red de la empresa. 
+
+		Pero a medida que los procesos empresariales se trasladaban a la nube, canalizar todo el tráfico de red a través de una caja física resultaba ineficaz. 
+
+		Hoy en día, los cortafuegos también pueden funcionar por software o virtualmente en la nube.
+
+
+	Magic Firewall:
+
+		Magic Firewall es un cortafuegos a nivel de red desplegado desde la red de Cloudflare. 
+
+		Está diseñado para sustituir a los cortafuegos basados en hardware para redes locales. 
+
+		Los cortafuegos basados en hardware solo se amplían si TI compra más de ellos; Magic Firewall se amplía más fácilmente para gestionar grandes cantidades de tráfico.
 
 
 
